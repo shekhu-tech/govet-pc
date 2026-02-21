@@ -1,7 +1,7 @@
 {
   "name": "Stiskilli",
   "short_name": "Stiskilli",
-  "start_url": "/govet-pc/",
+  "start_url": "/govet-pc/index.html",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#0d6efd",
