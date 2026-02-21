@@ -1,10 +1,16 @@
 {
   "name": "Stiskilli",
   "short_name": "Stiskilli",
+  "id": "io.github.shekhu-tech.stiskilli",
   "start_url": "/govet-pc/index.html",
+  "scope": "/govet-pc/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#0d6efd",
+  "background_color": "#FFFFFF",
+  "theme_color": "#0D6EFD",
+  "orientation": "any",
+  "lang": "en-IN",
+  "dir": "ltr",
+  "description": "Stiskilli is an educational platform for government exam preparation with structured study material and practice tools.",
   "icons": [
     {
       "src": "icon-192.png",
@@ -15,6 +21,43 @@
       "src": "icon-512.png",
       "sizes": "512x512",
       "type": "image/png"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "screenshots/screen1.png",
+      "sizes": "1366x768",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Home Dashboard"
+    },
+    {
+      "src": "screenshots/screen2.png",
+      "sizes": "1366x768",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Courses & Categories"
+    },
+    {
+      "src": "screenshots/screen3.png",
+      "sizes": "1366x768",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Study Materials"
+    },
+    {
+      "src": "screenshots/screen4.png",
+      "sizes": "1366x768",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Practice Tests"
+    },
+    {
+      "src": "screenshots/screen5.png",
+      "sizes": "1366x768",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Results & Progress"
     }
   ]
 }
