@@ -1,21 +1,12 @@
 {
-  "name": "Stiskilli",
-  "short_name": "Stiskilli",
-  "description": "All Preprations.",
-  "start_url": "/",
-  "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#000000",
-  "icons": [
-    {
-      "src": "/icon-192x192.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "/icon-512x512.png",
-      "sizes": "512x512",
-      "type": "image/png"
-    }
-  ]
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "shekhu-tech.github",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "shekhu-tech.github",
+  "start_url": "/",
+  "theme_color": "#ffffff",
+  "lang": "en"
 }
