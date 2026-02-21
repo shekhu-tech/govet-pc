@@ -3440,6 +3440,11 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
             }
         });
     </script>
+   <script>
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("service-worker.js");
+}
+</script>
     <script src="golden-float-form.js"></script>
 </body>
 </html>
