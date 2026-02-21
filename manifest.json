@@ -25,35 +25,35 @@
   ],
   "screenshots": [
     {
-      "src": "screenshots/screen1.png",
+      "src": "one.png",
       "sizes": "1366x768",
       "type": "image/png",
       "form_factor": "wide",
       "label": "Home Dashboard"
     },
     {
-      "src": "screenshots/screen2.png",
+      "src": "two.png",
       "sizes": "1366x768",
       "type": "image/png",
       "form_factor": "wide",
       "label": "Courses & Categories"
     },
     {
-      "src": "screenshots/screen3.png",
+      "src": "three.png",
       "sizes": "1366x768",
       "type": "image/png",
       "form_factor": "wide",
       "label": "Study Materials"
     },
     {
-      "src": "screenshots/screen4.png",
+      "src": "four.png",
       "sizes": "1366x768",
       "type": "image/png",
       "form_factor": "wide",
       "label": "Practice Tests"
     },
     {
-      "src": "screenshots/screen5.png",
+      "src": "five.png",
       "sizes": "1366x768",
       "type": "image/png",
       "form_factor": "wide",
