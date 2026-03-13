@@ -2,17 +2,16 @@
 {
   "name": "Stiskilli",
   "short_name": "Stiskilli",
-  "id": "/",
+  "id": "/govet-pc/",
   "start_url": "/govet-pc/index.html",
-  "scope": "/",
+  "scope": "/govet-pc/",
   "display": "standalone",
-  "display_override": ["window-controls-overlay", "standalone"],
   "background_color": "#FFFFFF",
   "theme_color": "#0D6EFD",
   "orientation": "any",
   "lang": "en-IN",
   "dir": "ltr",
-  "description": "Stiskilli is an educational platform for government exam preparation with structured study material, courses, and practice tools.",
+  "description": "Stiskilli is an educational platform for government exam preparation.",
 
   "icons": [
     {
@@ -34,40 +33,14 @@
       "src": "/govet-pc/one.png",
       "sizes": "1366x768",
       "type": "image/png",
-      "form_factor": "wide",
-      "label": "Home Dashboard"
+      "form_factor": "wide"
     },
     {
       "src": "/govet-pc/two.png",
       "sizes": "1366x768",
       "type": "image/png",
-      "form_factor": "wide",
-      "label": "Courses & Categories"
-    },
-    {
-      "src": "/govet-pc/three.png",
-      "sizes": "1366x768",
-      "type": "image/png",
-      "form_factor": "wide",
-      "label": "Study Materials"
-    },
-    {
-      "src": "/govet-pc/four.png",
-      "sizes": "1366x768",
-      "type": "image/png",
-      "form_factor": "wide",
-      "label": "Practice Tests"
-    },
-    {
-      "src": "/govet-pc/five.png",
-      "sizes": "1366x768",
-      "type": "image/png",
-      "form_factor": "wide",
-      "label": "Results & Progress"
+      "form_factor": "wide"
     }
-  ],
-
-  "categories": ["education", "productivity"],
-  "prefer_related_applications": false
+  ]
 }
 
