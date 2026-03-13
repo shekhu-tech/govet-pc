@@ -1,63 +1,73 @@
+
 {
   "name": "Stiskilli",
   "short_name": "Stiskilli",
-  "id": "io.github.shekhu-tech.stiskilli",
+  "id": "/",
   "start_url": "/govet-pc/index.html",
-  "scope": "/govet-pc/",
+  "scope": "/",
   "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone"],
   "background_color": "#FFFFFF",
   "theme_color": "#0D6EFD",
   "orientation": "any",
   "lang": "en-IN",
   "dir": "ltr",
-  "description": "Stiskilli is an educational platform for government exam preparation with structured study material and practice tools.",
+  "description": "Stiskilli is an educational platform for government exam preparation with structured study material, courses, and practice tools.",
+
   "icons": [
     {
-      "src": "icon-192.png",
+      "src": "/govet-pc/icon-192.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     },
     {
-      "src": "icon-512.png",
+      "src": "/govet-pc/icon-512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ],
+
   "screenshots": [
     {
-      "src": "one.png",
+      "src": "/govet-pc/one.png",
       "sizes": "1366x768",
       "type": "image/png",
       "form_factor": "wide",
       "label": "Home Dashboard"
     },
     {
-      "src": "two.png",
+      "src": "/govet-pc/two.png",
       "sizes": "1366x768",
       "type": "image/png",
       "form_factor": "wide",
       "label": "Courses & Categories"
     },
     {
-      "src": "three.png",
+      "src": "/govet-pc/three.png",
       "sizes": "1366x768",
       "type": "image/png",
       "form_factor": "wide",
       "label": "Study Materials"
     },
     {
-      "src": "four.png",
+      "src": "/govet-pc/four.png",
       "sizes": "1366x768",
       "type": "image/png",
       "form_factor": "wide",
       "label": "Practice Tests"
     },
     {
-      "src": "five.png",
+      "src": "/govet-pc/five.png",
       "sizes": "1366x768",
       "type": "image/png",
       "form_factor": "wide",
       "label": "Results & Progress"
     }
-  ]
+  ],
+
+  "categories": ["education", "productivity"],
+  "prefer_related_applications": false
 }
+
