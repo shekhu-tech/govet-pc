@@ -2531,6 +2531,23 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
             }
         }
     </script>
+    <style>
+/* Buttons  ---------- container */
+.floating-nav{position:fixed;right:0;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;z-index:9999;}
+/* button style */
+.float-btn{writing-mode:vertical-rl;transform:rotate(180deg);text-decoration:none;padding:7px 7px;font-weight:600;letter-spacing:1px;color:white;margin:4px 0;font-size:14px;
+/* curved side outside */
+border-radius:0 15px 15px 0;background:linear-gradient(135deg,#ff7a00,#ff3c00);box-shadow:0 8px 20px rgba(0,0,0,0.25);transition:all .35s ease;}
+/* hover animation */
+.float-btn:hover{padding-right:2px;box-shadow:0 12px 30px rgba(0,0,0,0.35);}
+/* back button color */
+.back{background:linear-gradient(135deg,#007bff,#003cff);}
+/* responsive */
+@media(max-width:768px){.float-btn{font-size:12px;padding:14px 10px;}
+}
+</style>
+
+<div class="floating-nav"><a href="main.html" class="float-btn">Home</a></div>
     <script src="social-bar.js"></script>
 </body>
 </html>
