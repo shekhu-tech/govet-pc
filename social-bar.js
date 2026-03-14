@@ -1,10 +1,33 @@
-// apple-social-bar.js - Ultra Promax 11D Edition
-// Premium Apple-inspired social bar with your custom links
+// apple-social-bar.js - ULTIMATE FINAL VERSION WITH FIXED RAZORPAY
+// SINGLE POPUP - ALL IN ONE: Form Type + Details + ₹151 Payment
+// FIXED: "Refundable" heading opens 5-line classic popup
+// UPDATED: 13-digit Registration ID generation and display
 
 (function() {
     'use strict';
 
-    // Ultra Promax 11D Style - Next-level glassmorphism with depth effects
+    const APP_NAME = "STISkilli";
+    const APP_PACKAGE_NAME = "com.ai.skillaura";
+
+    // ========== RAZORPAY SCRIPT FORCE LOAD ==========
+    function loadRazorpayScript() {
+        return new Promise((resolve, reject) => {
+            if (window.Razorpay) {
+                resolve();
+                return;
+            }
+            const script = document.createElement('script');
+            script.src = 'https://checkout.razorpay.com/v1/checkout.js';
+            script.onload = () => resolve();
+            script.onerror = () => reject(new Error('Razorpay script failed to load'));
+            document.head.appendChild(script);
+        });
+    }
+
+    // Load immediately
+    loadRazorpayScript().catch(e => console.error('Razorpay load error:', e));
+
+    // ==================== STYLES ====================
     const style = document.createElement('style');
     style.textContent = `
         * {
@@ -14,7 +37,7 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'SF Pro Display', 'SF Pro Text', sans-serif;
         }
 
-        /* 11D Depth Layers - Slim & Cute Edition */
+        /* Social Bar */
         .apple-social-bar {
             position: fixed;
             left: 0px;
@@ -23,189 +46,82 @@
             z-index: 9999;
             display: flex;
             flex-direction: column;
-            gap: 5px; /* Reduced gap between icons */
-            
-            /* Ultra Promax Glass 4.0 */
-            background: rgba(22, 24, 30, 0.65);
+            gap: 8px;
+            background: rgba(15, 17, 22, 0.75);
             backdrop-filter: blur(20px) saturate(180%);
             -webkit-backdrop-filter: blur(20px) saturate(180%);
-            
-            padding: 16px 8px; /* Reduced padding for slimmer width */
-            border-radius: 36px; /* Slightly smaller radius */
-            
-            /* 11D Border System */
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-right-color: rgba(255, 255, 255, 0.3);
-            border-bottom-color: rgba(255, 255, 255, 0.15);
-            
-            /* Multi-layer shadow for 11D depth */
-            box-shadow: 
-                0 20px 40px -8px rgba(0, 0, 0, 0.4),
-                0 0 0 1px rgba(255, 255, 255, 0.08) inset,
-                0 -1px 3px rgba(255, 255, 255, 0.15) inset,
-                0 5px 15px rgba(0, 0, 0, 0.3),
-                /* 11D glow rings - softer */
-                0 0 0 2px rgba(0, 113, 227, 0.12),
-                0 0 15px rgba(0, 113, 227, 0.15);
-            
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            padding: 16px 6px;
+            border-radius: 0 28px 28px 0;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-left: none;
+            box-shadow: 0 20px 40px -8px rgba(0, 0, 0, 0.5);
+            transition: all 0.4s ease;
         }
 
         .apple-social-bar:hover {
-            background: rgba(28, 30, 38, 0.8);
-            box-shadow: 
-                0 25px 50px -8px rgba(0, 0, 0, 0.5),
-                0 0 0 1px rgba(255, 255, 255, 0.12) inset,
-                0 -1px 4px rgba(255, 255, 255, 0.2) inset,
-                0 8px 20px rgba(0, 0, 0, 0.35),
-                0 0 0 3px rgba(0, 113, 227, 0.2),
-                0 0 25px rgba(0, 113, 227, 0.25);
-            transform: translateY(-50%) translateX(3px) scale(1.01);
+            background: rgba(25, 28, 35, 0.85);
+            transform: translateY(-50%) translateX(5px);
         }
 
         .social-icon {
-            width: 42px; /* Smaller, cuter icons */
-            height: 42px;
-            border-radius: 28px; /* More rounded = cuter */
-            
-            /* 11D icon surface */
-            background: rgba(255, 255, 255, 0.08);
+            width: 35px;
+            height: 35px;
+            border-radius: 18px 12px 18px 12px;
+            background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            
-            /* Multi-dimensional border - softer */
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            border-bottom-color: rgba(255, 255, 255, 0.25);
-            border-right-color: rgba(255, 255, 255, 0.2);
-            
-            /* 11D shadow architecture - lighter */
-            box-shadow: 
-                0 6px 12px -5px rgba(0, 0, 0, 0.3),
-                0 0 0 1px rgba(255, 255, 255, 0.05) inset,
-                0 -1px 2px rgba(255, 255, 255, 0.1) inset,
-                /* cute glow */
-                0 0 0 1.5px rgba(0, 113, 227, 0.15);
-            
-            color: rgba(255, 255, 255, 0.95);
-            font-size: 20px; /* Smaller icons */
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            color: white;
+            font-size: 18px;
             text-decoration: none;
-            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1);
-            
-            /* 11D position for hover effects */
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* Cute bounce effect */
-        .social-icon::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.3);
-            transform: translate(-50%, -50%);
-            transition: width 0.3s ease, height 0.3s ease;
-            z-index: 0;
-        }
-
-        .social-icon:hover::after {
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        /* 11D icon hover with liquid light */
-        .social-icon::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                90deg,
-                transparent,
-                rgba(255, 255, 255, 0.2),
-                transparent
-            );
-            transition: left 0.5s ease;
-            z-index: 1;
-            pointer-events: none;
-        }
-
-        .social-icon:hover::before {
-            left: 100%;
+            transition: all 0.3s ease;
         }
 
         .social-icon:hover {
-            background: rgba(0, 113, 227, 0.25);
-            transform: scale(1.08) translateY(-1px); /* Subtle bounce */
-            border-color: rgba(255, 255, 255, 0.35);
-            box-shadow: 
-                0 10px 18px -6px rgba(0, 0, 0, 0.4),
-                0 0 0 1px rgba(255, 255, 255, 0.2) inset,
-                0 0 20px rgba(0, 113, 227, 0.5),
-                0 0 0 2px rgba(0, 113, 227, 0.3);
-            color: white;
-        }
-
-        .social-icon i {
-            font-size: 20px;
-            filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.3));
-            z-index: 2;
-            position: relative;
-            transition: transform 0.2s ease;
+            transform: scale(1.1);
         }
 
         .social-icon:hover i {
-            transform: scale(1.05);
+            transform: scale(1.2);
         }
 
-        /* Popup trigger - 11D neon special - cuter version */
+        /* Form Filling Icon - TOP WALA */
         .popup-trigger {
-            background: linear-gradient(135deg, #0071e3, #005bbf);
-            border: 1px solid rgba(255, 255, 255, 0.35);
-            box-shadow: 
-                0 8px 16px -5px rgba(0, 113, 227, 0.5),
-                0 0 0 2px rgba(255, 255, 255, 0.15) inset,
-                0 0 20px rgba(0, 113, 227, 0.6);
-            margin-bottom: 8px; /* Reduced margin */
-            color: white;
-            width: 44px; /* Slightly larger to stand out */
-            height: 44px;
+            background: linear-gradient(135deg, #8A2BE2, #4B0082, #9400D3);
+            box-shadow: 0 5px 15px rgba(138, 43, 226, 0.6);
         }
 
-        .popup-trigger i {
-            font-size: 20px;
+        /* Other icons */
+        .whatsapp-icon { background: linear-gradient(135deg, #25D366, #128C7E); }
+        .social-icon[title="Website"] { background: linear-gradient(135deg, #0071e3, #002b5c); }
+        .social-icon[title="Twitter/X"] { background: linear-gradient(135deg, #1DA1F2, #0d2740); }
+        .social-icon[title="YouTube"] { background: linear-gradient(135deg, #FF0000, #8B0000); }
+        .social-icon[title="Facebook"] { background: linear-gradient(135deg, #4267B2, #1e3a6b); }
+        .social-icon[title="Instagram"] { background: linear-gradient(135deg, #833AB4, #E1306C, #FCAF45); }
+
+        /* Mobile responsive */
+        @media (max-width: 1500px) {
+            .apple-social-bar {
+                gap: 3px;
+                padding: 6px 2px;
+                border-radius: 0 12px 12px 0;
+            }
+            .social-icon {
+                width: 12px !important;
+                height: 12px !important;
+                font-size: 5px !important;
+            }
+            body { padding-left: 18px; }
         }
 
-        .popup-trigger:hover {
-            background: linear-gradient(135deg, #0081f3, #0061cf);
-            box-shadow: 
-                0 12px 24px -5px #0071e3,
-                0 0 0 3px rgba(255, 255, 255, 0.2) inset,
-                0 0 30px #0071e3;
+        @media (min-width: 1501px) {
+            body { padding-left: 42px; }
         }
 
-        /* WhatsApp specific styling */
-        .whatsapp-icon {
-            background: rgba(37, 211, 102, 0.15);
-        }
-        
-        .whatsapp-icon:hover {
-            background: rgba(37, 211, 102, 0.3);
-            box-shadow: 0 0 20px rgba(37, 211, 102, 0.5), 0 0 0 2px rgba(37, 211, 102, 0.3);
-        }
-
-        /* 11D Overlay - cosmic depth */
+        /* ===== POPUP STYLES ===== */
         .popup-overlay {
             position: fixed;
             top: 0;
@@ -213,231 +129,411 @@
             width: 100%;
             height: 100%;
             background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(16px) brightness(0.7);
-            -webkit-backdrop-filter: blur(16px) brightness(0.7);
+            backdrop-filter: blur(8px);
             z-index: 10000;
             display: none;
             justify-content: center;
             align-items: center;
-            opacity: 0;
-            transition: opacity 0.4s ease;
         }
 
         .popup-overlay.active {
             display: flex;
-            opacity: 1;
         }
 
-        /* 11D Popup - floating orb */
         .popup-content {
-            background: rgba(22, 24, 30, 0.85);
-            backdrop-filter: blur(40px) saturate(200%);
-            -webkit-backdrop-filter: blur(40px) saturate(200%);
-            border-radius: 42px; /* Slightly more rounded */
-            padding: 40px 40px;
-            width: 90%;
-            max-width: 520px;
-            
-            /* 11D border cosmos */
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            border-top-color: rgba(255, 255, 255, 0.4);
-            border-left-color: rgba(255, 255, 255, 0.35);
-            
-            /* 11D shadow nebula */
-            box-shadow: 
-                0 50px 100px -20px rgba(0, 0, 0, 0.7),
-                0 0 0 1px rgba(255, 255, 255, 0.1) inset,
-                0 0 50px rgba(0, 113, 227, 0.3),
-                0 15px 30px -10px rgba(0, 0, 0, 0.5);
-            
-            transform: scale(0.92) translateY(10px);
-            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 30px;
+            width: min(90%, 450px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            max-height: 90vh;
+            overflow-y: auto;
             position: relative;
-            color: white;
         }
 
-        .popup-overlay.active .popup-content {
-            transform: scale(1) translateY(0);
-        }
-
-        .popup-content h2 {
-            font-size: 32px;
-            font-weight: 600;
-            margin-bottom: 10px;
-            color: white;
+        /* Special 5-line popup (classic, professional) */
+        .classic-popup-content {
+            background: #ffffff;
+            border-radius: 32px;
+            padding: 35px 30px;
+            width: min(90%, 480px);
+            box-shadow: 0 35px 70px -15px rgba(0, 0, 0, 0.3);
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
             text-align: center;
-            text-shadow: 0 2px 10px rgba(0, 113, 227, 0.5);
+            border: 1px solid rgba(244, 196, 48, 0.3);
+        }
+
+        .classic-popup-content h3 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 20px;
             letter-spacing: -0.5px;
+            border-bottom: 2px solid #F4C430;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .five-lines-container {
+            background: #f8fafc;
+            border-radius: 20px;
+            padding: 25px 20px;
+            margin: 25px 0;
+            border-left: 6px solid #F4C430;
+            text-align: left;
+            box-shadow: inset 0 2px 10px rgba(0,0,0,0.02);
+        }
+
+        .five-lines-container p {
+            font-size: 17px;
+            line-height: 2;
+            color: #2d3748;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 12px 0;
+            font-weight: 450;
+        }
+
+        .five-lines-container p i {
+            color: #F4C430;
+            width: 24px;
+            font-size: 18px;
+            text-align: center;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #f7fafc;
+            border: 1px solid #e2e8f0;
+            color: #4a5568;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            z-index: 2;
+        }
+
+        .close-btn:hover {
+            background: #edf2f7;
+            transform: rotate(90deg);
+        }
+
+        /* Make "Refundable" heading clickable */
+        .clickable-heading {
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-block;
+            padding: 0 5px;
+        }
+        
+        .clickable-heading:hover {
+            color: #F4C430;
+            transform: scale(1.05);
+            text-decoration: underline;
+        }
+
+        /* form popup specifics */
+        .popup-content h2 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1a202c;
+            text-align: center;
+            margin-bottom: 8px;
         }
 
         .popup-subtitle {
             text-align: center;
-            color: rgba(255, 255, 255, 0.6);
-            margin-bottom: 32px;
-            font-size: 16px;
-            font-weight: 400;
+            color: #4a5568;
+            margin-bottom: 25px;
+            font-size: 15px;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 15px;
+        }
+
+        .popup-subtitle i {
+            color: #F4C430;
+            margin: 0 4px;
+        }
+
+        .amount-display {
+            background: linear-gradient(135deg, #F4C430, #FFD700);
+            color: #000;
+            font-size: 1.8rem;
+            font-weight: 800;
+            text-align: center;
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            font-family: 'Rajdhani', sans-serif;
+            border: 2px solid #B8860B;
         }
 
         .form-group {
-            margin-bottom: 22px;
+            margin-bottom: 20px;
         }
 
         .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 15px;
-            letter-spacing: -0.2px;
+            display: flex;
+            align-items: center;
+            margin-bottom: 6px;
+            font-weight: 600;
+            color: #2d3748;
+            font-size: 14px;
+        }
+
+        .form-group label i {
+            margin-right: 8px;
+            color: #F4C430;
+            font-size: 14px;
+            width: 18px;
         }
 
         .form-group input,
         .form-group select {
             width: 100%;
-            padding: 16px 20px;
-            background: rgba(10, 12, 18, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 24px;
-            font-size: 16px;
-            color: white;
-            transition: all 0.3s ease;
+            padding: 12px 16px;
+            background: #f7fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            font-size: 15px;
+            color: #1a202c;
             outline: none;
-            box-shadow: 0 6px 12px -6px rgba(0, 0, 0, 0.4);
-            appearance: none;
-            -webkit-appearance: none;
-            cursor: pointer;
-        }
-
-        .form-group select {
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.5)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 20px center;
-            background-size: 16px;
-        }
-
-        .form-group select option {
-            background: rgba(22, 24, 30, 0.95);
-            color: white;
-            padding: 12px;
         }
 
         .form-group input:focus,
         .form-group select:focus {
-            border-color: #0071e3;
-            background: rgba(20, 25, 35, 0.8);
-            box-shadow: 
-                0 0 0 4px rgba(0, 113, 227, 0.25),
-                0 8px 16px -8px #0071e3;
+            border-color: #F4C430;
+            box-shadow: 0 0 0 3px rgba(244, 196, 48, 0.15);
         }
 
-        .form-group input::placeholder {
-            color: rgba(255, 255, 255, 0.3);
-            font-size: 14px;
-        }
-
-        .submit-btn {
-            width: 100%;
-            padding: 18px;
-            background: linear-gradient(145deg, #0071e3, #005bbf);
-            color: white;
-            border: none;
-            border-radius: 28px;
-            font-size: 18px;
+        .timer {
+            background: #f7fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 50px;
+            padding: 10px;
+            font-size: 1rem;
             font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            box-shadow: 
-                0 12px 24px -8px #0071e3,
-                0 0 0 2px rgba(255, 255, 255, 0.1) inset;
-            letter-spacing: 0.3px;
+            color: #e53e3e;
+            text-align: center;
+            margin: 20px 0;
         }
 
-        .submit-btn:hover {
-            background: linear-gradient(145deg, #0081f3, #0061cf);
-            transform: scale(1.01) translateY(-1px);
-            box-shadow: 
-                0 16px 32px -5px #0071e3,
-                0 0 0 3px rgba(255, 255, 255, 0.2) inset;
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            font-size: 22px;
+        .payment-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #F4C430, #B8860B);
+            color: #000;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            font-weight: 800;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: rgba(255, 255, 255, 0.7);
-            transition: all 0.3s ease;
-            backdrop-filter: blur(8px);
+            gap: 10px;
+            transition: all 0.2s ease;
         }
 
-        .close-btn:hover {
-            background: rgba(255, 255, 255, 0.2);
+        .payment-btn:hover {
+            background: linear-gradient(135deg, #FFD700, #DAA520);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(244, 196, 48, 0.4);
+        }
+
+        /* Success Popup - Updated with Registration ID and Customer Details */
+        .premium-success-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(12px);
+            z-index: 20000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .premium-success-content {
+            background: linear-gradient(145deg, #1a1a1a 0%, #0a0a0a 100%);
+            border: 2px solid #F4C430;
+            border-radius: 40px;
+            padding: 30px;
+            width: 90%;
+            max-width: 450px;
+            box-shadow: 0 30px 60px rgba(244, 196, 48, 0.3);
+        }
+
+        .premium-check-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px auto;
+            border: 3px solid #F4C430;
+        }
+
+        .premium-check-icon i {
+            font-size: 40px;
+            color: #F4C430;
+        }
+
+        .premium-title {
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 900;
+            font-size: 2rem;
+            background: linear-gradient(135deg, #FFD700, #F4C430);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+            margin-bottom: 5px;
+        }
+
+        .welcome-message {
+            color: #fff;
+            text-align: center;
+            font-size: 1.2rem;
+            margin: 10px 0;
+            padding: 10px;
+            background: rgba(244, 196, 48, 0.1);
+            border-radius: 30px;
+        }
+
+        .welcome-message span {
+            color: #F4C430;
+            font-weight: bold;
+        }
+
+        .customer-details {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(244, 196, 48, 0.2);
+            border-radius: 20px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(244, 196, 48, 0.1);
+            color: #fff;
+        }
+
+        .detail-row:last-child {
+            border-bottom: none;
+        }
+
+        .detail-label {
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        .detail-value {
+            color: #F4C430;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .registration-id-box {
+            background: linear-gradient(145deg, #F4C43020, #B8860B20);
+            border: 2px dashed #F4C430;
+            border-radius: 50px;
+            padding: 15px;
+            margin: 15px 0;
+            text-align: center;
+        }
+
+        .registration-id-label {
+            color: #aaa;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .registration-id-value {
+            font-family: monospace;
+            color: #F4C430;
+            font-size: 1.8rem;
+            font-weight: 900;
+            letter-spacing: 3px;
+            word-break: break-all;
+        }
+
+        .premium-txn-box {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(244, 196, 48, 0.2);
+            border-radius: 50px;
+            padding: 10px 20px;
+            margin: 15px 0;
+        }
+
+        .premium-txn-id {
+            font-family: monospace;
+            color: #F4C430;
+            font-size: 0.9rem;
+            word-break: break-all;
+        }
+
+        .premium-thankyou {
+            background: linear-gradient(145deg, rgba(244, 196, 48, 0.1), rgba(0, 0, 0, 0.3));
+            border: 2px solid #F4C430;
+            border-radius: 30px;
+            padding: 15px;
+            margin: 15px 0;
+            text-align: center;
             color: white;
-            transform: rotate(90deg) scale(1.1);
-            border-color: rgba(255, 255, 255, 0.4);
         }
 
-        /* Cute responsive adjustments */
-        @media (max-width: 768px) {
-            .apple-social-bar {
-                left: 15px;
-                gap: 10px;
-                padding: 14px 6px;
-            }
+        .premium-ok-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(145deg, #F4C430, #B8860B);
+            border: none;
+            border-radius: 50px;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 900;
+            font-size: 1.2rem;
+            color: #000;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
 
-            .social-icon {
-                width: 38px;
-                height: 38px;
-                font-size: 18px;
-            }
-            
-            .popup-trigger {
-                width: 40px;
-                height: 40px;
-            }
-
-            .popup-content {
-                padding: 35px 25px;
-                width: 95%;
-                border-radius: 36px;
-            }
-            
-            .popup-content h2 {
-                font-size: 26px;
-            }
-            
-            .form-group select {
-                padding: 14px 18px;
-                background-position: right 15px center;
-            }
+        .premium-ok-btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 20px rgba(244, 196, 48, 0.4);
         }
     `;
     document.head.appendChild(style);
 
-    // Font Awesome already included, but ensure it's there (will not duplicate)
+    // Font Awesome (ensure it's loaded)
     if (!document.querySelector('link[href*="font-awesome"]')) {
-        const fontAwesome = document.createElement('link');
-        fontAwesome.rel = 'stylesheet';
-        fontAwesome.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css';
-        document.head.appendChild(fontAwesome);
+        const fa = document.createElement('link');
+        fa.rel = 'stylesheet';
+        fa.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css';
+        document.head.appendChild(fa);
     }
 
-    // Create social bar HTML with your custom links
+    // ==================== SOCIAL BAR ====================
     const socialBar = document.createElement('div');
     socialBar.className = 'apple-social-bar';
     socialBar.innerHTML = `
-        <div class="social-icon popup-trigger" id="popupTrigger">
+        <div class="social-icon popup-trigger" id="popupTrigger" title="Form Filling Service">
             <i class="fas fa-pen-fancy"></i>
         </div>
         <a href="https://stiworldofficial.com" class="social-icon" target="_blank" title="Website">
@@ -460,118 +556,442 @@
         </a>
     `;
 
-    // Create popup HTML with form type dropdown
-    const popupOverlay = document.createElement('div');
-    popupOverlay.className = 'popup-overlay';
-    popupOverlay.id = 'popupOverlay';
-    popupOverlay.innerHTML = `
+    // ==================== MAIN POPUP (Form + Payment) ====================
+    const formPopup = document.createElement('div');
+    formPopup.className = 'popup-overlay';
+    formPopup.id = 'formPopup';
+    formPopup.innerHTML = `
         <div class="popup-content">
             <button class="close-btn" id="closePopup"><i class="fas fa-times"></i></button>
-            <h2>Form Filling Service</h2>
-            <p class="popup-subtitle">Select which form you want us to fill ✨</p>
-            <form id="userForm">
+            
+            <h2><span class="clickable-heading" id="refundableHeading">Refundable</span></h2>
+            <div class="popup-subtitle">
+                <i class="fas fa-crown"></i> Our Expert will fill your form <i class="fas fa-crown"></i>
+            </div>
+            
+            <div class="amount-display">
+                ₹151<span style="font-size:0.9rem;">(1 Person/1 Exam)</span>
+            </div>
+            
+            <form id="paymentForm">
+                <!-- FORM TYPE DROPDOWN -->
                 <div class="form-group">
-                    <label><i class="fas fa-file-alt" style="margin-right: 8px;"></i> Form Type</label>
+                    <label><i class="fas fa-tag"></i> Which form do you need help with? *</label>
                     <select id="formType" required>
-                        <option value="" disabled selected>-- Select form type --</option>
-                        <option value="government">Government Form</option>
-                        <option value="bank">Bank Application</option>
-                        <option value="college">College Admission</option>
-                        <option value="job">Job Application</option>
-                        <option value="other">Other (specify in notes)</option>
+                        <option value="" disabled selected>Select form type</option>
+                        <option value="Government Form">📋 Government Form</option>
+                        <option value="Bank Application">🏦 Bank Application</option>
+                        <option value="College Admission">🎓 College Admission</option>
+                        <option value="Job Application">💼 Job Application</option>
                     </select>
                 </div>
+                
+                <!-- NAME -->
                 <div class="form-group">
-                    <label><i class="far fa-smile" style="margin-right: 8px;"></i> Your Name</label>
-                    <input type="text" id="name" required placeholder="Enter your full name">
+                    <label><i class="fas fa-user"></i> Full Name *</label>
+                    <input type="text" id="fullName" required placeholder="Enter your full name">
                 </div>
+                
+                <!-- PHONE -->
                 <div class="form-group">
-                    <label><i class="far fa-heart" style="margin-right: 8px;"></i> Phone Number</label>
-                    <input type="tel" id="phone" required placeholder="+91 98765 43210">
+                    <label><i class="fas fa-phone"></i> Phone Number *</label>
+                    <input type="tel" id="phoneNumber" required placeholder="+91 98765 43210">
                 </div>
+                
+                <!-- EMAIL -->
                 <div class="form-group">
-                    <label><i class="far fa-star" style="margin-right: 8px;"></i> Email</label>
-                    <input type="email" id="email" required placeholder="you@example.com">
+                    <label><i class="fas fa-envelope"></i> Email *</label>
+                    <input type="email" id="emailAddress" required placeholder="you@example.com">
                 </div>
-                <button type="submit" class="submit-btn">Submit Request <i class="fas fa-arrow-right" style="margin-left: 8px;"></i></button>
+                
+                <!-- TIMER -->
+                <div class="timer" id="paymentTimer">⏱️ Complete within 05:00</div>
+                
+                <!-- PAYMENT BUTTON -->
+                <button type="submit" class="payment-btn" id="rzpButton">
+                    <i class="fas fa-lock"></i> Submit Now <i class="fas fa-arrow-right"></i>
+                </button>
             </form>
         </div>
     `;
 
+    // ==================== NEW: 5-LINE CLASSIC POPUP (Refundable) ====================
+    const classicPopup = document.createElement('div');
+    classicPopup.className = 'popup-overlay';
+    classicPopup.id = 'classicPopup';
+    classicPopup.innerHTML = `
+        <div class="classic-popup-content">
+            <button class="close-btn" id="closeClassicPopup"><i class="fas fa-times"></i></button>
+            
+            <h3>✨Conditions✨</h3>
+            
+            <div class="five-lines-container">
+                <p><i class="fas fa-check-circle"></i> 1. If You cancel After 30 Minute of Booking</p>
+                <p><i class="fas fa-check-circle"></i> 2. If We Cancel during three Day</p>
+                <p><i class="fas fa-check-circle"></i> 3. You Have To Book Before 3 Day Last date</p>
+                <p><i class="fas fa-check-circle"></i> 4. No hidden charges – 100% secure</p>
+                <p><i class="fas fa-check-circle"></i> 5. We can Fill Threw AnyDesk On Your Pc</p>
+            </div>
+            
+            <div style="margin-top: 20px; background: #F4C43010; padding: 15px; border-radius: 16px; border: 1px dashed #F4C430;">
+                <p style="font-size: 1.1rem; color: #2d3748;"><i class="fas fa-rupee-sign" style="color:#F4C430;"></i> <strong>You pay ₹151 (refundable)</strong> — expert fills your form</p>
+            </div>
+            
+            <button class="payment-btn" id="gotoFormFromClassic" style="margin-top: 20px;">
+                <i class="fas fa-arrow-right"></i> Continue to Form
+            </button>
+        </div>
+    `;
+
+    // ==================== SUCCESS POPUP (Updated with Registration ID) ====================
+    const successPopup = document.createElement('div');
+    successPopup.className = 'premium-success-popup';
+    successPopup.id = 'successPopup';
+    successPopup.innerHTML = `
+        <div class="premium-success-content">
+            <div class="premium-check-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            
+            <div class="premium-title">PAYMENT SUCCESSFUL!</div>
+            
+            <div class="welcome-message">
+                Welcome, <span id="successCustomerName">Customer</span>! 👋
+            </div>
+            
+            <div class="customer-details">
+                <div class="detail-row">
+                    <span class="detail-label">📧 Email</span>
+                    <span class="detail-value" id="successEmail">-</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">📞 Phone</span>
+                    <span class="detail-value" id="successPhone">-</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">📋 Form Type</span>
+                    <span class="detail-value" id="successFormType">-</span>
+                </div>
+            </div>
+            
+            <div class="registration-id-box">
+                <div class="registration-id-label">Registration ID</div>
+                <div class="registration-id-value" id="successRegistrationId">STI-0000-0000-000</div>
+            </div>
+            
+            <div style="width:80px; height:2px; background: linear-gradient(90deg, transparent, #F4C430, transparent); margin:10px auto;"></div>
+            
+            <div class="premium-txn-box">
+                <span style="color:#aaa;">TRANSACTION ID</span>
+                <div class="premium-txn-id" id="successTxnId">pay_SNUCx0TGqT07Qa</div>
+            </div>
+            
+            <div class="premium-thankyou">
+                <p style="font-size:1.5rem; font-weight:900; background: linear-gradient(135deg, #FFD700, #F4C430); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin:0;">THANK YOU! 🙏</p>
+                <div style="color:#F4C430; margin-top:5px;">✨ Our expert will contact you soon ✨</div>
+            </div>
+            
+            <button class="premium-ok-btn" id="closeSuccess">
+                OK <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+    `;
+
+    // Append everything
     document.body.appendChild(socialBar);
-    document.body.appendChild(popupOverlay);
+    document.body.appendChild(formPopup);
+    document.body.appendChild(classicPopup);
+    document.body.appendChild(successPopup);
 
-    // Popup functionality
+    // ==================== VARIABLES ====================
+    let timerInterval;
+    let timeLeft = 300; // 5 minutes
+
+    // ==================== POPUP CONTROLS ====================
     const popupTrigger = document.getElementById('popupTrigger');
-    const popupOverlayEl = document.getElementById('popupOverlay');
+    const popup = document.getElementById('formPopup');
     const closePopup = document.getElementById('closePopup');
+    
+    // Refundable heading inside form popup
+    const refundableHeading = document.getElementById('refundableHeading');
+    const classicPopupEl = document.getElementById('classicPopup');
+    const closeClassicPopup = document.getElementById('closeClassicPopup');
+    const gotoFormBtn = document.getElementById('gotoFormFromClassic');
 
-    popupTrigger.addEventListener('click', () => {
-        popupOverlayEl.classList.add('active');
+    const successEl = document.getElementById('successPopup');
+    const closeSuccess = document.getElementById('closeSuccess');
+
+    // --- Refundable heading click → open 5-line popup (without closing main popup) ---
+    refundableHeading.addEventListener('click', (e) => {
+        e.stopPropagation(); // Prevent any event bubbling
+        classicPopupEl.classList.add('active');
     });
 
-    closePopup.addEventListener('click', () => {
-        popupOverlayEl.classList.remove('active');
+    // Close classic popup (X)
+    closeClassicPopup.addEventListener('click', () => {
+        classicPopupEl.classList.remove('active');
     });
 
-    popupOverlayEl.addEventListener('click', (e) => {
-        if (e.target === popupOverlayEl) {
-            popupOverlayEl.classList.remove('active');
+    // Close classic popup on outside click
+    classicPopupEl.addEventListener('click', (e) => {
+        if (e.target === classicPopupEl) {
+            classicPopupEl.classList.remove('active');
         }
     });
 
-    // Form submission with Razorpay and Google Sheets
-    const userForm = document.getElementById('userForm');
-    userForm.addEventListener('submit', async (e) => {
+    // "Continue to Form" button inside classic popup → closes classic popup only
+    // (main form already open, so just close the 5-line popup)
+    gotoFormBtn.addEventListener('click', () => {
+        classicPopupEl.classList.remove('active');
+        // Main form popup remains open, timer continues
+    });
+
+    // Open main form popup from pen icon
+    popupTrigger.addEventListener('click', () => {
+        popup.classList.add('active');
+        startTimer();
+    });
+
+    // Close main popup
+    closePopup.addEventListener('click', () => {
+        popup.classList.remove('active');
+        clearInterval(timerInterval);
+    });
+
+    // Close on outside click (main popup)
+    popup.addEventListener('click', (e) => {
+        if (e.target === popup) {
+            popup.classList.remove('active');
+            clearInterval(timerInterval);
+        }
+    });
+
+    // Close success
+    closeSuccess.addEventListener('click', () => {
+        successEl.style.display = 'none';
+    });
+
+    // ==================== TIMER ====================
+    function startTimer() {
+        clearInterval(timerInterval);
+        timeLeft = 300;
+        updateTimer();
+        
+        timerInterval = setInterval(() => {
+            timeLeft--;
+            updateTimer();
+            
+            if (timeLeft <= 0) {
+                clearInterval(timerInterval);
+                document.getElementById('paymentTimer').innerHTML = '⏱️ Time expired! Please try again.';
+                setTimeout(() => popup.classList.remove('active'), 2000);
+            }
+        }, 1000);
+    }
+
+    function updateTimer() {
+        const m = Math.floor(timeLeft / 60);
+        const s = timeLeft % 60;
+        document.getElementById('paymentTimer').innerHTML = `⏱️ Complete within ${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+    }
+
+    // ==================== FORM SUBMIT ====================
+    document.getElementById('paymentForm').addEventListener('submit', async (e) => {
         e.preventDefault();
         
+        // Check if Razorpay is loaded
+        if (!window.Razorpay) {
+            alert('Loading payment gateway... Please try again.');
+            try {
+                await loadRazorpayScript();
+            } catch(err) {
+                alert('Failed to load payment gateway. Check your internet connection.');
+                return;
+            }
+        }
+        
         const formType = document.getElementById('formType').value;
-        const name = document.getElementById('name').value.trim();
-        const phone = document.getElementById('phone').value.trim();
-        const email = document.getElementById('email').value.trim();
+        const name = document.getElementById('fullName').value.trim();
+        const phone = document.getElementById('phoneNumber').value.trim();
+        const email = document.getElementById('emailAddress').value.trim();
 
-        if (!formType || !name || !phone || !email) {
-            alert('Please fill all fields');
-            return;
+        if (!formType) { 
+            alert('Please select which form you need help with'); 
+            return; 
+        }
+        if (!name) { 
+            alert('Please enter your full name'); 
+            return; 
+        }
+        if (!phone) { 
+            alert('Please enter your phone number'); 
+            return; 
+        }
+        if (!email) { 
+            alert('Please enter your email address'); 
+            return; 
         }
 
-        // Show confirmation message
-        alert(`Thank you! Your request for ${formType} has been received. Our team will contact you soon.`);
-        
-        // Send data to Google Sheets (without payment)
-        sendToGoogleSheets(formType, name, phone, email);
-        
-        // Close popup and reset form
-        popupOverlayEl.classList.remove('active');
-        userForm.reset();
+        initRazorpay(formType, name, phone, email);
     });
 
-    // Google Sheets integration (replace URL)
-    async function sendToGoogleSheets(formType, name, phone, email) {
-        // 🔁 Replace with your Google Apps Script URL
-        const googleScriptURL = 'YOUR_GOOGLE_APPS_SCRIPT_URL'; 
+    // ==================== GENERATE 13-DIGIT REGISTRATION ID ====================
+    function generateRegistrationId(name, phone, email, formType) {
+        // Get first 2 letters of name (uppercase)
+        const namePart = name.replace(/[^a-zA-Z]/g, '').substring(0, 2).toUpperCase().padEnd(2, 'X');
         
-        const data = {
-            formType: formType,
-            name: name,
-            phone: phone,
-            email: email,
-            timestamp: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),
-            status: 'pending'
+        // Get last 4 digits of phone
+        const phonePart = phone.replace(/[^0-9]/g, '').slice(-4);
+        
+        // Get first 2 letters of email (before @)
+        const emailLocal = email.split('@')[0].replace(/[^a-zA-Z]/g, '').substring(0, 2).toUpperCase().padEnd(2, 'Y');
+        
+        // Get first letter of form type and last letter
+        const formWords = formType.split(' ');
+        const formPart = (formWords[0].charAt(0) + (formWords[1]?.charAt(0) || 'X')).toUpperCase();
+        
+        // Get current timestamp (last 4 digits of milliseconds)
+        const timePart = Date.now().toString().slice(-4);
+        
+        // Calculate checksum (sum of all numbers mod 9)
+        const numbers = (phonePart + timePart).split('').reduce((sum, digit) => sum + parseInt(digit), 0);
+        const checksum = numbers % 9;
+        
+        // Combine all parts: STI-XX-YYYY-ZZ-W
+        // Format: STI-AB-1234-CD-5 (13 digits total excluding hyphens)
+        // STI + 2 letters + 4 digits + 2 letters + 1 digit = 13 chars
+        const regId = `STI-${namePart}${formPart}-${phonePart}${timePart.slice(0,2)}-${emailPart}${timePart.slice(-2)}-${checksum}`;
+        
+        return regId;
+    }
+
+    // ==================== RAZORPAY ====================
+    function initRazorpay(formType, name, phone, email) {
+        const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+        
+        const options = {
+            key: "rzp_live_SLy447saTnXqbZ",
+            amount: 151 * 100,
+            currency: "INR",
+            name: "StiWorldOfficial",
+            description: `Form Filling - ${formType}`,
+            image: "https://stiworldofficial.com/logo.png",
+            
+            handler: function(response) {
+                clearInterval(timerInterval);
+                popup.classList.remove('active');
+                
+                // Generate 13-digit registration ID
+                const registrationId = generateRegistrationId(name, phone, email, formType);
+                
+                // Send data to Google Sheets with registration ID
+                sendToSheet({
+                    formType, 
+                    name, 
+                    phone, 
+                    email,
+                    amount: '151',
+                    plan_name: `Form Filling Service - ${formType}`,
+                    txn: response.razorpay_payment_id,
+                    time: new Date().toISOString(),
+                    registrationId: registrationId
+                });
+                
+                // Update success popup with customer details and registration ID
+                document.getElementById('successCustomerName').textContent = name.split(' ')[0]; // First name only
+                document.getElementById('successEmail').textContent = email;
+                document.getElementById('successPhone').textContent = phone;
+                document.getElementById('successFormType').textContent = formType;
+                document.getElementById('successRegistrationId').textContent = registrationId;
+                document.getElementById('successTxnId').textContent = response.razorpay_payment_id;
+                
+                // Show success popup
+                successEl.style.display = 'flex';
+                
+                // Reset form
+                document.getElementById('paymentForm').reset();
+            },
+            
+            prefill: { 
+                name: name, 
+                email: email, 
+                contact: phone 
+            },
+            
+            notes: { 
+                form_type: formType,
+                app_package: APP_PACKAGE_NAME
+            },
+            
+            theme: { color: "#F4C430" },
+            
+            modal: { 
+                confirm_close: true,
+                confirm_close_title: "Cancel Payment?",
+                confirm_close_description: "Are you sure you want to close the payment window?"
+            },
+            
+            retry: { enabled: true }
         };
 
         try {
-            // Using no-cors for simplicity — in production, handle with CORS properly
-            await fetch(googleScriptURL, {
-                method: 'POST',
-                mode: 'no-cors',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(data)
-            });
+            const rzp = new Razorpay(options);
+            rzp.open();
             
-            console.log('Form submission saved to Google Sheets');
-        } catch (error) {
-            console.error('STI World Log: Sheets error', error);
+            rzp.on('payment.failed', function(response) {
+                alert('Payment failed: ' + (response.error.description || 'Please try again'));
+                console.error('Payment failed:', response.error);
+            });
+        } catch(err) {
+            alert('Error initializing payment. Please try again.');
+            console.error('Razorpay init error:', err);
         }
     }
+
+    // ==================== GOOGLE SHEETS ====================
+    async function sendToSheet(data) {
+        const url = 'https://script.google.com/macros/s/AKfycbxOET0tOiJTHgYVDlBWyz6-rAHMQqd32_ezqmQa13HSQv-DVo3ZvQtNppPZgHcISApXhw/exec';
+        
+        const fd = new FormData();
+        fd.append('formType', data.formType);
+        fd.append('name', data.name);
+        fd.append('number', data.phone);
+        fd.append('email', data.email);
+        fd.append('amount', data.amount);
+        fd.append('plan_name', data.plan_name);
+        fd.append('transaction_id', data.txn);
+        fd.append('registration_id', data.registrationId); // NEW: Registration ID
+        fd.append('timestamp', data.time);
+        fd.append('app_package', APP_PACKAGE_NAME);
+        
+        try {
+            await fetch(url, { 
+                method: 'POST', 
+                body: fd, 
+                mode: 'no-cors' 
+            });
+            
+            // Save to localStorage
+            localStorage.setItem('hasPaid', 'true');
+            localStorage.setItem('userName', data.name);
+            localStorage.setItem('userEmail', data.email);
+            localStorage.setItem('userMobile', data.phone);
+            localStorage.setItem('userTxn', data.txn);
+            localStorage.setItem('userRegistrationId', data.registrationId); // NEW
+            localStorage.setItem('userPlanName', data.plan_name);
+            localStorage.setItem('userPlanAmount', data.amount);
+            localStorage.setItem('selectedFormType', data.formType);
+            localStorage.setItem('purchaseTime', data.time);
+            
+        } catch(e) { 
+            console.log('Sheet error:', e); 
+        }
+    }
+
+    // Body padding
+    function adjustPadding() {
+        document.body.style.paddingLeft = window.innerWidth <= 1500 ? '18px' : '42px';
+    }
+    adjustPadding();
+    window.addEventListener('resize', adjustPadding);
 })();
