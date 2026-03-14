@@ -2518,22 +2518,37 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
             }
         }
     </script>
-    <style>
+   <style>
 /* Buttons  ---------- container */
-.floating-nav{position:fixed;right:0;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;z-index:9999;}
-/* button style */
-.float-btn{writing-mode:vertical-rl;transform:rotate(180deg);text-decoration:none;padding:7px 7px;font-weight:600;letter-spacing:1px;color:white;margin:4px 0;font-size:14px;
-/* curved side outside */
-border-radius:0 15px 15px 0;background:linear-gradient(135deg,#ff7a00,#ff3c00);box-shadow:0 8px 20px rgba(0,0,0,0.25);transition:all .35s ease;}
-/* hover animation */
-.float-btn:hover{padding-right:2px;box-shadow:0 12px 30px rgba(0,0,0,0.35);}
-/* back button color */
-.back{background:linear-gradient(135deg,#007bff,#003cff);}
-/* responsive */
-@media(max-width:768px){.float-btn{font-size:12px;padding:14px 10px;}
-}
-</style>
+.floating-nav { position: fixed;right: 0;top: 50%;transform: translateY(-50%);display: flex;flex-direction: column; z-index: 9999;}
 
+/* button style - default (badi screen ke liye) */
+.float-btn {writing-mode: vertical-rl;transform: rotate(180deg);text-decoration: none;padding: 7px 7px;font-weight: 600;letter-spacing: 1px;color: white;margin: 4px 0;font-size: 14px;
+/* curved side outside */border-radius: 0 15px 15px 0;background: linear-gradient(135deg, #ff7a00, #ff3c00);box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);transition: all .35s ease;}
+/* hover animation */
+.float-btn:hover {padding-right: 2px;box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);}
+/* back button color */
+.back {background: linear-gradient(135deg, #007bff, #003cff);}
+/* ===== 1500px se chhoti screen ke liye - 12x12 icons ===== */
+@media (max-width: 1500px) {.floating-nav {right: 0;gap: 3px;}
+    .float-btn {writing-mode: horizontal-tb !important;  /* horizontal kar diya */transform: rotate(0deg) !important;      /* rotation hata di */width: 17px !important;height: 30px !important;min-width: 17px;min-height: 30px;padding: 0 !important;margin: 2px 0 !important;
+    font-size: 5px !important;line-height: 12px !important;text-align: center !important;border-radius: 6px 0 0 6px !important;   /* right side curved */display: flex;align-items: center;justify-content: center;background: linear-gradient(135deg, #ff7a00, #ff3c00);box-shadow:   2px 5px rgba(0, 0, 0, 0.2);
+        /* text ko hide kar diya - sirf icon dikhega */
+        color: transparent !important; position: relative;}
+    /* Home button - house icon */
+    .float-btn:first-child::before { content: "🏠";font-size: 6px;color: white;position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);}
+    /* Back button - back arrow icon */
+    .float-btn.back::before {content: "🔙";font-size: 6px;color: white;position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);}
+    /* Hover effect for tiny buttons */
+    .float-btn:hover {transform: scale(1.1);box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);padding: 0 !important;}
+    /* Back button color in tiny mode */
+    .float-btn.back {background: linear-gradient(135deg, #007bff, #003cff);}}
+
+/* responsive for very small screens - extra adjustments */
+@media (max-width: 480px) {.floating-nav {right: 2px;}.float-btn {width: 17px !important;height: 17px !important; min-width: 17px;min-height: 17px;font-size: 4px !important;}.float-btn::before { font-size: 5px !important;}}
+/* original responsive - pehle jaisa hi */
+@media (min-width: 1501px) and (max-width: 768px) {.float-btn { font-size: 12px;padding: 14px 10px;}}
+</style>
 <div class="floating-nav"><a href="main.html" class="float-btn">Home</a></div>
     <script src="social-bar.js"></script>
 </body>
