@@ -2,18 +2,21 @@
 {
   "name": "Stiskilli",
   "short_name": "Stiskilli",
-  "id": "/govet-pc/",
+
+  "id": "/",
   "start_url": "/govet-pc/index.html",
   "scope": "/govet-pc/",
 
   "display": "standalone",
-  "display_override": ["window-controls-overlay","standalone"],
+  "display_override": ["window-controls-overlay", "standalone"],
 
   "background_color": "#FFFFFF",
   "theme_color": "#0D6EFD",
+
   "orientation": "any",
   "lang": "en-IN",
   "dir": "ltr",
+
   "description": "Stiskilli is an educational platform for government exam preparation.",
 
   "icons": [
@@ -44,6 +47,9 @@
       "type": "image/png",
       "form_factor": "wide"
     }
-  ]
+  ],
+
+  "categories": ["education", "productivity"],
+  "prefer_related_applications": false
 }
 
