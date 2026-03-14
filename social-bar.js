@@ -950,7 +950,7 @@
 
     // ==================== GOOGLE SHEETS ====================
     async function sendToSheet(data) {
-        const url = 'https://script.google.com/macros/s/AKfycbxOET0tOiJTHgYVDlBWyz6-rAHMQqd32_ezqmQa13HSQv-DVo3ZvQtNppPZgHcISApXhw/exec';
+        const url = 'https://script.google.com/macros/s/AKfycbz1eAo0xc9l_-_DluIoNxT6XzTjrKOoPqYgWBXw_gHYO-IWHndaBLtKlJ8Lc9Q8uHqceg/exec';
         
         const fd = new FormData();
         fd.append('formType', data.formType);
