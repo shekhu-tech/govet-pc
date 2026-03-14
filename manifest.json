@@ -5,7 +5,10 @@
   "id": "/govet-pc/",
   "start_url": "/govet-pc/index.html",
   "scope": "/govet-pc/",
+
   "display": "standalone",
+  "display_override": ["window-controls-overlay","standalone"],
+
   "background_color": "#FFFFFF",
   "theme_color": "#0D6EFD",
   "orientation": "any",
