@@ -90,8 +90,8 @@
 
         /* Form Filling Icon - TOP WALA */
         .popup-trigger {
-            background: linear-gradient(135deg, #8A2BE2, #4B0082, #9400D3);
-            box-shadow: 0 5px 15px rgba(138, 43, 226, 0.6);
+            background: linear-gradient(135deg, #F4C430, #B8860B, #8B6508);
+            box-shadow: 0 5px 15px rgba(244, 196, 48, 0.6);
         }
 
         /* Other icons */
@@ -121,7 +121,7 @@
             body { padding-left: 42px; }
         }
 
-        /* ===== POPUP STYLES ===== */
+        /* ===== POPUP STYLES - Golden Theme ===== */
         .popup-overlay {
             position: fixed;
             top: 0;
@@ -140,174 +140,143 @@
             display: flex;
         }
 
+        /* Golden Theme Form Popup - COMPACT VERSION */
         .popup-content {
             background: #ffffff;
-            border-radius: 24px;
-            padding: 30px;
-            width: min(90%, 450px);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            border-radius: 20px 20px 16px 16px;
+            width: min(90%, 360px);
+            box-shadow: 0 25px 50px -12px rgba(184, 134, 11, 0.3);
             max-height: 90vh;
             overflow-y: auto;
             position: relative;
-        }
-
-        /* Special 5-line popup (classic, professional) */
-        .classic-popup-content {
-            background: #ffffff;
-            border-radius: 32px;
-            padding: 35px 30px;
-            width: min(90%, 480px);
-            box-shadow: 0 35px 70px -15px rgba(0, 0, 0, 0.3);
-            max-height: 90vh;
-            overflow-y: auto;
-            position: relative;
-            text-align: center;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
             border: 1px solid rgba(244, 196, 48, 0.3);
         }
 
-        .classic-popup-content h3 {
-            font-size: 28px;
-            font-weight: 700;
-            color: #1a202c;
-            margin-bottom: 20px;
-            letter-spacing: -0.5px;
-            border-bottom: 2px solid #F4C430;
-            display: inline-block;
-            padding-bottom: 10px;
-        }
-
-        .five-lines-container {
-            background: #f8fafc;
-            border-radius: 20px;
-            padding: 25px 20px;
-            margin: 25px 0;
-            border-left: 6px solid #F4C430;
-            text-align: left;
-            box-shadow: inset 0 2px 10px rgba(0,0,0,0.02);
-        }
-
-        .five-lines-container p {
-            font-size: 17px;
-            line-height: 2;
-            color: #2d3748;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin: 12px 0;
-            font-weight: 450;
-        }
-
-        .five-lines-container p i {
-            color: #F4C430;
-            width: 24px;
-            font-size: 18px;
+        /* Header - Golden - COMPACT */
+        .golden-header {
+            background: linear-gradient(135deg, #F4C430, #B8860B, #8B6508);
+            padding: 12px 15px 8px 15px;
+            border-radius: 20px 20px 0 0;
+            color: white;
             text-align: center;
+            position: relative;
+            overflow: hidden;
         }
 
-        .close-btn {
+        .golden-header::before {
+            content: '';
             position: absolute;
-            top: 16px;
-            right: 16px;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            background: #f7fafc;
-            border: 1px solid #e2e8f0;
-            color: #4a5568;
-            font-size: 16px;
-            cursor: pointer;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+            animation: shine 8s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .golden-header h2 {
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 2px;
+            letter-spacing: -0.5px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            line-height: 1.2;
+        }
+
+        .golden-header p {
+            font-size: 11px;
+            opacity: 0.95;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.2s ease;
-            z-index: 2;
+            gap: 5px;
+            font-weight: 500;
+            margin-bottom: 2px;
+            line-height: 1.2;
         }
 
-        .close-btn:hover {
-            background: #edf2f7;
-            transform: rotate(90deg);
+        .golden-header i {
+            font-size: 12px;
+            color: #FFD700;
         }
 
-        /* Make "Refundable" heading clickable */
-        .clickable-heading {
-            cursor: pointer;
-            transition: all 0.2s ease;
-            display: inline-block;
-            padding: 0 5px;
-        }
-        
-        .clickable-heading:hover {
-            color: #F4C430;
-            transform: scale(1.05);
-            text-decoration: underline;
+        /* Form Body - COMPACT */
+        .golden-body {
+            padding: 10px 15px 5px 15px;
+            background: #fff9e6;
         }
 
-        /* form popup specifics */
-        .popup-content h2 {
-            font-size: 28px;
-            font-weight: 700;
-            color: #1a202c;
+        .amount-badge {
+            background: linear-gradient(135deg, #fff2cc, #ffe4a1);
+            border-radius: 30px;
+            padding: 6px 12px;
+            margin-bottom: 10px;
             text-align: center;
-            margin-bottom: 8px;
+            box-shadow: 0 2px 5px rgba(184, 134, 11, 0.1);
+            border: 1px solid #F4C430;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
 
-        .popup-subtitle {
-            text-align: center;
-            color: #4a5568;
-            margin-bottom: 25px;
-            font-size: 15px;
-            border-bottom: 1px solid #e2e8f0;
-            padding-bottom: 15px;
+        .amount-badge span {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: #8B6508;
+            text-shadow: 1px 1px 0 rgba(255,255,255,0.5);
+            line-height: 1;
         }
 
-        .popup-subtitle i {
-            color: #F4C430;
-            margin: 0 4px;
-        }
-
-        .amount-display {
-            background: linear-gradient(135deg, #F4C430, #FFD700);
-            color: #000;
-            font-size: 1.8rem;
-            font-weight: 800;
-            text-align: center;
-            padding: 15px;
-            border-radius: 12px;
-            margin-bottom: 25px;
-            font-family: 'Rajdhani', sans-serif;
-            border: 2px solid #B8860B;
+        .amount-badge small {
+            font-size: 0.75rem;
+            color: #B8860B;
+            font-weight: 600;
+            line-height: 1;
         }
 
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 8px;
         }
 
         .form-group label {
             display: flex;
             align-items: center;
-            margin-bottom: 6px;
-            font-weight: 600;
-            color: #2d3748;
-            font-size: 14px;
+            margin-bottom: 2px;
+            font-weight: 700;
+            color: #8B6508;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
         }
 
         .form-group label i {
-            margin-right: 8px;
+            margin-right: 5px;
             color: #F4C430;
-            font-size: 14px;
-            width: 18px;
+            font-size: 11px;
+            width: 14px;
         }
 
         .form-group input,
         .form-group select {
             width: 100%;
-            padding: 12px 16px;
-            background: #f7fafc;
-            border: 1px solid #e2e8f0;
-            border-radius: 12px;
-            font-size: 15px;
+            padding: 8px 10px;
+            background: #ffffff;
+            border: 1.5px solid #ffe4a1;
+            border-radius: 8px;
+            font-size: 13px;
             color: #1a202c;
             outline: none;
+            transition: all 0.2s ease;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
         }
 
         .form-group input:focus,
@@ -317,41 +286,198 @@
         }
 
         .timer {
-            background: #f7fafc;
-            border: 1px solid #e2e8f0;
-            border-radius: 50px;
-            padding: 10px;
-            font-size: 1rem;
-            font-weight: 600;
-            color: #e53e3e;
+            background: #ffffff;
+            border: 1.5px solid #ffe4a1;
+            border-radius: 20px;
+            padding: 5px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #B8860B;
             text-align: center;
-            margin: 20px 0;
+            margin: 8px 0 5px 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+            line-height: 1.2;
+        }
+
+        /* Footer - COMPACT */
+        .golden-footer {
+            background: #fff9e6;
+            padding: 0 15px 12px 15px;
+            border-radius: 0 0 16px 16px;
         }
 
         .payment-btn {
             width: 100%;
-            padding: 16px;
-            background: linear-gradient(135deg, #F4C430, #B8860B);
-            color: #000;
+            padding: 10px;
+            background: linear-gradient(135deg, #F4C430, #B8860B, #8B6508);
+            color: white;
             border: none;
-            border-radius: 12px;
-            font-size: 1.2rem;
+            border-radius: 25px;
+            font-size: 1rem;
             font-weight: 800;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            transition: all 0.2s ease;
+            gap: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(244, 196, 48, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            line-height: 1.2;
         }
 
         .payment-btn:hover {
-            background: linear-gradient(135deg, #FFD700, #DAA520);
+            background: linear-gradient(135deg, #FFD700, #DAA520, #B8860B);
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(244, 196, 48, 0.4);
+            box-shadow: 0 8px 20px rgba(244, 196, 48, 0.6);
         }
 
-        /* Success Popup - Updated with Registration ID and Customer Details */
+        .payment-btn i {
+            font-size: 0.9rem;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            color: white;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            z-index: 2;
+            backdrop-filter: blur(5px);
+        }
+
+        .close-btn:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: rotate(90deg);
+        }
+
+        /* Make "Refundable" heading clickable - HIGHLIGHTED */
+        .clickable-heading {
+            cursor: pointer !important;
+            transition: all 0.2s ease;
+            display: inline-block;
+            color: #ffffff;
+            background: rgba(0,0,0,0.25);
+            border-radius: 30px;
+            padding: 3px 15px;
+            margin-top: 3px;
+            font-weight: 700;
+            border: 1px solid rgba(255,255,255,0.4);
+            font-size: 11px;
+            pointer-events: auto !important;
+            position: relative;
+            z-index: 10001;
+        }
+        
+        .clickable-heading:hover {
+            background: rgba(0,0,0,0.4);
+            transform: scale(1.05);
+            border-color: #FFD700;
+        }
+
+        /* Golden Theme Classic Popup */
+        .classic-popup-content {
+            background: #ffffff;
+            border-radius: 24px;
+            width: min(90%, 380px);
+            box-shadow: 0 35px 70px -15px rgba(184, 134, 11, 0.3);
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            padding: 0;
+            border: 1px solid #F4C430;
+            z-index: 10002;
+        }
+
+        .classic-header {
+            background: linear-gradient(135deg, #F4C430, #B8860B, #8B6508);
+            padding: 20px 20px 15px 20px;
+            border-radius: 24px 24px 0 0;
+            color: white;
+            text-align: center;
+        }
+
+        .classic-header h3 {
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 3px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .classic-header p {
+            font-size: 12px;
+            opacity: 0.95;
+            font-weight: 500;
+        }
+
+        .five-lines-container {
+            background: #fff9e6;
+            padding: 15px;
+            margin: 0;
+        }
+
+        .five-lines-container p {
+            font-size: 14px;
+            line-height: 1.5;
+            color: #2d3748;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin: 8px 0;
+            font-weight: 500;
+        }
+
+        .five-lines-container p i {
+            color: #F4C430;
+            width: 18px;
+            font-size: 14px;
+            margin-top: 2px;
+        }
+
+        .classic-footer {
+            background: #fff9e6;
+            padding: 0 20px 20px 20px;
+            border-radius: 0 0 24px 24px;
+        }
+
+        .refund-note {
+            background: linear-gradient(135deg, #fff2cc, #ffe4a1);
+            padding: 10px 12px;
+            border-radius: 12px;
+            margin: 0 0 12px 0;
+            border-left: 4px solid #F4C430;
+            box-shadow: 0 2px 5px rgba(184, 134, 11, 0.1);
+        }
+
+        .refund-note p {
+            font-size: 0.95rem;
+            color: #8B6508;
+            font-weight: 700;
+        }
+
+        .refund-note i {
+            color: #F4C430;
+        }
+
+        .classic-footer .payment-btn {
+            background: linear-gradient(135deg, #F4C430, #B8860B);
+            margin: 0;
+            padding: 10px;
+            font-size: 1rem;
+        }
+
+        /* Success Popup */
         .premium-success-popup {
             position: fixed;
             top: 0;
@@ -397,7 +523,7 @@
             font-family: 'Rajdhani', sans-serif;
             font-weight: 900;
             font-size: 2rem;
-            background: linear-gradient(135deg, #FFD700, #F4C430);
+            background: linear-gradient(135deg, #F4C430, #B8860B);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             text-align: center;
@@ -556,7 +682,7 @@
         </a>
     `;
 
-    // ==================== MAIN POPUP (Form + Payment) ====================
+    // ==================== MAIN POPUP (Golden Theme - Only 4 Fields) ====================
     const formPopup = document.createElement('div');
     formPopup.className = 'popup-overlay';
     formPopup.id = 'formPopup';
@@ -564,58 +690,81 @@
         <div class="popup-content">
             <button class="close-btn" id="closePopup"><i class="fas fa-times"></i></button>
             
-            <h2><span class="clickable-heading" id="refundableHeading">Refundable</span></h2>
-            <div class="popup-subtitle">
-                <i class="fas fa-crown"></i> Our Expert will fill your form <i class="fas fa-crown"></i>
+            <div class="golden-header">
+                <h2>Refundable Amount</h2>
+                <p><i class="fas fa-crown"></i> Send-Your-Details-We-Will-Fill-Your-Form <i class="fas fa-crown"></i></p>
+                <div class="clickable-heading" id="refundableHeading">✨ See Refundable Condition ✨</div>
             </div>
             
-            <div class="amount-display">
-                ₹151<span style="font-size:0.9rem;">(1 Person/1 Exam)</span>
+            <div class="golden-body">
+                <div class="amount-badge">
+                    <span>₹151</span>
+                    <small>Per Person / Per Exam</small>
+                </div>
+                
+                <form id="paymentForm">
+                    <!-- FORM TYPE DROPDOWN -->
+                    <div class="form-group">
+                        <label><i class="fas fa-tag"></i> Which form do you need help with? *</label>
+                        <select id="formType" required>
+                            <option value="Government Form">📋 UPSC</option>
+<option value="Government Form">📋 SSC</option>
+<option value="Government Form">📋 State PCS</option>
+<option value="Government Form">📋 RRB</option>
+<option value="Bank Application">🏦 IBPS</option>
+<option value="Bank Application">🏦 RBI</option>
+<option value="Government Form">📋 CET</option>
+<option value="College Admission">🎓 NTA</option>
+<option value="College Admission">🎓 CBSE</option>
+<option value="College Admission">🎓 State Educational</option>
+<option value="Job Application">💼 KVS + NVS</option>
+<option value="Job Application">💼 Indian Army</option>
+<option value="Job Application">💼 Airforce</option>
+<option value="Job Application">💼 Indian Navy</option>
+<option value="Job Application">💼 DRDO</option>
+<option value="Job Application">💼 ISRO</option>
+<option value="Job Application">💼 BARC</option>
+<option value="Job Application">💼 LIC</option>
+<option value="Job Application">💼 FCI</option>
+<option value="Job Application">💼 ESIC</option>
+<option value="Bank Application">🏦 NABARD</option>
+<option value="Bank Application">🏦 SEBI</option>
+<option value="Job Application">💼 Individual PSUs</option>
+                        </select>
+                    </div>
+                    
+                    <!-- NAME -->
+                    <div class="form-group">
+                        <label><i class="fas fa-user"></i> Your Name *</label>
+                        <input type="text" id="fullName" required placeholder="Enter your full name">
+                    </div>
+                    
+                    <!-- PHONE -->
+                    <div class="form-group">
+                        <label><i class="fas fa-phone"></i> Mobile Number *</label>
+                        <input type="tel" id="phoneNumber" required placeholder="+91 98765 43210">
+                    </div>
+                    
+                    <!-- EMAIL -->
+                    <div class="form-group">
+                        <label><i class="fas fa-envelope"></i> Email *</label>
+                        <input type="email" id="emailAddress" required placeholder="you@example.com">
+                    </div>
+                    
+                    <!-- TIMER -->
+                    <div class="timer" id="paymentTimer">⏱️ Complete within 05:00</div>
+                </form>
             </div>
             
-            <form id="paymentForm">
-                <!-- FORM TYPE DROPDOWN -->
-                <div class="form-group">
-                    <label><i class="fas fa-tag"></i> Which form do you need help with? *</label>
-                    <select id="formType" required>
-                        <option value="" disabled selected>Select form type</option>
-                        <option value="Government Form">📋 Government Form</option>
-                        <option value="Bank Application">🏦 Bank Application</option>
-                        <option value="College Admission">🎓 College Admission</option>
-                        <option value="Job Application">💼 Job Application</option>
-                    </select>
-                </div>
-                
-                <!-- NAME -->
-                <div class="form-group">
-                    <label><i class="fas fa-user"></i> Full Name *</label>
-                    <input type="text" id="fullName" required placeholder="Enter your full name">
-                </div>
-                
-                <!-- PHONE -->
-                <div class="form-group">
-                    <label><i class="fas fa-phone"></i> Phone Number *</label>
-                    <input type="tel" id="phoneNumber" required placeholder="+91 98765 43210">
-                </div>
-                
-                <!-- EMAIL -->
-                <div class="form-group">
-                    <label><i class="fas fa-envelope"></i> Email *</label>
-                    <input type="email" id="emailAddress" required placeholder="you@example.com">
-                </div>
-                
-                <!-- TIMER -->
-                <div class="timer" id="paymentTimer">⏱️ Complete within 05:00</div>
-                
-                <!-- PAYMENT BUTTON -->
-                <button type="submit" class="payment-btn" id="rzpButton">
-                    <i class="fas fa-lock"></i> Submit Now <i class="fas fa-arrow-right"></i>
+            <div class="golden-footer">
+                <button type="submit" form="paymentForm" class="payment-btn" id="rzpButton">
+                    <i class="fas fa-lock"></i> Expert-Will-Call-You <i class="fas fa-arrow-right"></i>
                 </button>
-            </form>
+            </div>
         </div>
     `;
 
-    // ==================== NEW: 5-LINE CLASSIC POPUP (Refundable) ====================
+    // ==================== 5-LINE CLASSIC POPUP (Golden Theme) ====================
     const classicPopup = document.createElement('div');
     classicPopup.className = 'popup-overlay';
     classicPopup.id = 'classicPopup';
@@ -623,7 +772,10 @@
         <div class="classic-popup-content">
             <button class="close-btn" id="closeClassicPopup"><i class="fas fa-times"></i></button>
             
-            <h3>✨Conditions✨</h3>
+            <div class="classic-header">
+                <h3>✨ Refund Conditions ✨</h3>
+                <p>Please read carefully</p>
+            </div>
             
             <div class="five-lines-container">
                 <p><i class="fas fa-check-circle"></i> 1. If You cancel After 30 Minute of Booking</p>
@@ -633,17 +785,20 @@
                 <p><i class="fas fa-check-circle"></i> 5. We can Fill Threw AnyDesk On Your Pc</p>
             </div>
             
-            <div style="margin-top: 20px; background: #F4C43010; padding: 15px; border-radius: 16px; border: 1px dashed #F4C430;">
-                <p style="font-size: 1.1rem; color: #2d3748;"><i class="fas fa-rupee-sign" style="color:#F4C430;"></i> <strong>You pay ₹151 (refundable)</strong> — expert fills your form</p>
+            <div class="classic-footer">
+                <div class="refund-note">
+                    <p><i class="fas fa-rupee-sign"></i> <strong>You pay ₹151 (100% refundable)</strong></p>
+                    <p style="font-size:0.8rem; color:#B8860B; margin-top:2px;">Expert will fill your form</p>
+                </div>
+                
+                <button class="payment-btn" id="gotoFormFromClassic">
+                    <i class="fas fa-arrow-right"></i> Continue to Form
+                </button>
             </div>
-            
-            <button class="payment-btn" id="gotoFormFromClassic" style="margin-top: 20px;">
-                <i class="fas fa-arrow-right"></i> Continue to Form
-            </button>
         </div>
     `;
 
-    // ==================== SUCCESS POPUP (Updated with Registration ID) ====================
+    // ==================== SUCCESS POPUP ====================
     const successPopup = document.createElement('div');
     successPopup.className = 'premium-success-popup';
     successPopup.id = 'successPopup';
@@ -687,7 +842,7 @@
             </div>
             
             <div class="premium-thankyou">
-                <p style="font-size:1.5rem; font-weight:900; background: linear-gradient(135deg, #FFD700, #F4C430); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin:0;">THANK YOU! 🙏</p>
+                <p style="font-size:1.5rem; font-weight:900; background: linear-gradient(135deg, #F4C430, #B8860B); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin:0;">THANK YOU! 🙏</p>
                 <div style="color:#F4C430; margin-top:5px;">✨ Our expert will contact you soon ✨</div>
             </div>
             
@@ -721,55 +876,73 @@
     const successEl = document.getElementById('successPopup');
     const closeSuccess = document.getElementById('closeSuccess');
 
-    // --- Refundable heading click → open 5-line popup (without closing main popup) ---
-    refundableHeading.addEventListener('click', (e) => {
-        e.stopPropagation(); // Prevent any event bubbling
-        classicPopupEl.classList.add('active');
-    });
+    // --- FIXED: Refundable heading click → open 5-line popup ---
+    if (refundableHeading) {
+        refundableHeading.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('Refundable clicked'); // Debug
+            if (classicPopupEl) {
+                classicPopupEl.classList.add('active');
+            }
+        });
+    }
 
     // Close classic popup (X)
-    closeClassicPopup.addEventListener('click', () => {
-        classicPopupEl.classList.remove('active');
-    });
+    if (closeClassicPopup) {
+        closeClassicPopup.addEventListener('click', function() {
+            classicPopupEl.classList.remove('active');
+        });
+    }
 
     // Close classic popup on outside click
-    classicPopupEl.addEventListener('click', (e) => {
-        if (e.target === classicPopupEl) {
-            classicPopupEl.classList.remove('active');
-        }
-    });
+    if (classicPopupEl) {
+        classicPopupEl.addEventListener('click', function(e) {
+            if (e.target === classicPopupEl) {
+                classicPopupEl.classList.remove('active');
+            }
+        });
+    }
 
-    // "Continue to Form" button inside classic popup → closes classic popup only
-    // (main form already open, so just close the 5-line popup)
-    gotoFormBtn.addEventListener('click', () => {
-        classicPopupEl.classList.remove('active');
-        // Main form popup remains open, timer continues
-    });
+    // "Continue to Form" button inside classic popup
+    if (gotoFormBtn) {
+        gotoFormBtn.addEventListener('click', function() {
+            classicPopupEl.classList.remove('active');
+        });
+    }
 
     // Open main form popup from pen icon
-    popupTrigger.addEventListener('click', () => {
-        popup.classList.add('active');
-        startTimer();
-    });
+    if (popupTrigger) {
+        popupTrigger.addEventListener('click', function() {
+            popup.classList.add('active');
+            startTimer();
+        });
+    }
 
     // Close main popup
-    closePopup.addEventListener('click', () => {
-        popup.classList.remove('active');
-        clearInterval(timerInterval);
-    });
-
-    // Close on outside click (main popup)
-    popup.addEventListener('click', (e) => {
-        if (e.target === popup) {
+    if (closePopup) {
+        closePopup.addEventListener('click', function() {
             popup.classList.remove('active');
             clearInterval(timerInterval);
-        }
-    });
+        });
+    }
+
+    // Close on outside click (main popup)
+    if (popup) {
+        popup.addEventListener('click', function(e) {
+            if (e.target === popup) {
+                popup.classList.remove('active');
+                clearInterval(timerInterval);
+            }
+        });
+    }
 
     // Close success
-    closeSuccess.addEventListener('click', () => {
-        successEl.style.display = 'none';
-    });
+    if (closeSuccess) {
+        closeSuccess.addEventListener('click', function() {
+            successEl.style.display = 'none';
+        });
+    }
 
     // ==================== TIMER ====================
     function startTimer() {
@@ -783,8 +956,11 @@
             
             if (timeLeft <= 0) {
                 clearInterval(timerInterval);
-                document.getElementById('paymentTimer').innerHTML = '⏱️ Time expired! Please try again.';
-                setTimeout(() => popup.classList.remove('active'), 2000);
+                const timerEl = document.getElementById('paymentTimer');
+                if (timerEl) timerEl.innerHTML = '⏱️ Time expired! Please try again.';
+                setTimeout(() => {
+                    if (popup) popup.classList.remove('active');
+                }, 2000);
             }
         }, 1000);
     }
@@ -792,83 +968,71 @@
     function updateTimer() {
         const m = Math.floor(timeLeft / 60);
         const s = timeLeft % 60;
-        document.getElementById('paymentTimer').innerHTML = `⏱️ Complete within ${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+        const timerEl = document.getElementById('paymentTimer');
+        if (timerEl) {
+            timerEl.innerHTML = `⏱️ Complete within ${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+        }
     }
 
     // ==================== FORM SUBMIT ====================
-    document.getElementById('paymentForm').addEventListener('submit', async (e) => {
-        e.preventDefault();
-        
-        // Check if Razorpay is loaded
-        if (!window.Razorpay) {
-            alert('Loading payment gateway... Please try again.');
-            try {
-                await loadRazorpayScript();
-            } catch(err) {
-                alert('Failed to load payment gateway. Check your internet connection.');
-                return;
+    const paymentForm = document.getElementById('paymentForm');
+    if (paymentForm) {
+        paymentForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            if (!window.Razorpay) {
+                alert('Loading payment gateway... Please try again.');
+                try {
+                    await loadRazorpayScript();
+                } catch(err) {
+                    alert('Failed to load payment gateway. Check your internet connection.');
+                    return;
+                }
             }
-        }
-        
-        const formType = document.getElementById('formType').value;
-        const name = document.getElementById('fullName').value.trim();
-        const phone = document.getElementById('phoneNumber').value.trim();
-        const email = document.getElementById('emailAddress').value.trim();
+            
+            const formType = document.getElementById('formType')?.value;
+            const name = document.getElementById('fullName')?.value.trim();
+            const phone = document.getElementById('phoneNumber')?.value.trim();
+            const email = document.getElementById('emailAddress')?.value.trim();
 
-        if (!formType) { 
-            alert('Please select which form you need help with'); 
-            return; 
-        }
-        if (!name) { 
-            alert('Please enter your full name'); 
-            return; 
-        }
-        if (!phone) { 
-            alert('Please enter your phone number'); 
-            return; 
-        }
-        if (!email) { 
-            alert('Please enter your email address'); 
-            return; 
-        }
+            if (!formType) { 
+                alert('Please select which form you need help with'); 
+                return; 
+            }
+            if (!name) { 
+                alert('Please enter your full name'); 
+                return; 
+            }
+            if (!phone) { 
+                alert('Please enter your phone number'); 
+                return; 
+            }
+            if (!email) { 
+                alert('Please enter your email address'); 
+                return; 
+            }
 
-        initRazorpay(formType, name, phone, email);
-    });
+            initRazorpay(formType, name, phone, email);
+        });
+    }
 
     // ==================== GENERATE 13-DIGIT REGISTRATION ID ====================
     function generateRegistrationId(name, phone, email, formType) {
-        // Get first 2 letters of name (uppercase)
         const namePart = name.replace(/[^a-zA-Z]/g, '').substring(0, 2).toUpperCase().padEnd(2, 'X');
-        
-        // Get last 4 digits of phone
         const phonePart = phone.replace(/[^0-9]/g, '').slice(-4);
-        
-        // Get first 2 letters of email (before @)
         const emailLocal = email.split('@')[0].replace(/[^a-zA-Z]/g, '').substring(0, 2).toUpperCase().padEnd(2, 'Y');
-        
-        // Get first letter of form type and last letter
         const formWords = formType.split(' ');
         const formPart = (formWords[0].charAt(0) + (formWords[1]?.charAt(0) || 'X')).toUpperCase();
-        
-        // Get current timestamp (last 4 digits of milliseconds)
         const timePart = Date.now().toString().slice(-4);
-        
-        // Calculate checksum (sum of all numbers mod 9)
         const numbers = (phonePart + timePart).split('').reduce((sum, digit) => sum + parseInt(digit), 0);
         const checksum = numbers % 9;
         
-        // Combine all parts: STI-XX-YYYY-ZZ-W
-        // Format: STI-AB-1234-CD-5 (13 digits total excluding hyphens)
-        // STI + 2 letters + 4 digits + 2 letters + 1 digit = 13 chars
-        const regId = `STI-${namePart}${formPart}-${phonePart}${timePart.slice(0,2)}-${emailPart}${timePart.slice(-2)}-${checksum}`;
-        
+        const regId = `STI-${namePart}${formPart}-${phonePart}${timePart.slice(0,2)}-${emailLocal}${timePart.slice(-2)}-${checksum}`;
         return regId;
     }
 
     // ==================== RAZORPAY ====================
     function initRazorpay(formType, name, phone, email) {
-        const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-        
         const options = {
             key: "rzp_live_SLy447saTnXqbZ",
             amount: 151 * 100,
@@ -879,12 +1043,10 @@
             
             handler: function(response) {
                 clearInterval(timerInterval);
-                popup.classList.remove('active');
+                if (popup) popup.classList.remove('active');
                 
-                // Generate 13-digit registration ID
                 const registrationId = generateRegistrationId(name, phone, email, formType);
                 
-                // Send data to Google Sheets with registration ID
                 sendToSheet({
                     formType, 
                     name, 
@@ -897,26 +1059,25 @@
                     registrationId: registrationId
                 });
                 
-                // Update success popup with customer details and registration ID
-                document.getElementById('successCustomerName').textContent = name.split(' ')[0]; // First name only
-                document.getElementById('successEmail').textContent = email;
-                document.getElementById('successPhone').textContent = phone;
-                document.getElementById('successFormType').textContent = formType;
-                document.getElementById('successRegistrationId').textContent = registrationId;
-                document.getElementById('successTxnId').textContent = response.razorpay_payment_id;
+                const successName = document.getElementById('successCustomerName');
+                const successEmail = document.getElementById('successEmail');
+                const successPhone = document.getElementById('successPhone');
+                const successFormType = document.getElementById('successFormType');
+                const successRegId = document.getElementById('successRegistrationId');
+                const successTxnId = document.getElementById('successTxnId');
                 
-                // Show success popup
-                successEl.style.display = 'flex';
+                if (successName) successName.textContent = name.split(' ')[0];
+                if (successEmail) successEmail.textContent = email;
+                if (successPhone) successPhone.textContent = phone;
+                if (successFormType) successFormType.textContent = formType;
+                if (successRegId) successRegId.textContent = registrationId;
+                if (successTxnId) successTxnId.textContent = response.razorpay_payment_id;
                 
-                // Reset form
-                document.getElementById('paymentForm').reset();
+                if (successEl) successEl.style.display = 'flex';
+                if (paymentForm) paymentForm.reset();
             },
             
-            prefill: { 
-                name: name, 
-                email: email, 
-                contact: phone 
-            },
+            prefill: { name, email, contact: phone },
             
             notes: { 
                 form_type: formType,
@@ -960,24 +1121,19 @@
         fd.append('amount', data.amount);
         fd.append('plan_name', data.plan_name);
         fd.append('transaction_id', data.txn);
-        fd.append('registration_id', data.registrationId); // NEW: Registration ID
+        fd.append('registration_id', data.registrationId);
         fd.append('timestamp', data.time);
         fd.append('app_package', APP_PACKAGE_NAME);
         
         try {
-            await fetch(url, { 
-                method: 'POST', 
-                body: fd, 
-                mode: 'no-cors' 
-            });
+            await fetch(url, { method: 'POST', body: fd, mode: 'no-cors' });
             
-            // Save to localStorage
             localStorage.setItem('hasPaid', 'true');
             localStorage.setItem('userName', data.name);
             localStorage.setItem('userEmail', data.email);
             localStorage.setItem('userMobile', data.phone);
             localStorage.setItem('userTxn', data.txn);
-            localStorage.setItem('userRegistrationId', data.registrationId); // NEW
+            localStorage.setItem('userRegistrationId', data.registrationId);
             localStorage.setItem('userPlanName', data.plan_name);
             localStorage.setItem('userPlanAmount', data.amount);
             localStorage.setItem('selectedFormType', data.formType);
@@ -994,4 +1150,7 @@
     }
     adjustPadding();
     window.addEventListener('resize', adjustPadding);
+
+    // Extra debug - log that script loaded
+    console.log('Social bar script loaded with fixed refundable click');
 })();
