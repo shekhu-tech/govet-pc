@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>STISkilli History PYQ – Ancient, Medieval, Modern, World & Art Previous Year Questions</title>
+   
+  <title>STISkilli History PYQ – Ancient, Medieval, Modern, World & Art Previous Year Questions</title>
 <script src="/app-redirect.js"></script>
 <meta name="description" content="Practice STISkilli History PYQ with Ancient, Medieval, Modern, World History & Art Previous Year Questions. Premium preparation for competitive exams, government jobs & GK in India.">
 <meta name="keywords" content="Polity PYQ, Ancient History PYQ, Medieval History PYQ, Modern History PYQ, World History PYQ, Art & Culture PYQ, Competitive Exam History, STISkilli">
@@ -73,6 +74,13 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Razorpay Checkout Script -->
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<link rel="me" href="https://www.facebook.com/stiworldofficial/">
+<link rel="me" href="https://www.instagram.com/stiworldofficial">
+<script src="redirect.js?v=99"></script>  <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+    
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     
     <style>
@@ -170,12 +178,14 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
         }
         .dock-item.active i { transform: scale(1.1); filter: drop-shadow(0 0 5px var(--primary)); }
         
-        /* LOCKED STATE FOR DOCK */
-        .dock-item.dock-locked { opacity: 0.5; filter: grayscale(100%); cursor: not-allowed; }
-        .dock-item.dock-locked i::after {
-            content: '\f023';
+        /* LOCKED STATE FOR DOCK - UPDATED AS PER IMAGE */
+        .dock-item.dock-locked { opacity: 0.6; cursor: not-allowed; color: #888; }
+        .dock-item.dock-locked::after {
+            content: '\f023'; /* FontAwesome Lock */
             font-family: "Font Awesome 6 Free"; font-weight: 900;
-            position: absolute; top: -5px; right: 10px; font-size: 0.8rem; color: #ff1744;
+            font-size: 0.7rem; 
+            color: #fff;
+            margin-left: 5px;
         }
 
         /* --- MAIN MODAL --- */
@@ -205,33 +215,87 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
         .modal-header { text-align: center; background: rgba(0,0,0,0.6); padding: 8px 25px; border-radius: 50px; backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.1); margin-bottom: 10px; width: fit-content; min-width: 180px; }
         .modal-header h2 { font-family: 'Rajdhani'; font-weight: 900; font-size: 1.5rem; color: #fff; text-shadow: 0 0 15px rgba(255, 215, 0, 0.8); margin: 0; letter-spacing: 1px; text-transform: uppercase; }
         
-        .sub-nav { background: rgba(0,0,0,0.7); border-radius: 20px; padding: 8px; display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; white-space: nowrap; width: 100%; }
-        .sub-item { padding: 8px 20px; border-radius: 12px; font-size: 0.8rem; font-family: 'Rajdhani'; font-weight: 700; color: #ccc; border: 1px solid transparent; transition: 0.3s; cursor: pointer; text-transform: uppercase; display: flex; align-items: center; gap: 5px; }
+        /* UPDATED: ENABLE HORIZONTAL SCROLLING FOR UNIT BAR */
+        .sub-nav { 
+            background: rgba(0,0,0,0.7); border-radius: 20px; padding: 8px; display: flex; gap: 8px; 
+            overflow-x: auto; -webkit-overflow-scrolling: touch; 
+            scrollbar-width: thin; scrollbar-color: var(--primary) rgba(0,0,0,0.3); 
+            white-space: nowrap; width: 100%; box-sizing: border-box; 
+        }
+        .sub-nav::-webkit-scrollbar { height: 6px; }
+        .sub-nav::-webkit-scrollbar-track { background: rgba(0,0,0,0.3); border-radius: 4px; }
+        .sub-nav::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 4px; }
+
+        .sub-item { 
+            padding: 8px 20px; border-radius: 12px; font-size: 0.8rem; font-family: 'Rajdhani'; 
+            font-weight: 700; color: #ccc; border: 1px solid transparent; transition: 0.3s; 
+            cursor: pointer; text-transform: uppercase; display: flex; align-items: center; gap: 5px; 
+            flex-shrink: 0; /* Prevents squishing */
+        }
         .sub-item.active { background: var(--primary); color: #000; border-color: var(--primary-glow); box-shadow: 0 0 20px rgba(244, 196, 48, 0.4); font-weight: 800; }
         .sub-item.locked { opacity: 0.5; cursor: not-allowed; background: #222; border: 1px solid #444; }
 
         /* --- QUIZ INTERFACE --- */
         #quiz-interface { flex-grow: 1; display: none; flex-direction: column; overflow-y: auto; padding-bottom: 20px; }
         
+        /* REQ 2: UPDATED STATS BAR (Not Transparent) */
         .quiz-stats-bar {
             display: flex; justify-content: space-between; align-items: center;
-            background: #0f0f0f;
+            background: #0f0f0f; /* SOLID BACKGROUND */
             border-radius: 12px;
             padding: 10px 15px; margin-bottom: 15px; 
-            border: 1px solid rgba(244, 196, 48, 0.4);
+            border: 1px solid rgba(244, 196, 48, 0.4); /* GOLD BORDER */
             box-shadow: 0 5px 15px rgba(0,0,0,0.8);
+            flex-shrink: 0;
         }
         .stat-item { font-family: 'Rajdhani'; font-weight: 700; font-size: 1.1rem; color: #ddd; letter-spacing: 1px; }
         .stat-val { color: var(--primary); font-size: 1.1rem; margin-left: 5px; }
+
+        /* --- RESPONSIVE PASSAGE BOX --- */
+        .passage-box {
+            background: rgba(25, 25, 30, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 12px 15px;
+            margin-bottom: 15px;
+            border-left: 4px solid #4da6ff;
+            font-size: 0.9rem;
+            color: #dcdcdc;
+            line-height: 1.5;
+            display: none; /* hidden by default */
+            max-height: 28vh; /* better scaling for mobile screens */
+            width: 100%;
+            box-sizing: border-box; /* strictly keep padding inside */
+            overflow-y: auto;
+            overflow-x: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            flex-shrink: 0; /* Prevents box from shrinking to 0 height in flex container */
+            -webkit-overflow-scrolling: touch; /* Smooth scroll on iOS */
+        }
+        .passage-box::-webkit-scrollbar { width: 5px; }
+        .passage-box::-webkit-scrollbar-track { background: rgba(0,0,0,0.2); border-radius: 4px; }
+        .passage-box::-webkit-scrollbar-thumb { background: #4da6ff; border-radius: 4px; }
+        .passage-title {
+            font-size: 0.8rem;
+            color: #4da6ff;
+            text-transform: uppercase;
+            font-weight: 800;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
 
         .question-box {
             background: rgba(0,0,0,0.6); backdrop-filter: blur(10px);
             border-radius: 16px; padding: 20px; margin-bottom: 15px;
             border-left: 3px solid var(--primary);
+            flex-shrink: 0;
         }
         .q-text { font-size: 1.1rem; line-height: 1.4; font-weight: 600; color: #fff; }
 
-        .options-list { display: flex; flex-direction: column; gap: 10px; }
+        .options-list { display: flex; flex-direction: column; gap: 10px; flex-shrink: 0; }
         .option-btn {
             background: rgba(30, 30, 30, 0.9); border: 1px solid #444;
             padding: 14px 18px; border-radius: 12px; color: #eee;
@@ -270,14 +334,16 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
         .expl-icon { font-size: 3rem; margin-bottom: 10px; }
         .expl-title { font-family: 'Rajdhani'; font-weight: 900; font-size: 1.8rem; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
         
+        /* REQ 1: SCROLLABLE EXPLANATION */
         .expl-text { 
             color: #ccc; font-size: 1rem; line-height: 1.6; margin-bottom: 25px; 
             font-family: 'Plus Jakarta Sans'; background: rgba(255,255,255,0.05); 
             padding: 15px; border-radius: 12px; width: 100%; border: 1px solid rgba(255,255,255,0.1);
-            max-height: 300px;
-            overflow-y: auto;
+            max-height: 300px; /* Fixed height for scrolling */
+            overflow-y: auto;  /* Enable vertical scroll */
             text-align: left;
         }
+        /* Scrollbar styling */
         .expl-text::-webkit-scrollbar { width: 6px; }
         .expl-text::-webkit-scrollbar-track { background: rgba(0,0,0,0.3); border-radius: 4px; }
         .expl-text::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 4px; }
@@ -299,7 +365,7 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
         .welcome-text { color: #ccc; margin-bottom: 20px; font-size: 1rem; max-width: 80%; line-height: 1.5; }
         .user-highlight { color: var(--primary); font-weight: 800; font-size: 1.2rem; }
 
-        /* --- PRO PROFILE STYLES - FIXED --- */
+        /* --- PRO PROFILE STYLES --- */
         #profile-section { 
             width: 100%; 
             height: 100%; 
@@ -370,6 +436,7 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
         .mc-user { z-index: 2; margin-top: auto; }
         .mc-name { font-family: 'Rajdhani'; font-size: 1.8rem; font-weight: 800; color: #fff; text-shadow: 0 2px 4px rgba(0,0,0,0.5); letter-spacing: 1px; }
         .mc-email { color: #888; font-size: 0.9rem; margin-top: -2px; }
+        .expiry-text { font-size: 0.7rem; color: #ffaa00; margin-top: 5px; }
         .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
         .stat-box { background: rgba(30, 30, 30, 0.9); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 18px; padding: 15px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
         .sb-icon { font-size: 1.2rem; color: #ccc; margin-bottom: 5px; } 
@@ -465,7 +532,7 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
         }
         .grand-btn-secondary:hover { background: rgba(244, 196, 48, 0.1); transform: scale(1.02); }
 
-        /* SECTION LOCKED POPUP */
+        /* REQ 3: SECTION LOCKED POPUP */
         #section-locked-popup {
             position: absolute; top: 0; left: 0; right: 0; bottom: 0;
             background: rgba(0, 0, 0, 0.92); z-index: 3500;
@@ -497,20 +564,16 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
             text-transform: uppercase;
         }
         .warning-small {
-            font-size: 0.7rem;
-            color: #ffaaaa;
+            font-size: 0.8rem;
+            color: #ffffff;
+            font-weight: bold;
             background: rgba(255,0,0,0.2);
             border-radius: 6px;
             padding: 8px;
             margin-top: 10px;
         }
-        .expiry-text {
-            font-size: 0.7rem;
-            color: #ffaa00;
-            margin-top: 5px;
-        }
 
-        /* Premium Popup Styles - Fixed */
+        /* Premium Popup Styles */
         #premium-success-popup {
             display: none;
             position: absolute;
@@ -565,11 +628,6 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
             to { transform: rotate(360deg); }
         }
 
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
         #premium-success-popup button:hover,
         #premium-error-popup button:hover {
             transform: translateY(-3px) scale(1.02);
@@ -587,9 +645,12 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
             left: 100%;
             transition: left 0.5s ease;
         }
+
     </style>
 </head>
 <body>
+
+
 
     <div id="universe-bg"></div>
 
@@ -602,11 +663,13 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
     <div class="dock-wrapper">
         <nav class="glass-dock golden-border-anim" id="dock-nav-container">
             <div id="nav-profile" class="dock-item" onclick="openCategory('profile', this)"><i class="fas fa-user-circle"></i></div>
+            
             <div id="nav-ancient" class="dock-item" onclick="openCategory('ancient', this)"><i class="fas fa-landmark section-icon"></i></div>
-            <div id="nav-medieval" class="dock-item" onclick="openCategory('medieval', this)"><i class="fas fa-gavel section-icon"></i></div>
-            <div id="nav-modern" class="dock-item" onclick="openCategory('modern', this)"><i class="fas fa-university section-icon"></i></div>
-            <div id="nav-world" class="dock-item" onclick="openCategory('world', this)"><i class="fas fa-user-shield section-icon"></i></div>
+            <div id="nav-medieval" class="dock-item" onclick="openCategory('medieval', this)"><i class="fas fa-monument section-icon"></i></div>
+            <div id="nav-modern" class="dock-item" onclick="openCategory('modern', this)"><i class="fas fa-flag section-icon"></i></div>
+            <div id="nav-world" class="dock-item" onclick="openCategory('world', this)"><i class="fas fa-globe section-icon"></i></div>
             <div id="nav-art" class="dock-item" onclick="openCategory('art', this)"><i class="fas fa-palette section-icon"></i></div>
+            
         </nav>
     </div>
 
@@ -615,7 +678,7 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
             
             <div class="modal-header-container" id="common-header">
                 <div class="modal-header">
-                    <h2 id="cat-title">PROFILE</h2>
+                    <h2 id="cat-title">Profile</h2>
                 </div>
                 <div class="sub-nav golden-border-anim" id="sub-nav-container"></div>
             </div>
@@ -626,11 +689,16 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
 
             <div id="quiz-interface" style="display: none;">
                 <div class="quiz-stats-bar">
-                    <!-- STATIC HEADER TEXT - SIRF PYQ SHOW HOGA, UNIT NAME NAHI -->
                     <div class="stat-item"><span id="unit-name-display" style="color:#fff; font-weight:800; font-family:'Rajdhani';">PYQ</span></div>
-                    <div class="stat-item" style="color:#ff1744; font-weight:800;"><i class="fas fa-clock"></i> <span id="q-timer">30</span>s</div>
+                    <div class="stat-item" style="color:#ff1744; font-weight:800;"><i class="fas fa-clock"></i> <span id="q-timer">30</span>Seconds</div>
                     <div class="stat-item">Q: <span id="q-num-display" style="color:#fff;">1/25</span></div>
                 </div>
+                
+                <div id="passage-box" class="passage-box">
+                    <div class="passage-title"><i class="fas fa-book-open"></i> Reading Passage</div>
+                    <div id="passage-text"></div>
+                </div>
+
                 <div class="question-box">
                     <div id="q-text" class="q-text">Loading...</div>
                 </div>
@@ -640,170 +708,169 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
             <div id="explanation-overlay">
                 <div class="expl-box" id="expl-box">
                     <div id="expl-icon" class="expl-icon"></div>
-                    <div id="expl-title" class="expl-title">CORRECT!</div>
+                    <div id="expl-title" class="expl-title">Correct Answer!</div>
                     <div id="expl-text" class="expl-text">
-                        Detailed explanation goes here...
+                        Detailed explanation will appear here...
                     </div>
-                    <button class="res-btn" onclick="closeExplanationAndNext()">NEXT <i class="fas fa-arrow-right"></i></button>
+                    <button class="res-btn" onclick="closeExplanationAndNext()">Next <i class="fas fa-arrow-right"></i></button>
                 </div>
             </div>
 
             <div id="result-overlay" class="overlay-popup">
                 <div id="res-emoji" class="res-emoji">🎉</div>
-                <div id="res-title" class="res-title">UNIT PASSED!</div>
+                <div id="res-title" class="res-title">Unit Passed!</div>
                 <div style="font-size:1.8rem; color:var(--primary); margin-bottom:10px; font-weight:900; font-family:'Rajdhani'; text-shadow:0 0 10px rgba(244,196,48,0.5);">
-                    SCORE: <span id="final-score">0</span>
+                    Score: <span id="final-score">0</span>
                 </div>
                 <div style="color:#aaa; font-size:1rem;">Correct: <span id="correct-count">0</span> / 25</div>
-                <div style="font-size: 0.8rem; color: #ff1744; margin-top: 10px; display:none;" id="fail-msg">Restarting Unit from Question 1</div>
-                <button id="res-btn" class="res-btn" onclick="handleResultAction()">NEXT UNIT</button>
+                <div style="font-size: 0.8rem; color: #ff1744; margin-top: 10px; display:none;" id="fail-msg">Restarting unit from Question 1</div>
+                <button id="res-btn" class="res-btn" onclick="handleResultAction()">Next Unit</button>
             </div>
 
             <div id="welcome-popup" class="overlay-popup">
                 <div class="res-emoji">👑</div>
-                <div class="res-title" style="color:var(--primary);">WELCOME CLUB!</div>
+                <div class="res-title" style="color:var(--primary);">Welcome Club!</div>
                 <div class="welcome-text">
                     Hello <span id="wel-user" class="user-highlight">User</span>, <br>
-                    You are now a <span id="plan-name-display">Premium</span> Member of <span style="color:var(--primary)">STISkilli</span>. <br>
+                    You are now a <span id="plan-name-display">Premium</span> member of <span style="color:var(--primary)">STISkilli</span>. <br>
                     <span id="validity-message"></span>
                 </div>
                 <div class="warning-small" id="uninstall-warning">
-                    ⚠️ If you uninstall the app, your subscription will expire immediately and you'll need to purchase again.
+                    ⚠️ If you uninstall the app, your subscription will end immediately and you will have to purchase it again.
                 </div>
-                <button class="res-btn" onclick="closeWelcome()">LET'S START</button>
+                <button class="res-btn" onclick="closeWelcome()">Start</button>
             </div>
 
             <div id="locked-popup" class="overlay-popup">
                 <div class="res-emoji">🔒</div>
-                <div class="res-title" style="color:#ff1744;">CONTENT LOCKED</div>
+                <div class="res-title" style="color:#ff1744;">Content Locked</div>
                 <div class="welcome-text">
-                    This content is for Premium Members only.<br>
-                    Please upgrade your plan to access all Units and Quizzes.
+                    This content is only for premium members.<br>
+                    Please upgrade your plan to access all units and quizzes.
                 </div>
-                <button class="res-btn" onclick="goToProfileFromLock()">GO TO PROFILE</button>
+                <button class="res-btn" onclick="goToProfileFromLock()">Go to Profile</button>
             </div>
 
             <div id="section-locked-popup">
                 <div class="lock-box">
                     <i class="fas fa-lock" style="font-size:3rem; color:#ff1744; margin-bottom:15px;"></i>
-                    <h2 style="font-family:'Rajdhani'; font-size:2rem; font-weight:900; color:#fff; margin-bottom:10px;">SECTION LOCKED</h2>
+                    <h2 style="font-family:'Rajdhani'; font-size:2rem; font-weight:900; color:#fff; margin-bottom:10px;">Section Locked</h2>
                     <p style="color:#ccc; margin-bottom:20px; font-size:1rem; line-height:1.5;">
-                        You must complete all units in <br>
+                        To unlock this level you must complete <br>
                         <span id="prev-section-name" style="color:var(--primary); font-weight:800; text-transform:uppercase;">PREVIOUS SECTION</span> <br>
-                        to unlock this level.
+                        all units.
                     </p>
-                    <button class="res-btn" onclick="closeSectionLock()">UNDERSTOOD</button>
+                    <button class="res-btn" onclick="closeSectionLock()">Got it</button>
                 </div>
             </div>
             
             <div id="grand-completion-overlay">
                 <div class="grand-box">
                     <div class="grand-icon"></div>
-                    <div class="grand-title">ULTIMATE CONQUEROR</div>
-                    <div class="grand-subtitle">HISTORY MASTER</div>
+                    <div class="grand-title">Ultimate Champion</div>
+                    <div class="grand-subtitle">Polity Master</div>
                     
                     <div class="grand-scroll-container">
-                        <p><strong>Congratulations!</strong> You have successfully navigated the corridors of time. From the ancient roots of civilization to the complexities of the modern world, and through the vibrant expressions of art and culture, you have proven your mastery.</p>
+                        <p><strong>Congratulations!</strong> You have successfully crossed the corridors of time. From the ancient roots of civilization to the complexities of the modern world, and through vibrant expressions of art and culture, you have proven your mastery.</p>
                         <br>
-                        <p>This achievement marks the completion of all available units. You now stand among the elite few who have unlocked every chapter of history within this archive. Your dedication to learning and your perseverance through these challenges is truly commendable.</p>
+                        <p>This achievement marks the completion of all available units. You now stand among the few who have unlocked every chapter of history in this collection. Your dedication to learning and your perseverance through these challenges is truly commendable.</p>
                         <br>
-                        <p>You have mastered History. Prepare for the next challenge.</p>
+                        <p>You have mastered History. Be ready for the next challenge.</p>
                     </div>
 
                     <div class="grand-btn-group">
-                        <button class="grand-btn-primary" onclick="restartJourney()">START AGAIN</button>
+                        <button class="grand-btn-primary" onclick="restartJourney()">Restart</button>
                         <button class="grand-btn-secondary" onclick="window.location.href='indian-polity-economics-geography-bio-sandt-pyqs-gspluscsat-english.html'">Start Next</button>
                     </div>
                 </div>
             </div>
 
-            <!-- PROFILE SECTION - FIXED -->
             <div id="profile-section" style="display: none;">
-                <!-- Step 1: User Details Form -->
                 <div id="step-1" class="glass-panel">
                     <div style="width:70px; height:70px; background:rgba(0,0,0,0.5); border-radius:50%; border:2px solid var(--primary); display:flex; align-items:center; justify-content:center; margin-bottom:20px; box-shadow:0 0 20px var(--primary-glow);">
                         <i class="fas fa-crown" style="color:var(--primary); font-size:2rem;"></i>
                     </div>
-                    <h2 style="font-family:'Rajdhani'; font-size:2rem; margin-bottom:5px; color:#fff; font-weight:800;">JOIN ELITE CLUB</h2>
-                    <p style="color:#888; margin-bottom:25px; font-size:0.9rem;">Unlock the ultimate history experience.</p>
+                    <h2 style="font-family:'Rajdhani'; font-size:2rem; margin-bottom:5px; color:#fff; font-weight:800;">Join Elite Club</h2>
+                    <p style="color:#888; margin-bottom:25px; font-size:0.9rem;">Get the ultimate history experience.</p>
                     
                     <form id="details-form" style="width:100%;">
                         <div class="gold-input-group">
-                            <label class="gold-label">FULL NAME</label>
+                            <label class="gold-label">Full Name</label>
                             <input type="text" id="user-name" class="gold-input" placeholder="e.g. Rahul Kumar" required>
                         </div>
                         <div class="gold-input-group">
-                            <label class="gold-label">MOBILE NUMBER</label>
+                            <label class="gold-label">Mobile Number</label>
                             <input type="tel" id="user-number" class="gold-input" placeholder="+91 XXXXX XXXXX" required>
                         </div>
                         <div class="gold-input-group">
-                            <label class="gold-label">EMAIL ADDRESS</label>
+                            <label class="gold-label">Email Address</label>
                             <input type="email" id="user-email" class="gold-input" placeholder="name@example.com" required>
                         </div>
-                        <button type="submit" class="btn-pro">CONTINUE TO PLANS <i class="fas fa-arrow-right" style="margin-left:10px;"></i></button>
+                        <button type="submit" class="btn-pro">View Plans <i class="fas fa-arrow-right" style="margin-left:10px;"></i></button>
                     </form>
                 </div>
 
-                <!-- Step 2: Select Plan -->
                 <div id="step-2" class="glass-panel" style="display:none; max-width:600px;">
-                    <h2 style="font-family:'Rajdhani'; font-size:2rem; margin-bottom:20px; color:#fff; font-weight:800;">SELECT ACCESS</h2>
+                    <h2 style="font-family:'Rajdhani'; font-size:2rem; margin-bottom:20px; color:#fff; font-weight:800;">Choose Access</h2>
                     
                     <div class="plans-grid">
-                        <div class="plan-card-pro" onclick="selectPlan(9, '24 Hours Trial (9₹)', this)">
+                        <div class="plan-card-pro" onclick="selectPlan(9, '24 Hour Trial (₹9)', this)">
                             <div class="pc-check"><i class="fas fa-check-circle"></i></div>
-                            <div class="pc-dur">24 HOURS TRIAL <span class="trial-badge">NEW</span></div>
+                            <div class="pc-dur">24 Hour Trial <span class="trial-badge">New</span></div>
                             <div class="pc-price">₹9</div>
                             <small style="color:#aaa;">Valid for 24 hours only</small>
                         </div>
-                        <div class="plan-card-pro" onclick="selectPlan(51, '30 Days Access (51₹)', this)">
+                        <div class="plan-card-pro" onclick="selectPlan(51, '30 Days Access (₹51)', this)">
                             <div class="pc-check"><i class="fas fa-check-circle"></i></div>
-                            <div class="pc-dur">30 DAYS</div>
+                            <div class="pc-dur">30 Days</div>
                             <div class="pc-price">₹51</div>
                         </div>
-                        <div class="plan-card-pro" onclick="selectPlan(399, '1 Year Access (399₹)', this)">
+                        <div class="plan-card-pro" onclick="selectPlan(399, '1 Year Access (₹399)', this)">
                             <div class="pc-check"><i class="fas fa-check-circle"></i></div>
-                            <div style="background:var(--primary); color:#000; font-size:0.6rem; padding:2px 6px; border-radius:4px; font-weight:800; margin-bottom:4px;">BEST VALUE</div>
-                            <div class="pc-dur">1 YEAR</div>
+                            <div style="background:var(--primary); color:#000; font-size:0.6rem; padding:2px 6px; border-radius:4px; font-weight:800; margin-bottom:4px;">Best Value</div>
+                            <div class="pc-dur">1 Year</div>
                             <div class="pc-price">₹399</div>
                         </div>
-                        <div class="plan-card-pro" onclick="selectPlan(799, 'Lifetime Access (799₹)', this)">
+                        <div class="plan-card-pro" onclick="selectPlan(799, 'Lifetime Access (₹799)', this)">
                             <div class="pc-check"><i class="fas fa-check-circle"></i></div>
-                            <div class="pc-dur">LIFETIME</div>
+                            <div class="pc-dur">Lifetime</div>
                             <div class="pc-price">₹799</div>
                             <small style="color:#aaa;">Never expires</small>
                         </div>
                     </div>
 
                     <div id="secret-code-section" style="display:none; width:100%; margin-bottom:15px;">
-                        <input type="text" id="secret-code" class="gold-input" style="text-align:center; margin-bottom:10px;" placeholder="Enter Secret Code">
-                        <button id="secret-ok-btn" class="btn-pro" style="display:none;">VERIFY CODE</button>
+                        <input type="text" id="secret-code" class="gold-input" style="text-align:center; margin-bottom:10px;" placeholder="Enter secret code">
+                        <button id="secret-ok-btn" class="btn-pro" style="display:none;">Verify Code</button>
                     </div>
                     
-                    <button id="go-to-pay-btn" class="btn-pro">PROCEED TO PAY</button>
+                    <button id="go-to-pay-btn" class="btn-pro">Proceed to Payment</button>
                 </div>
 
-                <!-- Step 3: Payment -->
                 <div id="step-3" class="glass-panel" style="display:none;">
                     <div style="width:60px; height:60px; background:rgba(255,255,255,0.05); border-radius:50%; display:flex; align-items:center; justify-content:center; margin-bottom:15px;">
                         <i class="fas fa-lock" style="font-size:1.5rem; color:#aaa;"></i>
                     </div>
-                    <h2 style="font-family:'Rajdhani'; font-size:1.8rem; margin-bottom:5px; color:#fff;">SECURE PAYMENT</h2>
-                    <div style="font-size:0.9rem; color:#888; margin-bottom:20px;">Complete your transaction within</div>
+                    <h2 style="font-family:'Rajdhani'; font-size:1.8rem; margin-bottom:5px; color:#fff;">Secure Payment</h2>
+                    <div style="font-size:0.9rem; color:#888; margin-bottom:20px;">Complete your transaction within this time</div>
                     
                     <div id="final-price-display" style="font-size:2.5rem; color:var(--primary); font-family:'Rajdhani'; font-weight:800; margin-bottom:10px; text-shadow:0 0 20px rgba(244,196,48,0.3);">₹00.00</div>
                     <div id="timer" style="color:#fff; font-weight:bold; font-size:1.2rem; margin-bottom:30px; background:rgba(30,30,30,0.9); padding:8px 20px; border-radius:50px; border:1px solid #444;">05:00</div>
                     
-                    <button id="rzp-button" class="btn-pro">PAY WITH RAZORPAY</button>
+                    <button id="rzp-button" class="btn-pro">Pay with Razorpay</button>
                 </div>
 
-                <!-- Step 4: Dashboard -->
                 <div id="step-4" style="display:none; width:100%; justify-content:center;">
                     <div class="dashboard-container">
                         
+                        <div style="color: #ffffff; font-weight: bold; font-size: 0.85rem; text-align: center; background: rgba(255, 23, 68, 0.2); padding: 12px; border-radius: 12px; border: 1px solid #ff1744; margin-bottom: 5px;">
+                            ⚠️ If you uninstall the app, your subscription will end immediately and you will have to purchase it again.
+                        </div>
+
                         <div class="membership-card">
                             <div class="mc-header">
                                 <div class="mc-chip"></div>
-                                <div class="mc-plan-badge" id="disp-plan">PLAN</div>
+                                <div class="mc-plan-badge" id="disp-plan">Plan</div>
                             </div>
                             <div class="mc-user">
                                 <div class="mc-name" id="disp-name">User Name</div>
@@ -821,19 +888,18 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
                             <div class="stat-box">
                                 <i class="fas fa-chart-line sb-icon"></i>
                                 <div class="sb-val" id="units-played-display">0</div>
-                                <div class="sb-label">Units Active</div>
+                                <div class="sb-label">Active Units</div>
                             </div>
                         </div>
 
                         <div>
-                            <div class="pro-progress-header"><span>PERFORMANCE LOG</span> <i class="fas fa-chevron-down" style="font-size:0.8rem; opacity:0.5;"></i></div>
+                            <div class="pro-progress-header"><span>Performance Log</span> <i class="fas fa-chevron-down" style="font-size:0.8rem; opacity:0.5;"></i></div>
                             <div id="progress-container" style="padding-bottom:50px;"></div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- PREMIUM SUCCESS POPUP - INSIDE MODAL -->
             <div id="premium-success-popup">
                 <div style="background: linear-gradient(145deg, #1a1a1a 0%, #0a0a0a 100%); border: 2px solid #F4C430; border-radius: 40px; padding: 25px; width: 90%; max-width: 400px; box-shadow: 0 30px 60px rgba(244,196,48,0.3), 0 0 0 2px rgba(244,196,48,0.1) inset; transform: perspective(1000px) rotateX(2deg) translateY(0); animation: premiumPopIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; position: relative; overflow: hidden;">
                     
@@ -851,13 +917,13 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
                         </div>
                         
                         <div style="font-family: 'Rajdhani', sans-serif; font-weight: 900; font-size: 2.2rem; background: linear-gradient(135deg, #FFD700, #F4C430, #B8860B); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 10px; letter-spacing: 2px; text-shadow: 0 0 30px rgba(244,196,48,0.5);">
-                            PAYMENT SUCCESSFUL!
+                            Payment Successful!
                         </div>
                         
                         <div style="width: 80px; height: 2px; background: linear-gradient(90deg, transparent, #F4C430, #FFD700, #F4C430, transparent); margin: 10px 0 15px 0;"></div>
                         
                         <div style="background: rgba(0,0,0,0.4); border: 1px solid rgba(244,196,48,0.2); border-radius: 50px; padding: 10px 20px; margin-bottom: 15px; backdrop-filter: blur(5px); box-shadow: 0 5px 15px rgba(0,0,0,0.5); width: 100%;">
-                            <span style="font-family: 'Plus Jakarta Sans', monospace; color: #aaa; font-size: 0.8rem; letter-spacing: 1px;">TRANSACTION ID</span>
+                            <span style="font-family: 'Plus Jakarta Sans', monospace; color: #aaa; font-size: 0.8rem; letter-spacing: 1px;">Transaction ID</span>
                             <div style="font-family: 'Rajdhani', monospace; color: #F4C430; font-size: 1.1rem; font-weight: 700; letter-spacing: 1px; word-break: break-all;" id="success-payment-id">pay_SNUCx0TGqT07Qa</div>
                         </div>
                         
@@ -877,72 +943,46 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
                 </div>
             </div>
 
-            <!-- PREMIUM ERROR POPUP - INSIDE MODAL -->
             <div id="premium-error-popup">
-                <!-- Error popup will be created dynamically by JavaScript -->
-            </div>
+                </div>
+
         </div>
     </div>
 
     <script>
         // --- 1. CONFIGURATION ---
+        
         const APP_NAME = "STISkilli"; 
         const APP_PACKAGE_NAME = "com.ai.skillaura";
 
         const CATEGORY_TITLES = {
-            ancient: "ANCIENT HISTORY",
-            medieval: "MEDIEVAL HISTORY",
-            modern: "MODERN HISTORY",
-            world: "WORLD HISTORY",
-            art: "ART & CULTURE",
-            news: "LATEST DISCOVERIES",
-            profile: "USER PROFILE"
+            ancient: "Annicieant-History",
+            medieval: "Medival-History",
+            modern: "Modern-History",
+            world: "World-History",
+            art: "Art-&-Culture",
+
+            profile: "User Profile"
         };
         
+        // REQ 3: STRICT PROGRESSION ORDER (Only Quiz Sections)
         const PROGRESSION_ORDER = ['ancient', 'medieval', 'modern', 'world', 'art'];
-        
-        // STATIC HEADER TEXT - SIRF PYQ SHOW HOGA
+
+        // REQ 2: CONFIGURABLE TEXT FOR RED CIRCLE AREA
         const STATIC_HEADER_TEXT = "PYQ";
 
         const categoryBackgrounds = {
-            profile: 'history.webp', ancient: 'history.webp', medieval: 'history.webp',
-            modern: 'history.webp', world: 'history.webp', art: 'history.webp',
-            news: 'skillinewsbck.webp' 
+            profile: 'ir.webp', ancient: 'currentpyq.webp', medieval: 'indianpolity.webp',
+            modern: 'indianpolity.webp', world: 'indianpolity.webp', art: 'indianpolity.webp'
+ 
         };
 
         const CHECKPOINT = 25;
         const PASS_REQ = 20;
 
-        /* ======================================================
-           =====  YAHAN APNA QUESTION DATA PASTE KAREIN =====
-           ======================================================
-           
-           INSTRUCTIONS:
-           1. Neeche diye gaye quizDatabase object mein apna data paste karein
-           2. Har category ke andar units aur questions ka array hona chahiye
-           3. Example structure:
-           
-           ancient: [
-               {
-                   name: "UNIT 1: INDIAN ANCIENT HISTORY",
-                   questions: [
-                       {
-                           q: "Question text here?",
-                           options: ["Option A", "Option B", "Option C", "Option D"],
-                           ans: 0,  // 0-based index (0 = Option A)
-                           explanation: "Explanation here..."
-                       },
-                       // more questions...
-                   ]
-               },
-               // more units...
-           ]
-           
-        */
-        
-        // --- 2. QUIZ DATABASE - APNA DATA YAHAN PASTE KAREIN ---
+        // --- 2. QUIZ DATA ---
         const quizDatabase = {
-            ancient: [
+              ancient: [
                 {
     "name": "UNIT 1: INDIAN ANCIENT HISTORY",
     "questions": [
@@ -18039,11 +18079,12 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
       ]
         };
         
+        
         /* ======================================================
            =====  QUESTION DATA PASTE KARNE KA END =====
            ====================================================== */
-        
-        const newsDatabase = [];
+
+        const newsDatabase = []; // Populated via external logic or empty for now
 
         // --- 3. STATE MANAGEMENT WITH EXPIRY ---
         let userData = {
@@ -18062,6 +18103,7 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
         let progressData;
         try { progressData = JSON.parse(localStorage.getItem('quizProgress')) || {}; } catch(e) { progressData = {}; }
 
+        // Tracks current level for each category
         let unlockedLevels;
         try { unlockedLevels = JSON.parse(localStorage.getItem('unlockedLevels')) || { ancient: 1, medieval: 1, modern: 1, world: 1, art: 1 }; } catch (e) { unlockedLevels = { ancient: 1, medieval: 1, modern: 1, world: 1, art: 1 }; }
 
@@ -18075,7 +18117,7 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
         function isSubscriptionValid() {
             if (!localStorage.getItem('hasPaid')) return false;
             if (!userData.expiry) return true;
-            if (userData.planName && userData.planName.toLowerCase().includes('lifetime')) return true;
+            if (userData.planName && (userData.planName.toLowerCase().includes('lifetime') || userData.planName.toLowerCase().includes('आजीवन'))) return true;
             
             const now = new Date().getTime();
             const exp = new Date(userData.expiry).getTime();
@@ -18093,6 +18135,7 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
 
         function hasPaid() { return isSubscriptionValid(); }
 
+        // --- REQ 3: SEQUENTIAL PROGRESSION LOGIC ---
         function isCategoryFullyComplete(cat) {
             if (!quizDatabase[cat]) return false;
             return (unlockedLevels[cat] || 1) > quizDatabase[cat].length;
@@ -18100,7 +18143,7 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
 
         function checkCategoryAccess(targetCat) {
             const idx = PROGRESSION_ORDER.indexOf(targetCat);
-            if (idx <= 0) return { accessible: true };
+            if (idx <= 0) return { accessible: true }; // First one always open
 
             const prevCat = PROGRESSION_ORDER[idx - 1];
             if (isCategoryFullyComplete(prevCat)) {
@@ -18111,6 +18154,7 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
         }
 
         function updateDockVisuals() {
+            // Apply visual lock to dock items in PROGRESSION_ORDER
             PROGRESSION_ORDER.forEach((cat, index) => {
                 const el = document.getElementById(`nav-${cat}`);
                 if (el) {
@@ -18132,12 +18176,14 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
         function openCategory(catName, btnElement) {
             if(questionTimer) clearInterval(questionTimer);
 
+            // 1. Check Paywall
             if (catName !== 'profile' && !hasPaid()) {
                 document.getElementById('locked-popup').style.display = 'flex';
                 return;
             }
 
-            if (catName !== 'profile' && catName !== 'news') {
+            // 2. REQ 3: Check Sequential Progression (Pro Locking)
+            if (PROGRESSION_ORDER.includes(catName)) {
                 const access = checkCategoryAccess(catName);
                 if (!access.accessible) {
                     document.getElementById('prev-section-name').innerText = access.required;
@@ -18196,6 +18242,7 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
         function renderNews() {
             const feed = document.getElementById('news-feed');
             feed.innerHTML = '';
+            // Demo content if empty
             if(newsDatabase.length === 0) {
                 feed.innerHTML = '<div style="color:#aaa; text-align:center; padding:20px;">No updates available.</div>';
             }
@@ -18205,9 +18252,10 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
             const container = document.getElementById('sub-nav-container');
             const units = quizDatabase[catName];
             
-            if(!units) {
+            if(!units || units.length === 0) {
                 container.innerHTML = '<div style="color:#aaa; padding:10px;">Coming Soon</div>';
                 document.getElementById('q-text').innerText = "No content available for this category.";
+                document.getElementById('passage-box').style.display = 'none';
                 document.getElementById('options-list').innerHTML = '';
                 return;
             }
@@ -18232,7 +18280,7 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
             startQuiz(idx);
         }
 
-        // --- FIXED QUIZ ENGINE FUNCTIONS ---
+        // --- 5. QUIZ ENGINE ---
         function startQuiz(idx) {
             if(questionTimer) clearInterval(questionTimer);
             activeUnitIdx = idx;
@@ -18241,10 +18289,11 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
             
             if(!quizDatabase[activeCat] || !quizDatabase[activeCat][idx]) {
                 document.getElementById('q-text').innerText = "Unit not found.";
+                document.getElementById('passage-box').style.display = 'none';
                 return;
             }
 
-            // STATIC HEADER TEXT - SIRF PYQ SHOW HOGA, UNIT NAME NAHI
+            // REQ 2: APPLY STATIC HEADER TEXT
             document.getElementById('unit-name-display').innerText = STATIC_HEADER_TEXT;
 
             if (!progressData[activeCat]) progressData[activeCat] = {};
@@ -18256,12 +18305,6 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
             blockCorrect = currentSession.blockCorrect || 0; 
 
             const totalQuestions = quizDatabase[activeCat][idx].questions.length;
-            if (totalQuestions === 0) {
-                document.getElementById('q-text').innerText = "No questions in this unit. Please add questions.";
-                document.getElementById('options-list').innerHTML = '';
-                return;
-            }
-            
             if(!currentSession.order || currentSession.order.length !== totalQuestions) {
                 currentSession.order = Array.from({length: totalQuestions}, (_, i) => i);
                 for (let i = currentSession.order.length - 1; i > 0; i--) {
@@ -18278,67 +18321,75 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
             if(questionTimer) clearInterval(questionTimer);
             
             try {
-                if(!quizDatabase[activeCat] || !quizDatabase[activeCat][activeUnitIdx]) {
-                    document.getElementById('q-text').innerText = "Category or Unit not found.";
-                    return;
-                }
+                if(!quizDatabase[activeCat] || !quizDatabase[activeCat][activeUnitIdx]) return;
                 
-                const unitData = quizDatabase[activeCat][activeUnitIdx];
-                const questions = unitData.questions;
-                
-                if(!questions || questions.length === 0) {
-                    document.getElementById('q-text').innerText = "No questions in this unit.";
-                    document.getElementById('options-list').innerHTML = '';
+                const db = quizDatabase[activeCat][activeUnitIdx].questions;
+                if(!db || db.length === 0) {
+                    document.getElementById('q-text').innerText = "There are no questions in this unit.";
+                    document.getElementById('passage-box').style.display = 'none';
                     return;
                 }
 
-                // Check if we've reached the end of current batch
-                if (currentSession.qIndex >= questions.length) {
-                    showResultPopup();
-                    return;
+                // --- NEW SHUFFLE LOGIC TO PREVENT CONSECUTIVE DUPLICATES ---
+                let indexWithinLoop = currentSession.qIndex % db.length;
+
+                // If we've completed a full pass of the database questions and loop restarts, reshuffle
+                if (indexWithinLoop === 0 && currentSession.qIndex > 0) {
+                    let lastQuestion = currentSession.order[db.length - 1]; // Store the very last question of the previous loop
+                    
+                    // Reshuffle array
+                    for (let i = currentSession.order.length - 1; i > 0; i--) {
+                        const j = Math.floor(Math.random() * (i + 1));
+                        [currentSession.order[i], currentSession.order[j]] = [currentSession.order[j], currentSession.order[i]];
+                    }
+                    
+                    // Ensure the first question of the new shuffle is NOT the last question of the old shuffle
+                    if (currentSession.order[0] === lastQuestion && db.length > 1) {
+                        [currentSession.order[0], currentSession.order[1]] = [currentSession.order[1], currentSession.order[0]];
+                    }
+                    saveProgress();
                 }
 
-                // Get shuffled index
-                const shuffledIndex = currentSession.order[currentSession.qIndex];
-                const actualQ = questions[shuffledIndex];
-                
-                if (!actualQ) {
-                    console.error("Question not found at index:", shuffledIndex);
-                    return;
-                }
+                const shuffledIndex = currentSession.order[indexWithinLoop];
+                const actualQ = db[shuffledIndex];
                 
                 const displayNum = currentSession.qIndex + 1;
-                const totalQuestions = questions.length;
-                const currentBatchLimit = Math.min(CHECKPOINT * (Math.floor(currentSession.qIndex/CHECKPOINT) + 1), totalQuestions);
+                const currentBatchLimit = CHECKPOINT * (Math.floor(currentSession.qIndex/CHECKPOINT) + 1);
                 
                 document.getElementById('q-num-display').innerText = `${displayNum} / ${currentBatchLimit}`;
-                
-                // STATIC HEADER TEXT already set in startQuiz - not changing here
-                
-                // Display question
                 document.getElementById('q-text').innerText = actualQ.q;
 
-                // Display options
+                // PASSAGE DISPLAY LOGIC
+                const passageBox = document.getElementById('passage-box');
+                const passageText = document.getElementById('passage-text');
+                
+                if (actualQ.passage && actualQ.passage.trim() !== "") {
+                    passageText.innerText = actualQ.passage;
+                    passageBox.style.display = 'block';
+                } else {
+                    passageText.innerText = "";
+                    passageBox.style.display = 'none';
+                }
+
                 const list = document.getElementById('options-list');
                 list.innerHTML = '';
-                
-                if (actualQ.options && Array.isArray(actualQ.options)) {
-                    actualQ.options.forEach((opt, i) => {
-                        const btn = document.createElement('div');
-                        btn.className = 'option-btn';
-                        btn.innerHTML = `<span>${opt}</span> <i class="far fa-circle"></i>`;
-                        btn.onclick = () => handleAnswer(i, actualQ.ans, btn, actualQ);
-                        list.appendChild(btn);
-                    });
-                } else {
-                    console.error("Options not found for question:", actualQ);
-                }
+                actualQ.options.forEach((opt, i) => {
+                    const btn = document.createElement('div');
+                    btn.className = 'option-btn';
+                    btn.innerHTML = `<span>${opt}</span> <i class="far fa-circle"></i>`;
+                    btn.onclick = () => handleAnswer(i, actualQ.ans, btn, actualQ);
+                    list.appendChild(btn);
+                });
 
                 startTimerLogic(actualQ.ans, actualQ);
 
             } catch (error) {
                 console.error("Error loading question:", error);
-                document.getElementById('q-text').innerText = "Error loading question. Please try again.";
+                document.getElementById('q-text').innerText = "Error loading question. Resetting unit...";
+                document.getElementById('passage-box').style.display = 'none';
+                currentSession = { score: 0, correct: 0, wrong: 0, qIndex: 0, blockCorrect: 0, order: [] };
+                saveProgress();
+                setTimeout(() => startQuiz(activeUnitIdx), 1500);
             }
         }
 
@@ -18402,6 +18453,8 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
             }, 800);
         }
 
+        // --- EXPLANATION FUNCTIONS ---
+
         function showExplanation(isCorrect, qObj) {
             const overlay = document.getElementById('explanation-overlay');
             const icon = document.getElementById('expl-icon');
@@ -18409,17 +18462,17 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
             const text = document.getElementById('expl-text');
             const box = document.getElementById('expl-box');
 
-            const explanation = qObj.explanation || "Detailed historical context for this answer is currently being updated in our archives.";
+            const explanation = qObj.explanation || "The detailed historical context of this answer is currently being updated in our archives.";
 
             if(isCorrect) {
                 icon.innerHTML = "";
-                title.innerText = "CORRECT ANSWER";
+                title.innerText = "Correct Answer";
                 title.style.color = "var(--correct)";
                 box.style.borderColor = "var(--correct)";
                 box.style.boxShadow = "0 0 30px rgba(0, 230, 118, 0.2)";
             } else {
                 icon.innerHTML = "";
-                title.innerText = "INCORRECT";
+                title.innerText = "Wrong";
                 title.style.color = "var(--wrong)";
                 box.style.borderColor = "var(--wrong)";
                 box.style.boxShadow = "0 0 30px rgba(255, 23, 68, 0.2)";
@@ -18448,6 +18501,7 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
             localStorage.setItem('quizProgress', JSON.stringify(progressData));
         }
 
+        // --- RESULT & COMPLETION LOGIC ---
         function showResultPopup() {
             const overlay = document.getElementById('result-overlay');
             const emoji = document.getElementById('res-emoji');
@@ -18459,14 +18513,17 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
             document.getElementById('correct-count').innerText = `${blockCorrect} / ${CHECKPOINT}`;
 
             if (blockCorrect >= PASS_REQ) {
+                
+                // Logic to update unlocked levels for CURRENT category
                 const totalUnits = quizDatabase[activeCat].length;
                 if(activeUnitIdx + 1 === unlockedLevels[activeCat]) {
                     unlockedLevels[activeCat]++;
                     localStorage.setItem('unlockedLevels', JSON.stringify(unlockedLevels));
                     renderSubNav(activeCat);
-                    updateDockVisuals();
+                    updateDockVisuals(); // Update locks if a full section completed
                 }
 
+                // Check for GRAND COMPLETION (Final unit of Final Category)
                 const lastCat = PROGRESSION_ORDER[PROGRESSION_ORDER.length - 1];
                 if (activeCat === lastCat && activeUnitIdx === (quizDatabase[lastCat].length - 1)) {
                     document.getElementById('grand-completion-overlay').style.display = 'flex';
@@ -18474,30 +18531,32 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
                 }
 
                 emoji.innerText = "🎉";
-                title.innerText = "UNIT PASSED!";
+                title.innerText = "Unit Passed!";
                 title.style.color = "#00e676";
                 failMsg.style.display = "none";
-                btn.innerText = "NEXT 25 Q";
+                btn.innerText = "Next 25 Questions";
                 
                 btn.onclick = () => {
                     blockCorrect = 0; 
                     currentSession.blockCorrect = 0; 
                     saveProgress();
                     overlay.style.display = 'none'; 
+                    // Reload to update locks or move next
                     if(activeUnitIdx + 1 < totalUnits) {
                         switchUnit(activeUnitIdx + 1);
                     } else {
+                        // Section complete, guide to dock
                         overlay.style.display = 'none';
-                        alert("Section Complete! Please select the next unlocked section from the menu.");
+                        alert("Section complete! Please select the next unlocked section from the menu.");
                         updateDockVisuals();
                     }
                 };
             } else {
                 emoji.innerText = "😢";
-                title.innerText = "FAILED!";
+                title.innerText = "Fail!";
                 title.style.color = "#ff1744";
                 failMsg.style.display = "block";
-                btn.innerText = "RESTART UNIT";
+                btn.innerText = "Restart Unit";
                 btn.onclick = () => {
                     currentSession.qIndex = 0; 
                     currentSession.score = 0; 
@@ -18513,6 +18572,11 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
             overlay.style.display = 'flex';
         }
 
+        function handleResultAction() {
+            const btn = document.getElementById('res-btn');
+            if (btn.onclick) btn.onclick();
+        }
+
         function restartJourney() {
             document.getElementById('grand-completion-overlay').style.display = 'none';
             openCategory('ancient', document.getElementById('nav-ancient'));
@@ -18523,7 +18587,7 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
             startQuiz(0);
         }
 
-        // --- PROFILE & PAYMENT FUNCTIONS ---
+        // --- 6. PROFILE & LOGIC ---
         function initProfileView() {
             if (hasPaid()) {
                 showStep(4);
@@ -18531,11 +18595,11 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
                 document.getElementById('disp-email').innerText = userData.email;
                 document.getElementById('disp-plan').innerText = userData.planName || 'Premium';
                 
-                if (userData.expiry && !userData.planName?.toLowerCase().includes('lifetime')) {
+                if (userData.expiry && !userData.planName?.toLowerCase().includes('आजीवन') && !userData.planName?.toLowerCase().includes('lifetime')) {
                     let expDate = new Date(userData.expiry).toLocaleString();
-                    document.getElementById('expiry-display').innerText = `Valid till: ${expDate}`;
-                } else if (userData.planName?.toLowerCase().includes('lifetime')) {
-                    document.getElementById('expiry-display').innerText = 'Lifetime Access (Never Expires)';
+                    document.getElementById('expiry-display').innerText = `Validity: ${expDate}`;
+                } else if (userData.planName?.toLowerCase().includes('आजीवन') || userData.planName?.toLowerCase().includes('lifetime')) {
+                    document.getElementById('expiry-display').innerText = 'Lifetime Access (Never expires)';
                 }
                 
                 renderProgressReport();
@@ -18572,7 +18636,7 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
                         <div class="pp-item">
                             <div class="pp-top">
                                 <span class="pp-title">${displayCategoryName} / ${uName}</span>
-                                <span class="pp-score">${d.score.toFixed(1)} PTS</span>
+                                <span class="pp-score">${d.score.toFixed(1)} Points</span>
                             </div>
                             <div class="pp-bar-bg">
                                 <div class="pp-bar-fill" style="width:${correctPct}%"></div>
@@ -18617,8 +18681,8 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
         });
 
         function selectPlan(p, l, el) { 
-            selectedPlanPrice = p; 
-            selectedPlanLabel = l; 
+            selectedPlanPrice=p; 
+            selectedPlanLabel=l; 
             document.querySelectorAll('.plan-card-pro').forEach(c=>c.classList.remove('selected')); 
             el.classList.add('selected'); 
         }
@@ -18633,7 +18697,7 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
         });
 
         document.getElementById('go-to-pay-btn').addEventListener('click', () => {
-            if(!selectedPlanPrice) return alert("Please select a plan.");
+            if(!selectedPlanPrice) return alert("Please select a plan first.");
             document.getElementById('final-price-display').innerText = `₹${selectedPlanPrice}.00`;
             showStep(3); 
             startTimer();
@@ -18647,7 +18711,7 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
                 let m=Math.floor(t/60),s=t%60; 
                 document.getElementById('timer').innerText=`${m}:${s<10?'0'+s:s}`; 
                 t--; 
-                if(t<0) { clearInterval(tInt); alert("Time Expired"); showStep(1); } 
+                if(t<0) { clearInterval(tInt); alert("Time's up"); showStep(1); } 
             },1000); 
         }
 
@@ -18673,7 +18737,7 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
                 currency: "INR",
                 name: "StiWorldOfficial",
                 description: selectedPlanLabel,
-                image: "https://stiworldofficial.com/logo.png",
+                image: "https://stiworldofficial.com/sti.png",
                 redirect: true,
                 
                 handler: function(response) {
@@ -18750,9 +18814,9 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
                 if (error.code === "BAD_REQUEST_ERROR") {
                     errorMessage = "Payment could not be processed. Please try again.";
                 } else if (error.code === "GATEWAY_ERROR") {
-                    errorMessage = "Bank/server issue. Please try another payment method.";
+                    errorMessage = "Bank/Server issue. Please try another payment method.";
                 } else if (error.code === "CANCELLED") {
-                    errorMessage = "Payment was cancelled. You can try again.";
+                    errorMessage = "Payment cancelled. You can try again.";
                 } else {
                     errorMessage = error.description || "Transaction failed. Please try again.";
                 }
@@ -18793,7 +18857,7 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
                             </div>
                             
                             <div style="font-family: 'Rajdhani', sans-serif; font-weight: 900; font-size: 2.2rem; background: linear-gradient(135deg, #ff1744, #ff4444); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 10px;">
-                                PAYMENT FAILED
+                                Payment Failed
                             </div>
                             
                             <div style="background: rgba(0,0,0,0.4); border: 1px solid rgba(255,23,68,0.2); border-radius: 30px; padding: 15px; margin: 10px 0 20px 0; width: 100%;">
@@ -18807,7 +18871,7 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
                             </div>
                             
                             <button onclick="closePremiumErrorPopup()" style="width: 100%; padding: 14px; background: linear-gradient(145deg, #ff1744, #aa0000); border: none; border-radius: 50px; font-family: 'Rajdhani', sans-serif; font-weight: 900; font-size: 1.2rem; color: #fff; text-transform: uppercase; cursor: pointer; box-shadow: 0 15px 30px rgba(255,23,68,0.3);">
-                                TRY AGAIN
+                                Try Again
                             </button>
                         </div>
                     </div>
@@ -18852,7 +18916,7 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
             let now = new Date();
             let expiryDate = null;
             
-            if (selectedPlanLabel.includes('24 Hours') || selectedPlanPrice === 9) {
+            if (selectedPlanLabel.includes('24 Hour') || selectedPlanPrice === 9) {
                 expiryDate = new Date(now.getTime() + 24 * 60 * 60 * 1000);
             } else if (selectedPlanLabel.includes('30 Days') || selectedPlanPrice === 51) {
                 expiryDate = new Date(now.getTime() + 30 * 24 * 60 * 60 * 1000);
@@ -18883,12 +18947,12 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
             userData.planAmount = selectedPlanPrice.toString();
             
             let validityMsg = '';
-            if (selectedPlanLabel.includes('24 Hours') || selectedPlanPrice === 9) {
-                validityMsg = `Your 9₹ trial is valid for 24 hours from now (till ${expiryDate.toLocaleString()}).`;
+            if (selectedPlanLabel.includes('24 Hour') || selectedPlanPrice === 9) {
+                validityMsg = `Your ₹9 trial is valid for 24 hours from now (until ${expiryDate.toLocaleString()}).`;
             } else if (selectedPlanLabel.includes('30 Days') || selectedPlanPrice === 51) {
-                validityMsg = `Your 30 day subscription is valid till ${expiryDate.toLocaleString()}.`;
+                validityMsg = `Your 30 days subscription is valid until ${expiryDate.toLocaleString()}.`;
             } else if (selectedPlanLabel.includes('1 Year') || selectedPlanPrice === 399) {
-                validityMsg = `Your 1 year subscription is valid till ${expiryDate.toLocaleString()}.`;
+                validityMsg = `Your 1 year subscription is valid until ${expiryDate.toLocaleString()}.`;
             } else if (selectedPlanLabel.includes('Lifetime') || selectedPlanPrice === 799) {
                 validityMsg = `Your lifetime subscription never expires!`;
             }
@@ -18904,9 +18968,9 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
             document.getElementById('disp-plan').innerText = selectedPlanLabel;
             
             if (expiryDate && !selectedPlanLabel.toLowerCase().includes('lifetime')) {
-                document.getElementById('expiry-display').innerText = `Valid till: ${expiryDate.toLocaleString()}`;
+                document.getElementById('expiry-display').innerText = `Validity: ${expiryDate.toLocaleString()}`;
             } else {
-                document.getElementById('expiry-display').innerText = 'Lifetime Access (Never Expires)';
+                document.getElementById('expiry-display').innerText = 'Lifetime Access (Never expires)';
             }
         }
 
@@ -18920,47 +18984,15 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
             document.getElementById('app-main-title').innerText = APP_NAME;
             document.title = APP_NAME + " - History PYQ";
             
-            isSubscriptionValid();
+            // Initialize visual locks on load
             updateDockVisuals();
+
+            // EXPIRY CHECK on load
+            isSubscriptionValid();
 
             if(hasPaid()) openCategory('ancient', document.getElementById('nav-ancient'));
             else openCategory('profile', document.getElementById('nav-profile'));
         });
     </script>
-   <style>
-/* Buttons  ---------- container */
-.floating-nav { position: fixed;right: 0;top: 50%;transform: translateY(-50%);display: flex;flex-direction: column; z-index: 9999;}
-
-/* button style - default (badi screen ke liye) */
-.float-btn {writing-mode: vertical-rl;transform: rotate(180deg);text-decoration: none;padding: 7px 7px;font-weight: 600;letter-spacing: 1px;color: white;margin: 4px 0;font-size: 14px;
-/* curved side outside */border-radius: 0 15px 15px 0;background: linear-gradient(135deg, #ff7a00, #ff3c00);box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);transition: all .35s ease;}
-/* hover animation */
-.float-btn:hover {padding-right: 2px;box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);}
-/* back button color */
-.back {background: linear-gradient(135deg, #007bff, #003cff);}
-/* ===== 1500px se chhoti screen ke liye - 12x12 icons ===== */
-@media (max-width: 1500px) {.floating-nav {right: 0;gap: 3px;}
-    .float-btn {writing-mode: horizontal-tb !important;  /* horizontal kar diya */transform: rotate(0deg) !important;      /* rotation hata di */width: 17px !important;height: 30px !important;min-width: 17px;min-height: 30px;padding: 0 !important;margin: 2px 0 !important;
-    font-size: 5px !important;line-height: 12px !important;text-align: center !important;border-radius: 6px 0 0 6px !important;   /* right side curved */display: flex;align-items: center;justify-content: center;background: linear-gradient(135deg, #ff7a00, #ff3c00);box-shadow:   2px 5px rgba(0, 0, 0, 0.2);
-        /* text ko hide kar diya - sirf icon dikhega */
-        color: transparent !important; position: relative;}
-    /* Home button - house icon */
-    .float-btn:first-child::before { content: "🏠";font-size: 6px;color: white;position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);}
-    /* Back button - back arrow icon */
-    .float-btn.back::before {content: "🔙";font-size: 6px;color: white;position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);}
-    /* Hover effect for tiny buttons */
-    .float-btn:hover {transform: scale(1.1);box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);padding: 0 !important;}
-    /* Back button color in tiny mode */
-    .float-btn.back {background: linear-gradient(135deg, #007bff, #003cff);}}
-
-/* responsive for very small screens - extra adjustments */
-@media (max-width: 480px) {.floating-nav {right: 2px;}.float-btn {width: 17px !important;height: 17px !important; min-width: 17px;min-height: 17px;font-size: 4px !important;}.float-btn::before { font-size: 5px !important;}}
-/* original responsive - pehle jaisa hi */
-@media (min-width: 1501px) and (max-width: 768px) {.float-btn { font-size: 12px;padding: 14px 10px;}}
-</style>
-<div class="floating-nav"><a href="main.html" class="float-btn">Home</a>
-    <a href="upsc-ias-ips-ifos-ifs-iaas-icas-icls-idas-ides-iis-ipos-iptafs-irs-income-tax-irs-customer-indirect-tax-irts-iras-irps-irsse-itrs-rpf-aghqcs-danics-danips-pcs-pps.html" class="float-btn back">Back</a>
-</div>
-    <script src="social-bar.js"></script>
 </body>
 </html>
