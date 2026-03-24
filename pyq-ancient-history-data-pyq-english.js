@@ -954,7 +954,7 @@ window.ancientQuizData = [
     ]
 },
 {
-    "name": "UNIT 7: SOUTH INDIAN DYNASTIES AND ANCIENT TERMINOLOGY",
+    "name": "UNIT 6: SOUTH INDIAN DYNASTIES AND ANCIENT TERMINOLOGY",
     "questions": [
         {
             "q": "With reference to the history of India, consider the following pairs:\n1. Madanapalle: Andhra Pradesh — Jiddu Krishnamurti\n2. Gopalpur: Odisha — Maritime trade center\n3. Muchiri: Kerala — Ancient port of the Cheras\nWhich of the above are correctly matched?",
