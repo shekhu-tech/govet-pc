@@ -11,37 +11,23 @@
 <meta name="author" content="StiSkilli">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
 <meta name="googlebot" content="index, follow">
-<!-- VIEWPORT -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<!-- CANONICAL (APP LINK USED) -->
 <link rel="canonical" href="https://play.google.com/store/apps/details?id=com.ai.skillaura">
 <meta name="application-name" content="StiSkilli">
 <meta name="theme-color" content="#F4C430">
 <meta name="mobile-web-app-capable" content="yes">
-<!-- =========================
-     OPEN GRAPH (SOCIAL)
-========================== -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="StiSkilli App – Government & Private Jobs India">
 <meta property="og:description" content="Government Jobs, Private Jobs, Exam Notifications, Admit Cards, Results and Syllabus in one app. Download StiSkilli from Google Play.">
 <meta property="og:url" content="https://play.google.com/store/apps/details?id=com.ai.skillaura">
 <meta property="og:image" content="https://play-lh.googleusercontent.com/your-app-icon.png">
 <meta property="og:site_name" content="StiSkilli">
-<!-- =========================
-     TWITTER / X
-========================== -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="StiSkilli App">
 <meta name="twitter:description" content="Government & Private Jobs, Exams, Results and Notifications App in India.">
 <meta name="twitter:image" content="https://play-lh.googleusercontent.com/your-app-icon.png">
-<!-- =========================
-     ANDROID APP INDEXING
-========================== -->
 <link rel="alternate"
 href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id=com.ai.skillaura">
-<!-- =========================
-     STRUCTURED DATA – MOBILE APPLICATION
-========================== -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -58,13 +44,8 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
 }
 </script>
 
-<!-- =========================
-     SOCIAL PROFILES
-========================== -->
 <link rel="me" href="https://www.facebook.com/stiworldofficial/">
 <link rel="me" href="https://www.instagram.com/stiworldofficial">
-<!-- ========================= -->
-
 <script src="redirect.js?v=99"></script>  <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
@@ -620,6 +601,37 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
             transition: left 0.5s ease;
         }
 
+        /* =========================================
+           NEW CUSTOM POPUPS CSS (Responsive)
+           ========================================= */
+        .custom-popup-overlay {
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.95); z-index: 4000;
+            display: none; justify-content: center; align-items: center;
+            padding: 15px; backdrop-filter: blur(10px);
+        }
+        .custom-popup-box {
+            background: linear-gradient(145deg, #1a1a1a, #0a0a0a);
+            border: 2px solid var(--primary);
+            border-radius: 20px; padding: 25px;
+            width: 100%; max-width: 500px;
+            text-align: center; box-shadow: 0 10px 30px rgba(244,196,48,0.3);
+            max-height: 85vh; overflow-y: auto;
+        }
+        .cp-text { font-size: 0.85rem; color: #ccc; line-height: 1.5; margin-bottom: 15px; text-align: left; }
+        @media (min-width: 768px) {
+            .custom-popup-box { padding: 35px; max-width: 600px; }
+            .cp-text { font-size: 1rem; }
+        }
+        .cp-title { font-family: 'Rajdhani'; font-size: 1.8rem; font-weight: 800; color: var(--primary); margin-bottom: 15px; text-transform: uppercase; }
+        .cp-btn {
+            background: var(--primary); color: #000; font-family: 'Rajdhani'; font-weight: 800; font-size: 1.2rem;
+            padding: 12px 30px; border-radius: 50px; border: none; cursor: pointer; margin-top: 15px;
+            box-shadow: 0 5px 15px rgba(244, 196, 48, 0.4); transition: 0.3s; width: 100%;
+        }
+        .cp-btn:hover { transform: scale(1.02); }
+        .quote-text { font-style: italic; color: #FFD700; margin: 15px 0; font-weight: bold; font-size: 1.1rem; }
+
     </style>
 </head>
 <body>
@@ -733,19 +745,62 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
                     <button class="res-btn" onclick="closeSectionLock()">ठीक है</button>
                 </div>
             </div>
-            
+
+            <div id="unit-start-popup" class="custom-popup-overlay">
+                <div class="custom-popup-box">
+                    <div class="cp-title" id="us-title">इकाई का नाम</div>
+                    <div class="cp-text" id="us-index" style="text-align: center;">
+                        <strong>विषय / अनुक्रमणिका:</strong><br><br>
+                        • विस्तृत विषयगत प्रश्न<br>
+                        • अवधारणा और तथ्य की जाँच<br>
+                        • महत्वपूर्ण घटनाएँ और सिद्धांत
+                    </div>
+                    <button class="cp-btn" onclick="beginUnitQuestions()">शुरू करें (Let's Start)</button>
+                </div>
+            </div>
+
+            <div id="subscribe-index-popup" class="custom-popup-overlay">
+                <div class="custom-popup-box">
+                    <div class="cp-title">पाठ्यक्रम अनलॉक!</div>
+                    <div class="cp-text">
+                        <strong>1. भारतीय राजनीति:</strong> संविधान, संसद, न्यायपालिका, अधिकार।<br><br>
+                        <strong>2. अर्थशास्त्र:</strong> समष्टि और व्यष्टि, बैंकिंग, बजट, मुद्रास्फीति।<br><br>
+                        <strong>3. भूगोल:</strong> भौतिक, भारतीय और विश्व भूगोल।<br><br>
+                        <strong>4. पर्यावरण:</strong> जैव विविधता, जलवायु परिवर्तन, पारिस्थितिकी।<br><br>
+                        <strong>5. विज्ञान एवं प्रौद्योगिकी:</strong> अंतरिक्ष, आईटी, बायोटेक, रक्षा।
+                    </div>
+                    <button class="cp-btn" onclick="closeSubscribeIndex()">शानदार, आगे बढ़ें!</button>
+                </div>
+            </div>
+
+            <div id="section-complete-popup" class="custom-popup-overlay">
+                <div class="custom-popup-box">
+                    <div class="cp-title">बहुत बढ़िया!</div>
+                    <div style="font-size:3rem; margin-bottom:10px;">🌟</div>
+                    <div class="cp-text" style="text-align: center; color: #fff; font-size: 1.1rem; font-weight: bold;">
+                        आपने इस अनुभाग को सफलतापूर्वक पूरा कर लिया है।
+                    </div>
+                    <div class="quote-text" id="sc-quote">"ज्ञान में किया गया निवेश सबसे अच्छा ब्याज देता है।"</div>
+                    <div class="cp-text" style="background: rgba(244,196,48,0.1); padding: 15px; border-radius: 12px; border: 1px solid rgba(244,196,48,0.3); text-align: center;">
+                        <strong style="font-size: 1.2rem;">अगला: <span id="sc-next-title" style="color:var(--primary);">अनुभाग का नाम</span></strong><br>
+                        <span id="sc-next-index" style="display: block; margin-top: 5px;">अवधारणाओं और चुनौतियों के अगले सेट के लिए तैयार हो जाइए।</span>
+                    </div>
+                    <button class="cp-btn" id="sc-next-btn">अगला अनुभाग</button>
+                </div>
+            </div>
+
             <div id="grand-completion-overlay">
                 <div class="grand-box">
                     <div class="grand-icon"></div>
                     <div class="grand-title">परम विजेता</div>
-                    <div class="grand-subtitle">इतिहास विशारद</div>
+                    <div class="grand-subtitle">विषय विशारद</div>
                     
                     <div class="grand-scroll-container">
-                        <p><strong>बधाई हो!</strong> आपने समय की यात्रा को सफलतापूर्वक पार कर लिया है। सभ्यता की प्राचीन जड़ों से लेकर आधुनिक दुनिया की जटिलताओं तक, आपने अपनी महारत साबित की है।</p>
+                        <p><strong>बधाई हो!</strong> आपने राजनीति, अर्थशास्त्र, भूगोल, पर्यावरण और विज्ञान के सभी जटिल विषयों को सफलतापूर्वक पार कर लिया है। आपने अपनी महारत साबित की है।</p>
                         <br>
-                        <p>यह उपलब्धि इस संग्रह में सभी उपलब्ध इकाइयों के पूर्ण होने का प्रतीक है। अब आप उन कुछ लोगों में से हैं जिन्होंने ,राजनीति,अर्थसास्त्र, भूगोल,जैवविविधता,विज्ञानं और प्रोद्योगिकी के प्रत्येक अध्याय को अनलॉक किया है। सीखने के प्रति आपका समर्पण और इन चुनौतियों के प्रति आपकी दृढ़ता वास्तव में सराहनीय है।</p>
+                        <p>यह उपलब्धि इस संग्रह में सभी उपलब्ध इकाइयों के पूर्ण होने का प्रतीक है। सीखने के प्रति आपका समर्पण और इन चुनौतियों के प्रति आपकी दृढ़ता वास्तव में सराहनीय है।</p>
                         <br>
-                        <p>आपने राजनीति,अर्थसास्त्र, भूगोल,जैवविविधता,विज्ञानं और प्रोद्योगिकी में महारत हासिल कर ली है। अगली चुनौती के लिए तैयार रहें।</p>
+                        <p>अगली चुनौती के लिए तैयार रहें।</p>
                     </div>
 
                     <div class="grand-btn-group">
@@ -761,7 +816,7 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
                         <i class="fas fa-crown" style="color:var(--primary); font-size:2rem;"></i>
                     </div>
                     <h2 style="font-family:'Rajdhani'; font-size:2rem; margin-bottom:5px; color:#fff; font-weight:800;">अभिजात वर्ग में शामिल हों</h2>
-                    <p style="color:#888; margin-bottom:25px; font-size:0.9rem;">अंतिम इतिहास अनुभव प्राप्त करें।</p>
+                    <p style="color:#888; margin-bottom:25px; font-size:0.9rem;">संपूर्ण अध्ययन अनुभव प्राप्त करें।</p>
                     
                     <form id="details-form" style="width:100%;">
                         <div class="gold-input-group">
@@ -919,17 +974,27 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
         </div>
     </div>
 
-    <!-- ===================================================== -->
-    <!-- SEPARATE QUIZ DATA FILES - UPDATE THESE PATHS WITH YOUR CUSTOM FILE NAMES -->
-    <!-- ===================================================== -->
     <script src="pyq-polity-economics-geography-biodiversity-sceince-tech-hindi-polity.js"></script>
     <script src="pyq-polity-economics-geography-biodiversity-sceince-tech-hindi-economics.js"></script>
     <script src="pyq-polity-economics-geography-biodiversity-sceince-tech-hindi-geography.js"></script>
     <script src="pyq-polity-economics-geography-biodiversity-sceince-tech-hindi-biodiversity.js"></script>
     <script src="pyq-polity-economics-geography-biodiversity-sceince-tech-hindi-sceincetech.js"></script>
-    <!-- ===================================================== -->
-
     <script>
+        // ======================================================
+        // UNIQUE PRODUCT ID - EDITABLE
+        // ======================================================
+        const PRODUCT_ID = "GS+CSAT-LAST-35-YEARS-PYQ-HINDI";
+        
+        // UNIQUE LOCALSTORAGE KEYS BASED ON PRODUCT_ID
+        const PROGRESS_KEY = 'quizProgress_' + PRODUCT_ID;
+        const UNLOCKED_KEY = 'unlockedLevels_' + PRODUCT_ID;
+        const HAS_PAID_KEY = 'hasPaid_' + PRODUCT_ID;
+        const EXPIRY_KEY = 'subscriptionExpiry_' + PRODUCT_ID;
+        const PLAN_NAME_KEY = 'userPlanName_' + PRODUCT_ID;
+        const PLAN_AMOUNT_KEY = 'userPlanAmount_' + PRODUCT_ID;
+        const PURCHASE_TIME_KEY = 'purchaseTime_' + PRODUCT_ID;
+        const TXN_KEY = 'userTxn_' + PRODUCT_ID;
+
         // ======================================================
         // अलग-अलग फ़ाइलों से संयुक्त क्विज़ डेटाबेस
         // ======================================================
@@ -956,10 +1021,10 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
 
         const CATEGORY_TITLES = {
             ancient: "भारतीय-राजनीति",
-            medieval: "अर्थसास्त्र",
+            medieval: "अर्थशास्त्र",
             modern: "भूगोल",
-            world: "पर्यावरण/जैव-विविधता ",
-            art: "विज्ञानं-एंड-प्रोद्योगिकी",
+            world: "पर्यावरण/जैव-विविधता",
+            art: "विज्ञान-एवं-प्रौद्योगिकी",
             profile: "उपयोगकर्ता प्रोफाइल"
         };
         
@@ -977,25 +1042,40 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
 
         const newsDatabase = [];
 
+        // Motivational Quotes & Indexes for Section Completion (Hindi)
+        const motivationalQuotes = [
+            "“ज्ञान में किया गया निवेश सबसे अच्छा ब्याज देता है।” – बेंजामिन फ्रैंकलिन",
+            "“शिक्षा सबसे शक्तिशाली हथियार है जिसका उपयोग आप दुनिया को बदलने के लिए कर सकते हैं।” – नेल्सन मंडेला",
+            "“शिक्षा की जड़ें कड़वी होती हैं, लेकिन फल मीठा होता है।” – अरस्तू",
+            "“सफलता छोटे-छोटे प्रयासों का योग है, जो दिन-प्रतिदिन दोहराए जाते हैं।” – रॉबर्ट कोलियर"
+        ];
+        
+        const sectionIndexes = {
+            'medieval': "विषय: समष्टि अर्थशास्त्र, व्यष्टि अर्थशास्त्र, बजट, बैंकिंग।",
+            'modern': "विषय: भौतिक, मानव, भारतीय और विश्व भूगोल।",
+            'world': "विषय: पारिस्थितिकी, जलवायु परिवर्तन, जैव विविधता, पर्यावरण।",
+            'art': "विषय: अंतरिक्ष, आईटी, जैव प्रौद्योगिकी, रक्षा, सामान्य विज्ञान।"
+        };
+
         // --- 3. समाप्ति सहित स्थिति प्रबंधन ---
         let userData = {
             name: localStorage.getItem('userName') || '',
             number: localStorage.getItem('userMobile') || '',
             email: localStorage.getItem('userEmail') || '',
-            txn: localStorage.getItem('userTxn') || '',
-            planAmount: localStorage.getItem('userPlanAmount') || '',
-            planName: localStorage.getItem('userPlanName') || '',
-            expiry: localStorage.getItem('subscriptionExpiry') || null,
-            purchaseTime: localStorage.getItem('purchaseTime') || null
+            txn: localStorage.getItem(TXN_KEY) || '',
+            planAmount: localStorage.getItem(PLAN_AMOUNT_KEY) || '',
+            planName: localStorage.getItem(PLAN_NAME_KEY) || '',
+            expiry: localStorage.getItem(EXPIRY_KEY) || null,
+            purchaseTime: localStorage.getItem(PURCHASE_TIME_KEY) || null
         };
         
         let selectedPlanPrice = 0, selectedPlanLabel = "";
         
         let progressData;
-        try { progressData = JSON.parse(localStorage.getItem('quizProgress')) || {}; } catch(e) { progressData = {}; }
+        try { progressData = JSON.parse(localStorage.getItem(PROGRESS_KEY)) || {}; } catch(e) { progressData = {}; }
 
         let unlockedLevels;
-        try { unlockedLevels = JSON.parse(localStorage.getItem('unlockedLevels')) || { ancient: 1, medieval: 1, modern: 1, world: 1, art: 1 }; } catch (e) { unlockedLevels = { ancient: 1, medieval: 1, modern: 1, world: 1, art: 1 }; }
+        try { unlockedLevels = JSON.parse(localStorage.getItem(UNLOCKED_KEY)) || { ancient: 1, medieval: 1, modern: 1, world: 1, art: 1 }; } catch (e) { unlockedLevels = { ancient: 1, medieval: 1, modern: 1, world: 1, art: 1 }; }
 
         let activeCat = "", activeUnitIdx = 0;
         let currentSession = { score: 0, correct: 0, wrong: 0, qIndex: 0 };
@@ -1004,18 +1084,19 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
         let timeLeft = 72; // 72 सेकंड टाइमर
 
         function isSubscriptionValid() {
-            if (!localStorage.getItem('hasPaid')) return false;
+            if (!localStorage.getItem(HAS_PAID_KEY)) return false;
             if (!userData.expiry) return true;
             if (userData.planName && (userData.planName.toLowerCase().includes('lifetime') || userData.planName.toLowerCase().includes('आजीवन'))) return true;
             
             const now = new Date().getTime();
             const exp = new Date(userData.expiry).getTime();
             if (now > exp) {
-                localStorage.removeItem('hasPaid');
-                localStorage.removeItem('subscriptionExpiry');
-                localStorage.removeItem('purchaseTime');
-                localStorage.removeItem('userPlanName');
-                localStorage.removeItem('userPlanAmount');
+                localStorage.removeItem(HAS_PAID_KEY);
+                localStorage.removeItem(EXPIRY_KEY);
+                localStorage.removeItem(PURCHASE_TIME_KEY);
+                localStorage.removeItem(PLAN_NAME_KEY);
+                localStorage.removeItem(PLAN_AMOUNT_KEY);
+                localStorage.removeItem(TXN_KEY);
                 userData.expiry = null;
                 return false;
             }
@@ -1096,6 +1177,8 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
             profileUI.style.display = 'none';
             newsUI.style.display = 'none';
             subNav.style.display = 'none';
+            
+            // सभी पॉपअप्स को छिपाएं
             document.getElementById('result-overlay').style.display = 'none';
             document.getElementById('locked-popup').style.display = 'none';
             document.getElementById('explanation-overlay').style.display = 'none'; 
@@ -1103,6 +1186,9 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
             document.getElementById('section-locked-popup').style.display = 'none';
             document.getElementById('premium-success-popup').style.display = 'none';
             document.getElementById('premium-error-popup').style.display = 'none';
+            document.getElementById('unit-start-popup').style.display = 'none';
+            document.getElementById('subscribe-index-popup').style.display = 'none';
+            document.getElementById('section-complete-popup').style.display = 'none';
 
             if (catName === 'profile') {
                 profileUI.style.display = 'flex';
@@ -1194,7 +1280,15 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
                 }
                 saveProgress();
             }
-            
+
+            // Show Unit Start Popup
+            const uName = quizDatabase[activeCat][activeUnitIdx].name || `इकाई ${activeUnitIdx + 1}`;
+            document.getElementById('us-title').innerText = uName;
+            document.getElementById('unit-start-popup').style.display = 'flex';
+        }
+
+        function beginUnitQuestions() {
+            document.getElementById('unit-start-popup').style.display = 'none';
             loadQuestion();
         }
 
@@ -1372,7 +1466,24 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
         function saveProgress() {
             if (!progressData[activeCat]) progressData[activeCat] = {};
             progressData[activeCat][activeUnitIdx] = currentSession;
-            localStorage.setItem('quizProgress', JSON.stringify(progressData));
+            localStorage.setItem(PROGRESS_KEY, JSON.stringify(progressData));
+        }
+
+        function showSectionCompletePopup(nextCat) {
+            document.getElementById('sc-next-title').innerText = CATEGORY_TITLES[nextCat] || nextCat.toUpperCase();
+            document.getElementById('sc-next-index').innerText = sectionIndexes[nextCat] || "और भी रोमांचक प्रश्न आपका इंतजार कर रहे हैं!";
+            
+            const randomQuote = motivationalQuotes[Math.floor(Math.random() * motivationalQuotes.length)];
+            document.getElementById('sc-quote').innerText = randomQuote;
+            
+            const popup = document.getElementById('section-complete-popup');
+            popup.style.display = 'flex';
+
+            document.getElementById('sc-next-btn').onclick = () => {
+                popup.style.display = 'none';
+                const targetDock = document.getElementById(`nav-${nextCat}`);
+                openCategory(nextCat, targetDock);
+            };
         }
 
         function showResultPopup() {
@@ -1390,7 +1501,7 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
                 const totalUnits = quizDatabase[activeCat].length;
                 if(activeUnitIdx + 1 === unlockedLevels[activeCat]) {
                     unlockedLevels[activeCat]++;
-                    localStorage.setItem('unlockedLevels', JSON.stringify(unlockedLevels));
+                    localStorage.setItem(UNLOCKED_KEY, JSON.stringify(unlockedLevels));
                     renderSubNav(activeCat);
                     updateDockVisuals();
                 }
@@ -1416,8 +1527,11 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
                         switchUnit(activeUnitIdx + 1);
                     } else {
                         overlay.style.display = 'none';
-                        alert("अनुभाग पूर्ण! कृपया मेनू से अगला अनलॉक किया गया अनुभाग चुनें।");
-                        updateDockVisuals();
+                        const catIndex = PROGRESSION_ORDER.indexOf(activeCat);
+                        if (catIndex >= 0 && catIndex < 4) {
+                            const nextCat = PROGRESSION_ORDER[catIndex + 1];
+                            showSectionCompletePopup(nextCat);
+                        }
                     }
                 };
             } else {
@@ -1791,20 +1905,20 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
                 expiryDate = null;
             }
             
-            localStorage.setItem('hasPaid', 'true'); 
+            localStorage.setItem(HAS_PAID_KEY, 'true'); 
             localStorage.setItem('userName', userData.name);
             localStorage.setItem('userEmail', userData.email);
             localStorage.setItem('userMobile', userData.number);
-            localStorage.setItem('userTxn', userData.txn); 
-            localStorage.setItem('userPlanName', userData.planName);
-            localStorage.setItem('userPlanAmount', selectedPlanPrice.toString());
-            localStorage.setItem('purchaseTime', now.toISOString());
+            localStorage.setItem(TXN_KEY, userData.txn); 
+            localStorage.setItem(PLAN_NAME_KEY, userData.planName);
+            localStorage.setItem(PLAN_AMOUNT_KEY, selectedPlanPrice.toString());
+            localStorage.setItem(PURCHASE_TIME_KEY, now.toISOString());
             
             if (expiryDate) {
-                localStorage.setItem('subscriptionExpiry', expiryDate.toISOString());
+                localStorage.setItem(EXPIRY_KEY, expiryDate.toISOString());
                 userData.expiry = expiryDate.toISOString();
             } else {
-                localStorage.removeItem('subscriptionExpiry');
+                localStorage.removeItem(EXPIRY_KEY);
                 userData.expiry = null;
             }
             
@@ -1841,13 +1955,18 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
 
         function closeWelcome() {
             document.getElementById('welcome-popup').style.display = 'none';
+            document.getElementById('subscribe-index-popup').style.display = 'flex';
+        }
+
+        function closeSubscribeIndex() {
+            document.getElementById('subscribe-index-popup').style.display = 'none';
             initProfileView();
             openCategory('ancient', document.getElementById('nav-ancient'));
         }
 
         window.addEventListener('DOMContentLoaded', () => {
             document.getElementById('app-main-title').innerText = APP_NAME;
-            document.title = APP_NAME + " - इतिहास PYQ";
+            document.title = APP_NAME + " - राजनीति और अन्य PYQ";
             
             updateDockVisuals();
 
