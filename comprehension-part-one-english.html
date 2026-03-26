@@ -11,9 +11,7 @@
 <meta name="author" content="StiSkilli">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
 <meta name="googlebot" content="index, follow">
-<!-- VIEWPORT -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<!-- CANONICAL (APP LINK USED) -->
 <link rel="canonical" href="https://play.google.com/store/apps/details?id=com.ai.skillaura">
 <meta name="application-name" content="StiSkilli">
 <meta name="theme-color" content="#F4C430">
@@ -21,30 +19,18 @@
 <meta name="application-name" content="StiSkilli">
 <meta name="theme-color" content="#F4C430">
 <meta name="mobile-web-app-capable" content="yes">
-<!-- =========================
-     OPEN GRAPH (SOCIAL)
-========================== -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="StiSkilli App – Government & Private Jobs India">
 <meta property="og:description" content="Government Jobs, Private Jobs, Exam Notifications, Admit Cards, Results and Syllabus in one app. Download StiSkilli from Google Play.">
 <meta property="og:url" content="https://play.google.com/store/apps/details?id=com.ai.skillaura">
 <meta property="og:image" content="https://play-lh.googleusercontent.com/your-app-icon.png">
 <meta property="og:site_name" content="StiSkilli">
-<!-- =========================
-     TWITTER / X
-========================== -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="StiSkilli App">
 <meta name="twitter:description" content="Government & Private Jobs, Exams, Results and Notifications App in India.">
 <meta name="twitter:image" content="https://play-lh.googleusercontent.com/your-app-icon.png">
-<!-- =========================
-     ANDROID APP INDEXING
-========================== -->
 <link rel="alternate"
 href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id=com.ai.skillaura">
-<!-- =========================
-     STRUCTURED DATA – MOBILE APPLICATION
-========================== -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -61,23 +47,11 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
 }
 </script>
 
-<!-- =========================
-     SOCIAL PROFILES
-========================== -->
 <link rel="me" href="https://www.facebook.com/stiworldofficial/">
 <link rel="me" href="https://www.instagram.com/stiworldofficial">
-<!-- ========================= -->
 <script src="redirect.js?v=99"></script>
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Razorpay Checkout Script -->
-    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-<link rel="me" href="https://www.facebook.com/stiworldofficial/">
-<link rel="me" href="https://www.instagram.com/stiworldofficial">
-<script src="redirect.js?v=99"></script>  <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
     
@@ -632,6 +606,37 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
             transition: left 0.5s ease;
         }
 
+        /* =========================================
+           NEW CUSTOM POPUPS CSS (Responsive)
+           ========================================= */
+        .custom-popup-overlay {
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.95); z-index: 4000;
+            display: none; justify-content: center; align-items: center;
+            padding: 15px; backdrop-filter: blur(10px);
+        }
+        .custom-popup-box {
+            background: linear-gradient(145deg, #1a1a1a, #0a0a0a);
+            border: 2px solid var(--primary);
+            border-radius: 20px; padding: 25px;
+            width: 100%; max-width: 500px;
+            text-align: center; box-shadow: 0 10px 30px rgba(244,196,48,0.3);
+            max-height: 85vh; overflow-y: auto;
+        }
+        .cp-text { font-size: 0.85rem; color: #ccc; line-height: 1.5; margin-bottom: 15px; text-align: left; }
+        @media (min-width: 768px) {
+            .custom-popup-box { padding: 35px; max-width: 600px; }
+            .cp-text { font-size: 1rem; }
+        }
+        .cp-title { font-family: 'Rajdhani'; font-size: 1.8rem; font-weight: 800; color: var(--primary); margin-bottom: 15px; text-transform: uppercase; }
+        .cp-btn {
+            background: var(--primary); color: #000; font-family: 'Rajdhani'; font-weight: 800; font-size: 1.2rem;
+            padding: 12px 30px; border-radius: 50px; border: none; cursor: pointer; margin-top: 15px;
+            box-shadow: 0 5px 15px rgba(244, 196, 48, 0.4); transition: 0.3s; width: 100%;
+        }
+        .cp-btn:hover { transform: scale(1.02); }
+        .quote-text { font-style: italic; color: #FFD700; margin: 15px 0; font-weight: bold; font-size: 1.1rem; }
+
     </style>
 </head>
 <body>
@@ -745,7 +750,50 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
                     <button class="res-btn" onclick="closeSectionLock()">Got it</button>
                 </div>
             </div>
-            
+
+            <div id="unit-start-popup" class="custom-popup-overlay">
+                <div class="custom-popup-box">
+                    <div class="cp-title" id="us-title">Unit Name</div>
+                    <div class="cp-text" id="us-index" style="text-align: center;">
+                        <strong>Topics / Index:</strong><br><br>
+                        • Detailed Comprehension Questions<br>
+                        • Concept & Logic Checking<br>
+                        • Reading Speed & Accuracy
+                    </div>
+                    <button class="cp-btn" onclick="beginUnitQuestions()">Let's Start</button>
+                </div>
+            </div>
+
+            <div id="subscribe-index-popup" class="custom-popup-overlay">
+                <div class="custom-popup-box">
+                    <div class="cp-title">Syllabus Unlocked!</div>
+                    <div class="cp-text">
+                        <strong>1. Factual/Direct:</strong> Direct answers, Fact-checking, Information retrieval.<br><br>
+                        <strong>2. Inferential:</strong> Implicit meanings, Assumptions, Deductions.<br><br>
+                        <strong>3. Theme Based:</strong> Core message, Passage summaries, Best titles.<br><br>
+                        <strong>4. Logical/Analytical:</strong> Argument evaluation, Conclusions, Cause & Effect.<br><br>
+                        <strong>5. Tone/Attitude Based:</strong> Author's perspective, Satire, Neutrality, Emotion.
+                    </div>
+                    <button class="cp-btn" onclick="closeSubscribeIndex()">Awesome, Let's Go!</button>
+                </div>
+            </div>
+
+            <div id="section-complete-popup" class="custom-popup-overlay">
+                <div class="custom-popup-box">
+                    <div class="cp-title">Well Done!</div>
+                    <div style="font-size:3rem; margin-bottom:10px;">🌟</div>
+                    <div class="cp-text" style="text-align: center; color: #fff; font-size: 1.1rem; font-weight: bold;">
+                        You have successfully completed this section.
+                    </div>
+                    <div class="quote-text" id="sc-quote">"Reading is to the mind what exercise is to the body."</div>
+                    <div class="cp-text" style="background: rgba(244,196,48,0.1); padding: 15px; border-radius: 12px; border: 1px solid rgba(244,196,48,0.3); text-align: center;">
+                        <strong style="font-size: 1.2rem;">Next Up: <span id="sc-next-title" style="color:var(--primary);">Section Name</span></strong><br>
+                        <span id="sc-next-index" style="display: block; margin-top: 5px;">Get ready for the next reading challenges.</span>
+                    </div>
+                    <button class="cp-btn" id="sc-next-btn">Next Section</button>
+                </div>
+            </div>
+
             <div id="grand-completion-overlay">
                 <div class="grand-box">
                     <div class="grand-icon"></div>
@@ -931,22 +979,20 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
         </div>
     </div>
 
-    <!-- ===================================================== -->
-    <!-- SEPARATE QUIZ DATA FILES - UPDATE THESE PATHS WITH YOUR CUSTOM FILE NAMES -->
-    <!-- ===================================================== -->
     <script src="comprehension-one-factualdirect-straitlift-rewardinformation-except-and-not-statementverification-borderlinetype-english.js"></script>
     <script src="comprehension-two-implicitmeaning-straitlift-singlelinehidden-combinedunderstanding-authorsbelife-assumption-deduction-strengthen-english.js"></script>
     <script src="comprehension-three-themebased-coremessage-besttitleselection-primarypurpose-passagesummary-sectiontheme-english.js"></script>
     <script src="comprehension-four-logicalanalytical-argumentidentification-assumptionbased-strenthentheargument-weakentheargument-logicalconclusion-causeeffect-english.js"></script>
     <script src="comprehension-five-tone&attitude-neutraltone-disapprovingtone-supportivetone-satiricaltone-concernedtone-suggestivetone-english.js"></script>
-    <!-- ===================================================== -->
-
     <script>
         // ======================================================
-        // UNIQUE PRODUCT ID FOR THIS FILE
-        // CHANGE THIS FOR EACH DIFFERENT FILE TO ISOLATE SUBSCRIPTIONS
+        // UNIQUE PRODUCT ID - EDITABLE
         // ======================================================
-        const PRODUCT_ID = "Complete_comprehension";   // <-- SET A UNIQUE ID FOR THIS FILE (e.g., "tril", "comprehension_one", etc.)
+        const PRODUCT_ID = "COMPLETE-COMPREHENSION-PART-ONE-ENGLISH";
+
+        // ======================================================
+        // COMBINED QUIZ DATABASE FROM SEPARATE FILES
+        // ======================================================
         
         const quizDatabase = {
             ancient: window.ancientQuizData || [],
@@ -990,6 +1036,21 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
         const PASS_REQ = 20;
 
         const newsDatabase = [];
+
+        // Motivational Quotes & Indexes for Section Completion
+        const motivationalQuotes = [
+            "“Reading is to the mind what exercise is to the body.” – Joseph Addison",
+            "“Today a reader, tomorrow a leader.” – Margaret Fuller",
+            "“The more that you read, the more things you will know.” – Dr. Seuss",
+            "“A capacity, and taste, for reading gives access to whatever has already been discovered by others.” – Abraham Lincoln"
+        ];
+        
+        const sectionIndexes = {
+            'medieval': "Topics: Implicit Meaning, Hidden Logic, Assumptions, Deductions.",
+            'modern': "Topics: Core Message, Best Titles, Passages Summaries, Themes.",
+            'world': "Topics: Arguments, Conclusion, Strengthening/Weakening Arguments.",
+            'art': "Topics: Neutral, Satirical, Disapproving, Supportive Tones."
+        };
 
         // --- 3. STATE MANAGEMENT WITH EXPIRY ---
         let userData = {
@@ -1110,6 +1171,8 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
             profileUI.style.display = 'none';
             newsUI.style.display = 'none';
             subNav.style.display = 'none';
+            
+            // Hide all popups
             document.getElementById('result-overlay').style.display = 'none';
             document.getElementById('locked-popup').style.display = 'none';
             document.getElementById('explanation-overlay').style.display = 'none'; 
@@ -1117,6 +1180,9 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
             document.getElementById('section-locked-popup').style.display = 'none';
             document.getElementById('premium-success-popup').style.display = 'none';
             document.getElementById('premium-error-popup').style.display = 'none';
+            document.getElementById('unit-start-popup').style.display = 'none';
+            document.getElementById('subscribe-index-popup').style.display = 'none';
+            document.getElementById('section-complete-popup').style.display = 'none';
 
             if (catName === 'profile') {
                 profileUI.style.display = 'flex';
@@ -1209,6 +1275,14 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
                 saveProgress();
             }
             
+            // Show Unit Start Popup
+            const uName = quizDatabase[activeCat][activeUnitIdx].name || `Unit ${activeUnitIdx + 1}`;
+            document.getElementById('us-title').innerText = uName;
+            document.getElementById('unit-start-popup').style.display = 'flex';
+        }
+
+        function beginUnitQuestions() {
+            document.getElementById('unit-start-popup').style.display = 'none';
             loadQuestion();
         }
 
@@ -1389,6 +1463,23 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
             localStorage.setItem('quizProgress', JSON.stringify(progressData));
         }
 
+        function showSectionCompletePopup(nextCat) {
+            document.getElementById('sc-next-title').innerText = CATEGORY_TITLES[nextCat] || nextCat.toUpperCase();
+            document.getElementById('sc-next-index').innerText = sectionIndexes[nextCat] || "More exciting questions await!";
+            
+            const randomQuote = motivationalQuotes[Math.floor(Math.random() * motivationalQuotes.length)];
+            document.getElementById('sc-quote').innerText = randomQuote;
+            
+            const popup = document.getElementById('section-complete-popup');
+            popup.style.display = 'flex';
+
+            document.getElementById('sc-next-btn').onclick = () => {
+                popup.style.display = 'none';
+                const targetDock = document.getElementById(`nav-${nextCat}`);
+                openCategory(nextCat, targetDock);
+            };
+        }
+
         function showResultPopup() {
             const overlay = document.getElementById('result-overlay');
             const emoji = document.getElementById('res-emoji');
@@ -1430,8 +1521,11 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
                         switchUnit(activeUnitIdx + 1);
                     } else {
                         overlay.style.display = 'none';
-                        alert("Section complete! Please select the next unlocked section from the menu.");
-                        updateDockVisuals();
+                        const catIndex = PROGRESSION_ORDER.indexOf(activeCat);
+                        if (catIndex >= 0 && catIndex < 4) {
+                            const nextCat = PROGRESSION_ORDER[catIndex + 1];
+                            showSectionCompletePopup(nextCat);
+                        }
                     }
                 };
             } else {
@@ -1855,13 +1949,19 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
 
         function closeWelcome() {
             document.getElementById('welcome-popup').style.display = 'none';
+            // Show Syllabus Index after Welcome popup
+            document.getElementById('subscribe-index-popup').style.display = 'flex';
+        }
+
+        function closeSubscribeIndex() {
+            document.getElementById('subscribe-index-popup').style.display = 'none';
             initProfileView();
             openCategory('ancient', document.getElementById('nav-ancient'));
         }
 
         window.addEventListener('DOMContentLoaded', () => {
             document.getElementById('app-main-title').innerText = APP_NAME;
-            document.title = APP_NAME + " - History PYQ";
+            document.title = APP_NAME + " - Comprehension PYQ";
             
             updateDockVisuals();
 
