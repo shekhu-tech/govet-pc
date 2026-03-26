@@ -10,37 +10,23 @@
 <meta name="author" content="StiSkilli">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
 <meta name="googlebot" content="index, follow">
-<!-- VIEWPORT -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<!-- CANONICAL (APP LINK USED) -->
 <link rel="canonical" href="https://play.google.com/store/apps/details?id=com.ai.skillaura">
 <meta name="application-name" content="StiSkilli">
 <meta name="theme-color" content="#F4C430">
 <meta name="mobile-web-app-capable" content="yes">
-<!-- =========================
-     OPEN GRAPH (SOCIAL)
-========================== -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="StiSkilli App – Government & Private Jobs India">
 <meta property="og:description" content="Government Jobs, Private Jobs, Exam Notifications, Admit Cards, Results and Syllabus in one app. Download StiSkilli from Google Play.">
 <meta property="og:url" content="https://play.google.com/store/apps/details?id=com.ai.skillaura">
 <meta property="og:image" content="https://play-lh.googleusercontent.com/your-app-icon.png">
 <meta property="og:site_name" content="StiSkilli">
-<!-- =========================
-     TWITTER / X
-========================== -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="StiSkilli App">
 <meta name="twitter:description" content="Government & Private Jobs, Exams, Results and Notifications App in India.">
 <meta name="twitter:image" content="https://play-lh.googleusercontent.com/your-app-icon.png">
-<!-- =========================
-     ANDROID APP INDEXING
-========================== -->
 <link rel="alternate"
 href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id=com.ai.skillaura">
-<!-- =========================
-     STRUCTURED DATA – MOBILE APPLICATION
-========================== -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -57,13 +43,8 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
 }
 </script>
 
-<!-- =========================
-     SOCIAL PROFILES
-========================== -->
 <link rel="me" href="https://www.facebook.com/stiworldofficial/">
 <link rel="me" href="https://www.instagram.com/stiworldofficial">
-<!-- ========================= -->
-
 <script src="redirect.js?v=99"></script>  <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
@@ -619,6 +600,37 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
             transition: left 0.5s ease;
         }
 
+        /* =========================================
+           NEW CUSTOM POPUPS CSS (Responsive)
+           ========================================= */
+        .custom-popup-overlay {
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.95); z-index: 4000;
+            display: none; justify-content: center; align-items: center;
+            padding: 15px; backdrop-filter: blur(10px);
+        }
+        .custom-popup-box {
+            background: linear-gradient(145deg, #1a1a1a, #0a0a0a);
+            border: 2px solid var(--primary);
+            border-radius: 20px; padding: 25px;
+            width: 100%; max-width: 500px;
+            text-align: center; box-shadow: 0 10px 30px rgba(244,196,48,0.3);
+            max-height: 85vh; overflow-y: auto;
+        }
+        .cp-text { font-size: 0.85rem; color: #ccc; line-height: 1.5; margin-bottom: 15px; text-align: left; }
+        @media (min-width: 768px) {
+            .custom-popup-box { padding: 35px; max-width: 600px; }
+            .cp-text { font-size: 1rem; }
+        }
+        .cp-title { font-family: 'Rajdhani'; font-size: 1.8rem; font-weight: 800; color: var(--primary); margin-bottom: 15px; text-transform: uppercase; }
+        .cp-btn {
+            background: var(--primary); color: #000; font-family: 'Rajdhani'; font-weight: 800; font-size: 1.2rem;
+            padding: 12px 30px; border-radius: 50px; border: none; cursor: pointer; margin-top: 15px;
+            box-shadow: 0 5px 15px rgba(244, 196, 48, 0.4); transition: 0.3s; width: 100%;
+        }
+        .cp-btn:hover { transform: scale(1.02); }
+        .quote-text { font-style: italic; color: #FFD700; margin: 15px 0; font-weight: bold; font-size: 1.1rem; }
+
     </style>
 </head>
 <body>
@@ -732,12 +744,55 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
                     <button class="res-btn" onclick="closeSectionLock()">Got it</button>
                 </div>
             </div>
-            
+
+            <div id="unit-start-popup" class="custom-popup-overlay">
+                <div class="custom-popup-box">
+                    <div class="cp-title" id="us-title">Unit Name</div>
+                    <div class="cp-text" id="us-index" style="text-align: center;">
+                        <strong>Topics / Index:</strong><br><br>
+                        • Detailed Subject Questions<br>
+                        • Concept & Fact Checking<br>
+                        • Important Events & Theories
+                    </div>
+                    <button class="cp-btn" onclick="beginUnitQuestions()">Let's Start</button>
+                </div>
+            </div>
+
+            <div id="subscribe-index-popup" class="custom-popup-overlay">
+                <div class="custom-popup-box">
+                    <div class="cp-title">Syllabus Unlocked!</div>
+                    <div class="cp-text">
+                        <strong>1. Indian Polity:</strong> Constitution, Parliament, Judiciary, Rights.<br><br>
+                        <strong>2. Economics:</strong> Macro & Micro, Banking, Budget, Inflation.<br><br>
+                        <strong>3. Geography:</strong> Physical, Indian, World Geography.<br><br>
+                        <strong>4. Environment:</strong> Biodiversity, Climate Change, Ecology.<br><br>
+                        <strong>5. Science & Tech:</strong> Space, IT, Biotech, Defense.
+                    </div>
+                    <button class="cp-btn" onclick="closeSubscribeIndex()">Awesome, Let's Go!</button>
+                </div>
+            </div>
+
+            <div id="section-complete-popup" class="custom-popup-overlay">
+                <div class="custom-popup-box">
+                    <div class="cp-title">Well Done!</div>
+                    <div style="font-size:3rem; margin-bottom:10px;">🌟</div>
+                    <div class="cp-text" style="text-align: center; color: #fff; font-size: 1.1rem; font-weight: bold;">
+                        You have successfully completed this section.
+                    </div>
+                    <div class="quote-text" id="sc-quote">"An investment in knowledge pays the best interest."</div>
+                    <div class="cp-text" style="background: rgba(244,196,48,0.1); padding: 15px; border-radius: 12px; border: 1px solid rgba(244,196,48,0.3); text-align: center;">
+                        <strong style="font-size: 1.2rem;">Next Up: <span id="sc-next-title" style="color:var(--primary);">Section Name</span></strong><br>
+                        <span id="sc-next-index" style="display: block; margin-top: 5px;">Get ready for the next set of concepts and challenges.</span>
+                    </div>
+                    <button class="cp-btn" id="sc-next-btn">Next Section</button>
+                </div>
+            </div>
+
             <div id="grand-completion-overlay">
                 <div class="grand-box">
                     <div class="grand-icon"></div>
                     <div class="grand-title">Ultimate Champion</div>
-                    <div class="grand-subtitle">History Master</div>
+                    <div class="grand-subtitle">Subject Master</div>
                     
                     <div class="grand-scroll-container">
                         <p><strong>Congratulations!</strong> You have successfully crossed the corridors of time. From the ancient roots of civilization to the complexities of the modern world, and through vibrant expressions of art and culture, you have proven your mastery.</p>
@@ -918,17 +973,27 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
         </div>
     </div>
 
-    <!-- ===================================================== -->
-    <!-- SEPARATE QUIZ DATA FILES - UPDATE THESE PATHS WITH YOUR CUSTOM FILE NAMES -->
-    <!-- ===================================================== -->
     <script src="pyq-polity-economics-geography-biodiversity-sceince-tech-english-polity.js"></script>
     <script src="pyq-polity-economics-geography-biodiversity-sceince-tech-english-economics.js"></script>
     <script src="pyq-polity-economics-geography-biodiversity-sceince-tech-english-geography.js"></script>
     <script src="pyq-polity-economics-geography-biodiversity-sceince-tech-english-biodiversity.js"></script>
     <script src="pyq-polity-economics-geography-biodiversity-sceince-tech-english-sceincetech.js"></script>
-    <!-- ===================================================== -->
-
     <script>
+        // ======================================================
+        // UNIQUE PRODUCT ID - EDITABLE
+        // ======================================================
+        const PRODUCT_ID = "GS+CSAT-LAST-35-YEARS-PYQ-ENGLISH";
+
+        // UNIQUE LOCALSTORAGE KEYS BASED ON PRODUCT_ID
+        const PROGRESS_KEY = 'quizProgress_' + PRODUCT_ID;
+        const UNLOCKED_KEY = 'unlockedLevels_' + PRODUCT_ID;
+        const HAS_PAID_KEY = 'hasPaid_' + PRODUCT_ID;
+        const EXPIRY_KEY = 'subscriptionExpiry_' + PRODUCT_ID;
+        const PLAN_NAME_KEY = 'userPlanName_' + PRODUCT_ID;
+        const PLAN_AMOUNT_KEY = 'userPlanAmount_' + PRODUCT_ID;
+        const PURCHASE_TIME_KEY = 'purchaseTime_' + PRODUCT_ID;
+        const TXN_KEY = 'userTxn_' + PRODUCT_ID;
+
         // ======================================================
         // COMBINED QUIZ DATABASE FROM SEPARATE FILES
         // ======================================================
@@ -942,11 +1007,11 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
         };
         
         console.log("All quiz data combined successfully!");
-        console.log("Ancient units:", quizDatabase.ancient.length);
-        console.log("Medieval units:", quizDatabase.medieval.length);
-        console.log("Modern units:", quizDatabase.modern.length);
-        console.log("World units:", quizDatabase.world.length);
-        console.log("Art units:", quizDatabase.art.length);
+        console.log("Polity units:", quizDatabase.ancient.length);
+        console.log("Economics units:", quizDatabase.medieval.length);
+        console.log("Geography units:", quizDatabase.modern.length);
+        console.log("Ecology units:", quizDatabase.world.length);
+        console.log("Science units:", quizDatabase.art.length);
         
         // --- 1. CONFIGURATION ---
         
@@ -954,11 +1019,11 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
         const APP_PACKAGE_NAME = "com.ai.skillaura";
 
         const CATEGORY_TITLES = {
-            ancient: "INDIAN POLIY",
+            ancient: "INDIAN POLITY",
             medieval: "ECONOMICS COMPLETE",
             modern: "GEOGRAPHY COMPLETE",
             world: "EVS/BIODIVERSITY",
-            art: "SCEINCE & TECH",
+            art: "SCIENCE & TECH",
             profile: "USER PROFILE"
         };
         
@@ -976,25 +1041,40 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
 
         const newsDatabase = [];
 
+        // Motivational Quotes & Indexes for Section Completion
+        const motivationalQuotes = [
+            "“An investment in knowledge pays the best interest.” – Benjamin Franklin",
+            "“Education is the most powerful weapon which you can use to change the world.” – Nelson Mandela",
+            "“The roots of education are bitter, but the fruit is sweet.” – Aristotle",
+            "“Success is the sum of small efforts, repeated day in and day out.” – Robert Collier"
+        ];
+        
+        const sectionIndexes = {
+            'medieval': "Topics: Macroeconomics, Microeconomics, Budget, Banking.",
+            'modern': "Topics: Physical, Human, Indian, and World Geography.",
+            'world': "Topics: Ecology, Climate Change, Biodiversity, Environment.",
+            'art': "Topics: Space, IT, Biotechnology, Defense, General Science."
+        };
+
         // --- 3. STATE MANAGEMENT WITH EXPIRY ---
         let userData = {
             name: localStorage.getItem('userName') || '',
             number: localStorage.getItem('userMobile') || '',
             email: localStorage.getItem('userEmail') || '',
-            txn: localStorage.getItem('userTxn') || '',
-            planAmount: localStorage.getItem('userPlanAmount') || '',
-            planName: localStorage.getItem('userPlanName') || '',
-            expiry: localStorage.getItem('subscriptionExpiry') || null,
-            purchaseTime: localStorage.getItem('purchaseTime') || null
+            txn: localStorage.getItem(TXN_KEY) || '',
+            planAmount: localStorage.getItem(PLAN_AMOUNT_KEY) || '',
+            planName: localStorage.getItem(PLAN_NAME_KEY) || '',
+            expiry: localStorage.getItem(EXPIRY_KEY) || null,
+            purchaseTime: localStorage.getItem(PURCHASE_TIME_KEY) || null
         };
         
         let selectedPlanPrice = 0, selectedPlanLabel = "";
         
         let progressData;
-        try { progressData = JSON.parse(localStorage.getItem('quizProgress')) || {}; } catch(e) { progressData = {}; }
+        try { progressData = JSON.parse(localStorage.getItem(PROGRESS_KEY)) || {}; } catch(e) { progressData = {}; }
 
         let unlockedLevels;
-        try { unlockedLevels = JSON.parse(localStorage.getItem('unlockedLevels')) || { ancient: 1, medieval: 1, modern: 1, world: 1, art: 1 }; } catch (e) { unlockedLevels = { ancient: 1, medieval: 1, modern: 1, world: 1, art: 1 }; }
+        try { unlockedLevels = JSON.parse(localStorage.getItem(UNLOCKED_KEY)) || { ancient: 1, medieval: 1, modern: 1, world: 1, art: 1 }; } catch (e) { unlockedLevels = { ancient: 1, medieval: 1, modern: 1, world: 1, art: 1 }; }
 
         let activeCat = "", activeUnitIdx = 0;
         let currentSession = { score: 0, correct: 0, wrong: 0, qIndex: 0 };
@@ -1003,18 +1083,19 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
         let timeLeft = 72; // 72 seconds timer as requested
 
         function isSubscriptionValid() {
-            if (!localStorage.getItem('hasPaid')) return false;
+            if (!localStorage.getItem(HAS_PAID_KEY)) return false;
             if (!userData.expiry) return true;
             if (userData.planName && (userData.planName.toLowerCase().includes('lifetime') || userData.planName.toLowerCase().includes('आजीवन'))) return true;
             
             const now = new Date().getTime();
             const exp = new Date(userData.expiry).getTime();
             if (now > exp) {
-                localStorage.removeItem('hasPaid');
-                localStorage.removeItem('subscriptionExpiry');
-                localStorage.removeItem('purchaseTime');
-                localStorage.removeItem('userPlanName');
-                localStorage.removeItem('userPlanAmount');
+                localStorage.removeItem(HAS_PAID_KEY);
+                localStorage.removeItem(EXPIRY_KEY);
+                localStorage.removeItem(PURCHASE_TIME_KEY);
+                localStorage.removeItem(PLAN_NAME_KEY);
+                localStorage.removeItem(PLAN_AMOUNT_KEY);
+                localStorage.removeItem(TXN_KEY);
                 userData.expiry = null;
                 return false;
             }
@@ -1095,6 +1176,8 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
             profileUI.style.display = 'none';
             newsUI.style.display = 'none';
             subNav.style.display = 'none';
+            
+            // Hide all popups
             document.getElementById('result-overlay').style.display = 'none';
             document.getElementById('locked-popup').style.display = 'none';
             document.getElementById('explanation-overlay').style.display = 'none'; 
@@ -1102,6 +1185,9 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
             document.getElementById('section-locked-popup').style.display = 'none';
             document.getElementById('premium-success-popup').style.display = 'none';
             document.getElementById('premium-error-popup').style.display = 'none';
+            document.getElementById('unit-start-popup').style.display = 'none';
+            document.getElementById('subscribe-index-popup').style.display = 'none';
+            document.getElementById('section-complete-popup').style.display = 'none';
 
             if (catName === 'profile') {
                 profileUI.style.display = 'flex';
@@ -1194,6 +1280,14 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
                 saveProgress();
             }
             
+            // Show Unit Start Popup
+            const uName = quizDatabase[activeCat][activeUnitIdx].name || `Unit ${activeUnitIdx + 1}`;
+            document.getElementById('us-title').innerText = uName;
+            document.getElementById('unit-start-popup').style.display = 'flex';
+        }
+
+        function beginUnitQuestions() {
+            document.getElementById('unit-start-popup').style.display = 'none';
             loadQuestion();
         }
 
@@ -1335,7 +1429,7 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
             const text = document.getElementById('expl-text');
             const box = document.getElementById('expl-box');
 
-            const explanation = qObj.explanation || "The detailed historical context of this answer is currently being updated in our archives.";
+            const explanation = qObj.explanation || "The detailed context of this answer is currently being updated in our archives.";
 
             if(isCorrect) {
                 icon.innerHTML = "";
@@ -1371,7 +1465,24 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
         function saveProgress() {
             if (!progressData[activeCat]) progressData[activeCat] = {};
             progressData[activeCat][activeUnitIdx] = currentSession;
-            localStorage.setItem('quizProgress', JSON.stringify(progressData));
+            localStorage.setItem(PROGRESS_KEY, JSON.stringify(progressData));
+        }
+
+        function showSectionCompletePopup(nextCat) {
+            document.getElementById('sc-next-title').innerText = CATEGORY_TITLES[nextCat] || nextCat.toUpperCase();
+            document.getElementById('sc-next-index').innerText = sectionIndexes[nextCat] || "More exciting questions await!";
+            
+            const randomQuote = motivationalQuotes[Math.floor(Math.random() * motivationalQuotes.length)];
+            document.getElementById('sc-quote').innerText = randomQuote;
+            
+            const popup = document.getElementById('section-complete-popup');
+            popup.style.display = 'flex';
+
+            document.getElementById('sc-next-btn').onclick = () => {
+                popup.style.display = 'none';
+                const targetDock = document.getElementById(`nav-${nextCat}`);
+                openCategory(nextCat, targetDock);
+            };
         }
 
         function showResultPopup() {
@@ -1389,7 +1500,7 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
                 const totalUnits = quizDatabase[activeCat].length;
                 if(activeUnitIdx + 1 === unlockedLevels[activeCat]) {
                     unlockedLevels[activeCat]++;
-                    localStorage.setItem('unlockedLevels', JSON.stringify(unlockedLevels));
+                    localStorage.setItem(UNLOCKED_KEY, JSON.stringify(unlockedLevels));
                     renderSubNav(activeCat);
                     updateDockVisuals();
                 }
@@ -1415,8 +1526,11 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
                         switchUnit(activeUnitIdx + 1);
                     } else {
                         overlay.style.display = 'none';
-                        alert("Section complete! Please select the next unlocked section from the menu.");
-                        updateDockVisuals();
+                        const catIndex = PROGRESSION_ORDER.indexOf(activeCat);
+                        if (catIndex >= 0 && catIndex < 4) {
+                            const nextCat = PROGRESSION_ORDER[catIndex + 1];
+                            showSectionCompletePopup(nextCat);
+                        }
                     }
                 };
             } else {
@@ -1516,7 +1630,7 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
                     }
                 }
             }
-            if(!hasData) container.innerHTML = '<div style="color:#555; text-align:center; padding-top:20px;">No history data found. Start a quiz!</div>';
+            if(!hasData) container.innerHTML = '<div style="color:#555; text-align:center; padding-top:20px;">No data found. Start a quiz!</div>';
             
             try {
                 document.getElementById('total-score-display').innerText = grandTotal.toFixed(0);
@@ -1631,7 +1745,8 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
                 notes: {
                     address: "StiWorldOfficial Corporate Office",
                     app_package: APP_PACKAGE_NAME,
-                    domain: "stiworldofficial.com"
+                    domain: "stiworldofficial.com",
+                    product_id: PRODUCT_ID
                 },
                 
                 theme: { color: "#F4C430" },
@@ -1790,20 +1905,20 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
                 expiryDate = null;
             }
             
-            localStorage.setItem('hasPaid', 'true'); 
+            localStorage.setItem(HAS_PAID_KEY, 'true'); 
             localStorage.setItem('userName', userData.name);
             localStorage.setItem('userEmail', userData.email);
             localStorage.setItem('userMobile', userData.number);
-            localStorage.setItem('userTxn', userData.txn); 
-            localStorage.setItem('userPlanName', userData.planName);
-            localStorage.setItem('userPlanAmount', selectedPlanPrice.toString());
-            localStorage.setItem('purchaseTime', now.toISOString());
+            localStorage.setItem(TXN_KEY, userData.txn); 
+            localStorage.setItem(PLAN_NAME_KEY, userData.planName);
+            localStorage.setItem(PLAN_AMOUNT_KEY, selectedPlanPrice.toString());
+            localStorage.setItem(PURCHASE_TIME_KEY, now.toISOString());
             
             if (expiryDate) {
-                localStorage.setItem('subscriptionExpiry', expiryDate.toISOString());
+                localStorage.setItem(EXPIRY_KEY, expiryDate.toISOString());
                 userData.expiry = expiryDate.toISOString();
             } else {
-                localStorage.removeItem('subscriptionExpiry');
+                localStorage.removeItem(EXPIRY_KEY);
                 userData.expiry = null;
             }
             
@@ -1840,13 +1955,18 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
 
         function closeWelcome() {
             document.getElementById('welcome-popup').style.display = 'none';
+            document.getElementById('subscribe-index-popup').style.display = 'flex';
+        }
+
+        function closeSubscribeIndex() {
+            document.getElementById('subscribe-index-popup').style.display = 'none';
             initProfileView();
             openCategory('ancient', document.getElementById('nav-ancient'));
         }
 
         window.addEventListener('DOMContentLoaded', () => {
             document.getElementById('app-main-title').innerText = APP_NAME;
-            document.title = APP_NAME + " - History PYQ";
+            document.title = APP_NAME + " - Polity & More PYQ";
             
             updateDockVisuals();
 
