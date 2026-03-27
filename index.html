@@ -7,7 +7,7 @@
    <link rel="manifest" href="manifest.json">
     <!-- Redirect Script -->
     <script src="redirect.js"></script>
-    <link rel="manifest" href="/GovtExam/manifest.json">
+    
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -191,8 +191,16 @@
     </main>
 
     <script>
-        // ORIGINAL DATA PRESERVED
-        const REDIRECT_URL = 'https://shekhu-tech.github.io/govet-pc/main.html';
+        // 1. URL se token nikalna aur Redirect URL set karna
+        const params = new URLSearchParams(window.location.search);
+        const allow = params.get("allow");
+        
+        let REDIRECT_URL = 'main.html';
+        // Agar token 'stiskilli' hai, toh usko preserve karein
+        if (allow === "stiskilli") {
+            REDIRECT_URL = 'main.html?allow=stiskilli';
+        }
+
         const DURATION = 3500; 
         const HAS_VISITED_KEY = 'hasVisitedSkilli';
 
@@ -239,7 +247,7 @@
                         // Dissolve Screen
                         document.body.classList.add('dissolve-active');
                         
-                        // Redirect
+                        // Redirect using the dynamically set URL
                         setTimeout(() => {
                             window.location.replace(REDIRECT_URL);
                         }, 800);
@@ -250,23 +258,6 @@
             requestAnimationFrame(loadLoop);
         };
     </script>
-    <!-- Splash redirect logic -->
-<script>
-const params = new URLSearchParams(window.location.search);
-const allow = params.get("allow");
-
-// token preserve karo
-if (allow === "stiskilli") {
-  setTimeout(() => {
-    window.location.href = "main.html?allow=stiskilli";
-  }, SPLASH_TIME);
-} else {
-  // bina token aaye ho to redirect.js handle karega
-  setTimeout(() => {
-    window.location.href = "main.html";
-  }, SPLASH_TIME);
-}
-</script>
 
 </body>
 </html>
