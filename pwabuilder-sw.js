@@ -2,7 +2,7 @@
 importScripts('https://storage.googleapis.com/workbox-cdn/releases/5.1.2/workbox-sw.js');
 
 // Cache name badal diya hai taaki browser naya version load kare
-const CACHE = "stiskilli-cache-v1";
+const CACHE = "stiskilli-cache-v2";
 
 // IMPORTANT: Agar aapke paas 'offline.html' nahi hai, toh ise 'index.html' hi rehne dein.
 const offlineFallbackPage = "index.html";
