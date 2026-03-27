@@ -1,9 +1,9 @@
 {
   "name": "Stiskilli",
   "short_name": "Stiskilli",
-  "start_url": "/",
-  "scope": "/",
-  "id": "/",
+  "start_url": "https://pc.stiworldofficial.com/",
+  "scope": "https://pc.stiworldofficial.com/",
+  "id": "https://pc.stiworldofficial.com/",
   "display": "standalone",
   "display_override": ["window-controls-overlay", "standalone"],
   "background_color": "#FFFFFF",
