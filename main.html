@@ -3549,6 +3549,32 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
+       // =============================================
+// SERVICE WORKER REGISTRATION
+// =============================================
+
+if ('serviceWorker' in navigator) {
+    console.log('🔍 Checking service worker support...');
+    
+    window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/pwabuilder-sw.js')
+            .then(function(registration) {
+                console.log('✅ Service Worker registered successfully!');
+                console.log('📍 Scope:', registration.scope);
+                
+                // Check if service worker is active
+                if (registration.active) {
+                    console.log('🎯 Service Worker is ACTIVE');
+                }
+            })
+            .catch(function(error) {
+                console.log('❌ Service Worker registration failed:', error);
+            });
+    });
+} else {
+    console.log('⚠️ Service Worker not supported in this browser');
+}
+
         window.addEventListener('DOMContentLoaded', () => {
             const defaultBtn = document.getElementById('nav-govt');
             if(defaultBtn) {
