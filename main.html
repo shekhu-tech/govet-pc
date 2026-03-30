@@ -3510,6 +3510,45 @@ href="android-app://com.ai.skillaura/https/play.google.com/store/apps/details?id
             if(e.target === this) closePopup();
         });
 
+       // =============================================
+// FORCE PWA MODE - All links open inside app
+// =============================================
+
+// Yeh function ensure karta hai ki saare internal links app ke andar khulein
+document.addEventListener('click', function(e) {
+  // Check karo ki click link par hua ya nahi
+  let clickedLink = e.target.closest('a');
+  
+  if (clickedLink && clickedLink.href) {
+    const linkUrl = new URL(clickedLink.href);
+    const currentUrl = new URL(window.location.href);
+    
+    // Sirf internal links ko handle karo (same domain)
+    if (linkUrl.origin === currentUrl.origin) {
+      // Prevent default browser navigation
+      e.preventDefault();
+      
+      // App ke andar navigate karo
+      window.location.href = clickedLink.href;
+      
+      console.log('PWA Navigation:', clickedLink.href);
+    }
+    // External links browser mein khulenge (yeh theek hai)
+  }
+});
+
+// Extra security: Ensure har link mein target="_self" set ho
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('a').forEach(function(link) {
+    // Agar link internal hai toh target="_self" set kar do
+    if (link.href && link.href.startsWith(window.location.origin)) {
+      if (!link.hasAttribute('target')) {
+        link.setAttribute('target', '_self');
+      }
+    }
+  });
+});
+
         window.addEventListener('DOMContentLoaded', () => {
             const defaultBtn = document.getElementById('nav-govt');
             if(defaultBtn) {
